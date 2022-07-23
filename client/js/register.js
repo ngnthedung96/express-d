@@ -1,11 +1,12 @@
 $(document).ready(function () {
     $('.form-submit').click(function (e) {
-        e.preventDefault()
+        e.preventDefault();
         const email = document.querySelector("#email")
         const password = document.querySelector("#password")
-        if (email.value && password.value) {
+        const passwordConfirmation = document.querySelector("#password_confirmation")
+        if (email.value && password.value && passwordConfirmation) {
             $.ajax({
-                url: 'http://localhost:3333/api/users/login',
+                url: 'http://localhost:3333/api/users/register',
                 dataType: 'json',
                 type: "POST",
                 data: {
@@ -36,9 +37,6 @@ function successFunction(data) {
             message: `${data.msg}`,
             type: 'success'
         })
-        setTimeout(function(){
-            window.open('/client/index.html')
-        },1500)
         // setTimeout(function () {
         //     location.reload()
         // }, 2000)
