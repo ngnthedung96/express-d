@@ -1,0 +1,61 @@
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2022-07-23T08:19:03.086Z"}
+{"level":"info","message":"Connection has been established successfully.","timestamp":"2022-07-23T08:19:03.141Z"}
+{"level":"error","timestamp":"2022-07-23T08:19:49.689Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`email` = 'ngnthedung96@gmail.com' LIMIT 1;","timestamp":"2022-07-23T08:21:40.677Z"}
+{"level":"info","message":"Executing (default): INSERT INTO `Users` (`email`,`password`,`updatedAt`,`createdAt`) VALUES (?,?,?,?);","timestamp":"2022-07-23T08:21:40.737Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`email` = 'ngnthedung96@gmail.com' LIMIT 1;","timestamp":"2022-07-23T08:21:43.084Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2022-07-23T08:38:57.504Z"}
+{"level":"info","message":"Connection has been established successfully.","timestamp":"2022-07-23T08:38:57.568Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`email` = 'ngnthedung96@gmail.com' LIMIT 1;","timestamp":"2022-07-23T08:38:58.062Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`email` = 'ngnthedung96@gmail.com' LIMIT 1;","timestamp":"2022-07-23T08:39:07.714Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2022-07-23T08:40:19.757Z"}
+{"level":"info","message":"Connection has been established successfully.","timestamp":"2022-07-23T08:40:19.822Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2022-07-23T08:43:02.892Z"}
+{"level":"info","message":"Connection has been established successfully.","timestamp":"2022-07-23T08:43:02.959Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2022-07-23T08:43:59.103Z"}
+{"level":"info","message":"Connection has been established successfully.","timestamp":"2022-07-23T08:43:59.154Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2022-07-23T08:45:06.659Z"}
+{"level":"info","message":"Connection has been established successfully.","timestamp":"2022-07-23T08:45:06.722Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2022-07-23T08:52:25.046Z"}
+{"level":"info","message":"Connection has been established successfully.","timestamp":"2022-07-23T08:52:25.108Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2022-07-23T08:52:35.330Z"}
+{"level":"info","message":"Connection has been established successfully.","timestamp":"2022-07-23T08:52:35.387Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2022-07-23T08:53:09.993Z"}
+{"level":"info","message":"Connection has been established successfully.","timestamp":"2022-07-23T08:53:10.060Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2022-07-23T08:56:48.292Z"}
+{"level":"info","message":"Connection has been established successfully.","timestamp":"2022-07-23T08:56:48.346Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2022-07-23T08:57:01.437Z"}
+{"level":"info","message":"Connection has been established successfully.","timestamp":"2022-07-23T08:57:01.505Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2022-07-23T08:57:02.860Z"}
+{"level":"info","message":"Connection has been established successfully.","timestamp":"2022-07-23T08:57:02.927Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2022-07-23T08:57:18.982Z"}
+{"level":"info","message":"Connection has been established successfully.","timestamp":"2022-07-23T08:57:19.037Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`email` = 'ngnthedung96@gmail.com' LIMIT 1;","timestamp":"2022-07-23T08:57:41.455Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2022-07-23T08:59:48.429Z"}
+{"level":"info","message":"Connection has been established successfully.","timestamp":"2022-07-23T08:59:48.504Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`email` = 'ngnthedung96@gmail.com' LIMIT 1;","timestamp":"2022-07-23T08:59:49.121Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`password` = '398810c4bbd05c5f4cacb74133bccf27' LIMIT 1;","timestamp":"2022-07-23T08:59:49.189Z"}
+{"level":"error","timestamp":"2022-07-23T09:36:32.608Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`password` = '1' LIMIT 1;","timestamp":"2022-07-23T09:36:32.820Z"}
+{"level":"error","timestamp":"2022-07-23T09:36:54.609Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`password` = '398810c4bbd05c5f4cacb74133bccf27' LIMIT 1;","timestamp":"2022-07-23T09:36:54.873Z"}
+{"level":"error","timestamp":"2022-07-23T09:36:58.921Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`password` = '1' LIMIT 1;","timestamp":"2022-07-23T09:36:58.922Z"}
+{"level":"error","timestamp":"2022-07-23T09:37:00.211Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`password` = '1' LIMIT 1;","timestamp":"2022-07-23T09:37:00.327Z"}
+{"level":"error","timestamp":"2022-07-23T09:37:14.015Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`password` = '1' LIMIT 1;","timestamp":"2022-07-23T09:37:14.218Z"}
+{"level":"error","timestamp":"2022-07-23T09:37:15.816Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`password` = '1' LIMIT 1;","timestamp":"2022-07-23T09:37:15.817Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`email` = 'ngnthedung96@gmail.com' LIMIT 1;","timestamp":"2022-07-23T09:46:29.288Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`password` = '398810c4bbd05c5f4cacb74133bccf27' LIMIT 1;","timestamp":"2022-07-23T09:46:29.348Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`email` = 'ngnthedung96@gmail.com' LIMIT 1;","timestamp":"2022-07-23T09:46:53.594Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`password` = '1' LIMIT 1;","timestamp":"2022-07-23T09:46:53.650Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`email` = 'ngnthedung96@gmail.com' LIMIT 1;","timestamp":"2022-07-23T09:47:02.591Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`password` = '11212121212' LIMIT 1;","timestamp":"2022-07-23T09:47:02.676Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`email` = 'ngnthedung96@gmail.com' LIMIT 1;","timestamp":"2022-07-23T09:47:59.346Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`email` = 'ngnthedung96@gmail.com' LIMIT 1;","timestamp":"2022-07-23T09:47:59.412Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`password` = '1' LIMIT 1;","timestamp":"2022-07-23T09:47:59.462Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`password` = '1' LIMIT 1;","timestamp":"2022-07-23T09:47:59.479Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`email` = 'ngnthedung96@gmail.com' LIMIT 1;","timestamp":"2022-07-23T09:48:19.943Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`password` = '398810c4bbd05c5f4cacb74133bccf27' LIMIT 1;","timestamp":"2022-07-23T09:48:20.003Z"}
