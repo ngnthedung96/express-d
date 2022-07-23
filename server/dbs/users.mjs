@@ -37,7 +37,7 @@ const findByEmail= async (value, field) => {
         });
     }
     catch(err) {
-        logger.error(err)
+        logger.error(err) 
     }
     return res;
 }
