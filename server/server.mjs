@@ -5,6 +5,7 @@ import { sequelize } from './dbs/index.mjs'
 import logger from './logger.mjs'
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
+import cookieParser from 'cookie-parser'
 const __dirname = dirname(fileURLToPath(
     import.meta.url));
 
@@ -14,6 +15,7 @@ var corsOptions = {
 }
 
 const app = express()
+app.use(cookieParser())
 app.use(cors())
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded

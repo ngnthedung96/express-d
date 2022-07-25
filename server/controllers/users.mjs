@@ -1,5 +1,7 @@
 import { userDb } from '../dbs/index.mjs'
 import { validationResult } from 'express-validator';
+import jwt from "jsonwebtoken"
+import { resolve } from 'path';
 
 const register = async(req, res, next) => {
     const { email, password } = req.body;
@@ -28,21 +30,100 @@ const register = async(req, res, next) => {
     }
 }
 
+const generateAccessToken = (user) => {
+    const userId = user.dataValues.id
+    return   jwt.sign({
+        id:userId
+    },
+    "secretKey",
+    {
+        expiresIn:"30s"
+    })
+}
+const generateRefreshToken = (user) => {
+    const userId = user.dataValues.id
+    return jwt.sign({
+        id: userId
+    },
+    "secretKey",
+    {
+        expiresIn:"365d"
+    })
+}
+
 const login = async(req, res, next) => {
     const errors = validationResult(req);
-    // console.log(req)
     if (!errors.isEmpty()) {
         res.status(422).json({ errors: errors.array() });
         return;
     }
-
     try {
+        const getUser = async () => {
+            try{
+                const user = await userDb.findByEmail(req.body.email, 'email')
+                return user
+            }
+            catch(e) {
+                console.log(e.message)
+                res.sendStatus(500) && next(e)
+            }
+        }  
+        const user = await getUser()
+        generateAccessToken(user) 
+        generateRefreshToken(user) 
+        res.cookie("refreshToken", generateRefreshToken(user) ,{
+            httpOnly: true,
+            secure: false,
+            path: "/",
+            sameSite: "strict"
+        })
         res.status(200).json({
             status: true,
-            msg: 'Đăng nhap thành công'
+            msg: 'Đăng nhập thành công',
+            accesstoken: generateAccessToken(user) 
         });
-
         next()
+    } catch (e) {
+        console.log(e.message)
+        res.sendStatus(500) && next(e)
+    }
+}
+const reqRefreshToken = (req,res,next) => {
+    const refreshToken = req.cookies.refreshToken // lay ra token
+    if(!refreshToken){
+        res.status(401),json("ban chua dang nhap")
+    }
+    else{
+        //create new accesstoken, refresh token
+        const newAccessToken = generateAccessToken(user) 
+        const newRefreshToken = generateRefreshToken(user) 
+        res.cookie("refreshToken", newRefreshToken,{
+            httpOnly: true,
+            secure: false,
+            path: "/",
+            sameSite: "strict"
+        })
+        //can push newrefresh vao db
+        res.status(200).json({
+            accessToken:newAccessToken
+        })
+    }
+}
+const home = async(req, res, next) => {
+    try {
+        if(req.user){
+            const userId = req.user.id
+            res.json(userId)
+        }
+    } catch (e) {
+        console.log(e.message)
+        res.sendStatus(500) && next(e)
+    }
+}
+const logOut = async(req, res, next) => {
+    try {
+        res.clearCookie("refreshToken")
+        res.json('logOut success')
     } catch (e) {
         console.log(e.message)
         res.sendStatus(500) && next(e)
@@ -51,5 +132,7 @@ const login = async(req, res, next) => {
 
 export const userController = {
     register,
-    login
+    login,
+    home, 
+    logOut
 }

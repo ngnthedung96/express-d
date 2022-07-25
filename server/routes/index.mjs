@@ -1,6 +1,7 @@
 import express from 'express'
 import { userController } from '../controllers/index.mjs'
 import userValidate from '../validates/users.mjs'
+import tokenValidate from '../validates/tokenValidate.mjs'
 const router = express.Router() // create new router
 
 // create user
@@ -12,11 +13,18 @@ router.post('/users/login',
     userValidate('login'), // run valdiate
     userController.login
 )
-
-// get all users
-// router.get('/users',
-//     userController.getList
+// router.post('/refreshToken',
+//     tokenValidate.verifyToken, // run valdiate
 // )
+router.post('/logout',
+    tokenValidate.verifyToken, 
+    userController.logOut
+)
+
+router.get('/users/home',
+    tokenValidate.verifyToken,
+    userController.home
+)
 
 
 export default router;

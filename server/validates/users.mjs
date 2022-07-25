@@ -13,9 +13,9 @@ const validate = (method) => {
                         }
                     });
                 })
-            ]
-            break;   
+            ]  
         }
+        break; 
         case 'login':{
             err = [ 
                 body('email', 'Email không hợp lệ').exists().isEmail().custom(value => {
@@ -33,8 +33,8 @@ const validate = (method) => {
                     });
                 })
             ]
-            break; 
         }
+        break; 
     }
 
     return err;
