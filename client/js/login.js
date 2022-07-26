@@ -1,10 +1,10 @@
 $(document).ready(function () {
-    $('.form-submit').click(function (e) {
+    $('.form-submit').click( async function (e) {
         e.preventDefault()
         const email = document.querySelector("#email")
         const password = document.querySelector("#password")
         if (email.value && password.value) {
-            $.ajax({
+            await  $.ajax({
                 url: 'http://localhost:3333/api/users/login',
                 dataType: 'json',
                 type: "POST",
@@ -14,6 +14,7 @@ $(document).ready(function () {
                 },
                 success: function (data) {
                     successFunction(data)
+                    localStorage.setItem('accessToken', data.accesstoken);
                   },
                   error: function (data) {
                     const errors = JSON.parse(data.responseText).errors
@@ -26,10 +27,10 @@ $(document).ready(function () {
         }
     });
 });
+
 // ------toast---------------
 import toast from "./toast.js"
 function successFunction(data) {
-    console.log(data)
     if (data.status) {
         toast({
             title: 'Success',
@@ -37,6 +38,7 @@ function successFunction(data) {
             type: 'success'
         })
         setTimeout(function(){
+            window.close()
             window.open('/client/index.html')
         },1500)
         // setTimeout(function () {
@@ -51,3 +53,8 @@ function errorFunction(message) {
         type: 'error'
     })
 }
+
+
+
+
+

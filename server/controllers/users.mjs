@@ -37,7 +37,7 @@ const generateAccessToken = (user) => {
     },
     "secretKey",
     {
-        expiresIn:"30s"
+        expiresIn:"120s"
     })
 }
 const generateRefreshToken = (user) => {
@@ -58,17 +58,7 @@ const login = async(req, res, next) => {
         return;
     }
     try {
-        const getUser = async () => {
-            try{
-                const user = await userDb.findByEmail(req.body.email, 'email')
-                return user
-            }
-            catch(e) {
-                console.log(e.message)
-                res.sendStatus(500) && next(e)
-            }
-        }  
-        const user = await getUser()
+        const user = await userDb.findByEmail(req.body.email, 'email')
         generateAccessToken(user) 
         generateRefreshToken(user) 
         res.cookie("refreshToken", generateRefreshToken(user) ,{
@@ -112,8 +102,10 @@ const reqRefreshToken = (req,res,next) => {
 const home = async(req, res, next) => {
     try {
         if(req.user){
-            const userId = req.user.id
-            res.json(userId)
+            const user = await userDb.findById(req.user.id, 'id')
+            res.json({
+                status: true,
+                user})
         }
     } catch (e) {
         console.log(e.message)
@@ -123,7 +115,10 @@ const home = async(req, res, next) => {
 const logOut = async(req, res, next) => {
     try {
         res.clearCookie("refreshToken")
-        res.json('logOut success')
+        res.json({
+            status: true,
+            msg: 'Đăng xuất thành công'
+        })
     } catch (e) {
         console.log(e.message)
         res.sendStatus(500) && next(e)

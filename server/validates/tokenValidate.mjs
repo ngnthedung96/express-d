@@ -8,14 +8,14 @@ const tokenValidate = {
       const accessToken = token.split(" ")[1]
       jwt.verify(accessToken, "secretKey", (err,user)=>{
         if(err){
-          res.status(403).json("Token isn't valid")
+          return  res.status(403).json("Token isn't valid")
         }
         req.user = user
         next()
       })
     }
     else{
-      res.status(401)
+      return res.status(401)
     }
   }
 }

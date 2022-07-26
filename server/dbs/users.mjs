@@ -27,6 +27,20 @@ const findByPassword = async (value, field) => {
     }
     return res;
 }
+const findById = async (value, field) => {
+    let res = null;
+    try {
+        res = await Users.findOne({
+            where: {
+                'id' : value,
+            } 
+        });
+    }
+    catch(err) {
+        logger.error(err)
+    }
+    return res;
+}
 const findByEmail= async (value, field) => {
     let res = null;
     try {
@@ -59,5 +73,7 @@ const register = async(email, password) => {
 export const userDb = {
     register,
     findByEmail,
-    findByPassword
+    findByPassword,
+    findById
+
 }

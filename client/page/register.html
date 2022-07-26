@@ -52,4 +52,22 @@
 
 </body>
 <script type="module" src="../js/register.js"></script>
+<script src="../js/validate.js"></script>
+<script>
+    Validator({
+        form: '#form-1',
+        errorSelector: '.form-message',
+        formSubmit: '.form-submit',
+        formGroup: '.form-group',
+        rules: [
+            Validator.isRequired('#email'),
+            Validator.isEmail('#email'),
+            Validator.isRequired('#password_confirmation'),
+            Validator.isRequired('#password'),
+            Validator.isConfirmed("#password_confirmation", function () {
+                return document.querySelector('#password').value
+            }, "Mật khẩu không khớp")
+        ]
+    })
+</script>
 </html>

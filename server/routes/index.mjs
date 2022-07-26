@@ -16,7 +16,7 @@ router.post('/users/login',
 // router.post('/refreshToken',
 //     tokenValidate.verifyToken, // run valdiate
 // )
-router.post('/logout',
+router.post('/users/logout',
     tokenValidate.verifyToken, 
     userController.logOut
 )
