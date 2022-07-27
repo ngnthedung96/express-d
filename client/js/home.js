@@ -1,5 +1,6 @@
 $(document).ready(function () {
   if(localStorage.getItem("accessToken")){
+    var idUser  
     $.ajax({
       url: "http://localhost:3333/api/users/home",
       type: "GET",
@@ -10,11 +11,13 @@ $(document).ready(function () {
   })
       .done(function (data, textStatus, jqXHR) {
           if (data.status) {
+            console.log(data)
+            idUser = data.user.id
               haveUserLogin(data)
           }
-
       })
   }
+  console.log(idUser)
   //-------log out--------------
   $('.log-out__btn').click(function (e) { 
     e.preventDefault();

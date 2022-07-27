@@ -48,6 +48,7 @@ function updateInfor() {
           },
           success: function (data) {
             alert('Thay đổi thành công')
+            location.reload()
           },
           error:  function (data) {
             const errors = JSON.parse(data.responseText).errors

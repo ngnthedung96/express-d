@@ -37,4 +37,14 @@ router.post('/users/updateinfor',
     userController.updateInfor
 )
 
+// router.post('/users/updateinfor',
+//     tokenValidate.verifyToken,
+//     userValidate('update'), // run valdiate
+//     userController.updateInfor
+// )
+
+
+
+
+
 export default router;

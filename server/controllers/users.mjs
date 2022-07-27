@@ -67,7 +67,7 @@ const login = async(req, res, next) => {
         res.status(200).json({
             status: true,
             msg: 'Đăng nhập thành công',
-            accesstoken: generateAccessToken(user) 
+            accesstoken: generateAccessToken(user)  
         });
         next()
     } catch (e) {
@@ -138,6 +138,7 @@ const getInfor = async(req, res, next) => {
 const updateInfor = async(req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
+        // console.log('zo');
         res.status(422).json({ errors: errors.array() });
         return;
     }
