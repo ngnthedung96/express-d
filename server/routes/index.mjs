@@ -26,5 +26,15 @@ router.get('/users/home',
     userController.home
 )
 
+router.get('/users/infor',
+    tokenValidate.verifyToken,
+    userController.getInfor
+)
+
+router.post('/users/updateinfor',
+    tokenValidate.verifyToken,
+    userValidate('update'), // run valdiate
+    userController.updateInfor
+)
 
 export default router;

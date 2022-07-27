@@ -35,10 +35,7 @@ const generateAccessToken = (user) => {
     return   jwt.sign({
         id:userId
     },
-    "secretKey",
-    {
-        expiresIn:"120s"
-    })
+    "secretKey")
 }
 const generateRefreshToken = (user) => {
     const userId = user.dataValues.id
@@ -125,9 +122,51 @@ const logOut = async(req, res, next) => {
     }
 }
 
+const getInfor = async(req, res, next) => {
+    try {
+        if(req.user){
+            const user = await userDb.findById(req.user.id, 'id')
+            res.json({
+                status: true,
+                user})
+        }
+    } catch (e) {
+        console.log(e.message)
+        res.sendStatus(500) && next(e)
+    }
+}
+const updateInfor = async(req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        res.status(422).json({ errors: errors.array() });
+        return;
+    }
+    try {
+        if(req.user){
+            const user = await userDb.findById(req.user.id, 'id')
+            await user.update({
+                email: req.body.email,
+                password: req.body.password 
+            })
+            await user.save()
+            res.json({
+                status: true,
+                msg: 'Thay đổi thông tin thành công',
+                user})
+            }
+    } catch (e) {
+        console.log(e.message)
+        res.sendStatus(500) && next(e)
+    }
+}
+
+
+
 export const userController = {
     register,
     login,
     home, 
-    logOut
+    logOut,
+    getInfor,
+    updateInfor
 }

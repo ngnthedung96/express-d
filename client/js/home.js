@@ -38,6 +38,10 @@ $(document).ready(function () {
 
 function haveUserLogin(data) {
   const user = document.querySelector('.nav-item.dropdown')
+  const signIn = document.querySelector('.sign-in__btn')
+  const signUp = document.querySelector('.sign-up__btn')
+  signIn.classList.toggle('hide')
+  signUp.classList.toggle('hide')
   user.classList.toggle('hide')
   const name = user.querySelector('a')
   name.innerText = `${data.user.email}`

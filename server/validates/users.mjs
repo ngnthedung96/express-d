@@ -31,9 +31,24 @@ const validate = (method) => {
                     });
                 }),
                 body('password', 'password không hợp lệ').exists().custom(password=> {
-                    if(!password === a){
-                        return ('Sai mật khẩu');
+                    if(password === a){
+                        return true
                     }
+                    else{
+                        throw new Error('Sai mật khẩu')
+                    }
+                })
+            ]
+        }
+        break; 
+        case 'update':{
+            err = [ 
+                body('email', 'Email không hợp lệ').exists().isEmail().custom(value => {
+                    return userDb.findByEmail(value, 'email').then(user => {
+                        if (user) {
+                            return Promise.reject('Email đã được sử dụng');
+                        }
+                    });
                 })
             ]
         }
