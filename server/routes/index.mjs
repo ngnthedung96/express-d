@@ -1,9 +1,11 @@
 import express from 'express'
 import { userController } from '../controllers/index.mjs'
+import { productsController } from '../controllers/index.mjs'
 import userValidate from '../validates/users.mjs'
 import tokenValidate from '../validates/tokenValidate.mjs'
 const router = express.Router() // create new router
 
+//--------------------user------------------------------------
 // create user
 router.post('/users/register',
     userValidate('register'), // run valdiate
@@ -37,12 +39,18 @@ router.post('/users/updateinfor',
     userController.updateInfor
 )
 
-// router.post('/users/updateinfor',
-//     tokenValidate.verifyToken,
-//     userValidate('update'), // run valdiate
-//     userController.updateInfor
-// )
+//---------------------- products--------------------------------
+router.post('/product/create',
+    productsController.createProduct
+)
+router.get('/product/show',
+    tokenValidate.verifyToken,
+    productsController.showProducts)
 
+
+router.post('/product/delete',
+    productsController.deleteProduct
+)
 
 
 

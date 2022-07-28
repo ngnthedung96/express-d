@@ -5,3 +5,11 @@
 {"level":"error","timestamp":"2022-07-23T09:37:00.211Z"}
 {"level":"error","timestamp":"2022-07-23T09:37:14.015Z"}
 {"level":"error","timestamp":"2022-07-23T09:37:15.816Z"}
+{"level":"error","timestamp":"2022-07-28T03:25:48.906Z"}
+{"level":"error","timestamp":"2022-07-28T03:26:15.726Z"}
+{"level":"error","timestamp":"2022-07-28T03:26:37.369Z"}
+{"level":"error","timestamp":"2022-07-28T03:26:59.564Z"}
+{"level":"error","timestamp":"2022-07-28T03:27:30.537Z"}
+{"level":"error","timestamp":"2022-07-28T03:27:47.951Z"}
+{"level":"error","timestamp":"2022-07-28T03:28:06.860Z"}
+{"errors":[{"instance":{"createdAt":"2022-07-28T03:38:48.442Z","id":null,"name":"Quần","price":"200000","updatedAt":"2022-07-28T03:38:48.442Z"},"message":"products.user_id cannot be null","origin":"CORE","path":"user_id","type":"notNull Violation","validatorArgs":[],"validatorKey":"is_null","validatorName":null,"value":null}],"level":"error","name":"SequelizeValidationError","timestamp":"2022-07-28T03:38:48.443Z"}

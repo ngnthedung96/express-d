@@ -13,20 +13,6 @@ const Users = sequelize.define('Users', {
             // allowNull defaults to true
     }
 }, {});
-const Products = sequelize.define('products', {
-    user_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
-    name: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    price: {
-        type: DataTypes.STRING,
-        allowNull: false
-    }
-}, {});
 const findByPassword = async (value, field) => {
     let res = null;
     try {
@@ -83,7 +69,6 @@ const register = async(email, password) => {
     }
     return res;
 }
-
 export const userDb = {
     register,
     findByEmail,

@@ -1,6 +1,5 @@
 $(document).ready(function () {
   if(localStorage.getItem("accessToken")){
-    var idUser  
     $.ajax({
       url: "http://localhost:3333/api/users/home",
       type: "GET",
@@ -11,13 +10,18 @@ $(document).ready(function () {
   })
       .done(function (data, textStatus, jqXHR) {
           if (data.status) {
-            console.log(data)
-            idUser = data.user.id
-              haveUserLogin(data)
+            haveUserLogin(data)
+            postProductTocart(data)
           }
       })
   }
-  console.log(idUser)
+  else{
+    $(".btn__buy").click(function (e) { 
+      e.preventDefault();
+      alert("bạn cần đăng nhập")
+    });
+    
+  }
   //-------log out--------------
   $('.log-out__btn').click(function (e) { 
     e.preventDefault();
@@ -50,5 +54,26 @@ function haveUserLogin(data) {
   name.innerText = `${data.user.email}`
 }
 
-
+function postProductTocart(data) {
+  $(".btn__buy").click(function (e) {
+      e.preventDefault();
+      const parentDiv = e.target.parentElement
+      const nameProduct = parentDiv.querySelector(".name-product").innerText
+      const priceProduct = parentDiv.querySelector(".price-product").innerText
+      $.ajax({
+          type: "POST",
+          url: "http://localhost:3333/api/product/create",
+          data: {
+              "user_id": data.user.id,
+              "name": `${nameProduct}`,
+              "price": `${priceProduct}`,
+          },
+          dataType: "json",
+          success: function (response) {
+              console.log('success')
+              window.open('/client/page/cart.html')
+          }
+      });
+  });
+}
 
