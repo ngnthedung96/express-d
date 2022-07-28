@@ -1,8 +1,12 @@
 import { sequelize } from "./connect.mjs";
 import { DataTypes } from 'sequelize'
 import logger from '../logger.mjs'
-const Products = sequelize.define('products', {
+const Cart = sequelize.define('Cart', {
     user_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    item_id: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
@@ -15,24 +19,29 @@ const Products = sequelize.define('products', {
         allowNull: false
     }
 }, {});
-const createProduct = async(user_id,name,price)=>{
+const createProduct = async(user_id,item_id,name,price)=>{
+    console.log(user_id,
+        item_id,
+        name,
+        price)
     let res = null;
     try{
-        res = await Products.create({
+        res = await Cart.create({
             user_id: user_id,
+            item_id: item_id,
             name: name,
             price: price
-        }, { fields: ['user_id', 'name','price'] });
-    }
-    catch (err) {
+        }, { fields: ['user_id',"item_id", 'name','price'] })
+    } catch (err) {
         logger.error(err)
     }
+    console.log(res)
     return res;
 }
 const findProducts = async (value, field) => {
   let res = null;
   try {
-      res = await Products.findAll(
+      res = await Cart.findAll(
         {
             where: { "user_id": value },
         }
@@ -47,7 +56,7 @@ const findProducts = async (value, field) => {
 const findProduct = async (value, field) => {
     let res = null;
     try {
-        res = await Products.findOne(
+        res = await Cart.findOne(
           {
               where: { "id": value },
           }
@@ -57,13 +66,29 @@ const findProduct = async (value, field) => {
         logger.error(err)
     }
     return res;
+}
+
+const findProductById = async (value, field) => {
+    let res = null;
+    try {
+        res = await Cart.findOne(
+          {
+              where: { "item_id": value },
+          }
+      )
+    }
+    catch(err) {
+        logger.error(err)
+    }
+    return res;
   }
+
 
 
   const deleteProduct = async (value, field) => {
     let res = null;
     try {
-        res = await Products.destroy(
+        res = await Cart.destroy(
           {
               where: { "id": value },
           }
@@ -74,9 +99,10 @@ const findProduct = async (value, field) => {
     }
     return res;
   }
-export const productsDb = {
+export const cartDb = {
     createProduct,
     findProducts,
     findProduct,
-    deleteProduct
+    deleteProduct,
+    findProductById
 }

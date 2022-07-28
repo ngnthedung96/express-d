@@ -1,4 +1,14 @@
 $(document).ready(function () {
+  $.ajax({
+    type: "GET",
+    url: "http://localhost:3333/api/item/show",
+    dataType: "json",
+    success: function (data) {
+      if(data.status){
+        renderItems(data.items)
+      }
+    }
+  });
   if(localStorage.getItem("accessToken")){
     $.ajax({
       url: "http://localhost:3333/api/users/home",
@@ -16,12 +26,42 @@ $(document).ready(function () {
       })
   }
   else{
-    $(".btn__buy").click(function (e) { 
+    $(".items").click(function (e) { 
       e.preventDefault();
-      alert("bạn cần đăng nhập")
+      if(e.target.matches(".btn__buy")){
+        alert("bạn cần đăng nhập")
+      }
     });
     
   }
+
+
+
+
+
+  //------------render--------------
+  function renderItems(items){
+    let htmls = ''
+    var itemsDiv = document.querySelector(".items")
+    for (var i of items){
+      htmls += `
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <p hidden class= "idOfItem">${i.id} </p>
+          <h5 class="name-product">${i.name}</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+              card's content.</p>
+          <p class="price-product">${i.price}</p>
+          <a href="#" class="btn btn-primary btn__buy">BUY</a>
+        </div>
+      </div>`
+    }
+    itemsDiv.innerHTML = htmls
+  }
+
+
+
+
   //-------log out--------------
   $('.log-out__btn').click(function (e) { 
     e.preventDefault();
@@ -60,11 +100,14 @@ function postProductTocart(data) {
       const parentDiv = e.target.parentElement
       const nameProduct = parentDiv.querySelector(".name-product").innerText
       const priceProduct = parentDiv.querySelector(".price-product").innerText
+      const idOfItem = parentDiv.querySelector(".idOfItem").innerText
+      console.log(1)
       $.ajax({
           type: "POST",
-          url: "http://localhost:3333/api/product/create",
+          url: "http://localhost:3333/api/cart/create",
           data: {
               "user_id": data.user.id,
+              "item_id": Number(idOfItem),
               "name": `${nameProduct}`,
               "price": `${priceProduct}`,
           },
@@ -74,6 +117,7 @@ function postProductTocart(data) {
               window.open('/client/page/cart.html')
           }
       });
+      window.open('/client/page/cart.html')
   });
 }
 

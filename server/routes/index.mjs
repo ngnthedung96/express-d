@@ -1,6 +1,8 @@
 import express from 'express'
 import { userController } from '../controllers/index.mjs'
-import { productsController } from '../controllers/index.mjs'
+import { cartController } from '../controllers/index.mjs'
+import { itemsController } from '../controllers/index.mjs'
+import { payController } from '../controllers/index.mjs'
 import userValidate from '../validates/users.mjs'
 import tokenValidate from '../validates/tokenValidate.mjs'
 const router = express.Router() // create new router
@@ -39,17 +41,30 @@ router.post('/users/updateinfor',
     userController.updateInfor
 )
 
-//---------------------- products--------------------------------
-router.post('/product/create',
-    productsController.createProduct
+//---------------------- Cart--------------------------------
+router.post('/cart/create',
+    cartController.createProduct
 )
-router.get('/product/show',
+router.post('/cart/save',
+    cartController.createProduct
+)
+router.get('/cart/show',
     tokenValidate.verifyToken,
-    productsController.showProducts)
+    cartController.showProducts
+)
 
 
-router.post('/product/delete',
-    productsController.deleteProduct
+router.post('/cart/delete',
+    cartController.deleteProduct
+)
+// --------------------------items--------------------------
+router.get('/item/show',
+    itemsController.showItems
+)
+
+//------------------------Pay--------------------------
+router.post('/pay/create',
+    payController.createOrder
 )
 
 
