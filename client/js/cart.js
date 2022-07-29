@@ -9,9 +9,51 @@ $(document).ready(function () {
       success: function (data) {
           if (data.status) {
               renderProducts(data)
+              deleteOrder()
+              totalPrice(data)
+              pay()
           }
       }
   });
+});
+
+
+
+async function totalPrice(data){
+  $("table").click(function (e) { 
+    e.preventDefault();
+    if (e.target.matches('.number')){
+      var parentEl
+      var element = e.target.parentElement
+      while(element){
+        if (element.matches('tr')){
+          parentEl = element
+          break
+        }
+        element = element.parentElement
+      }
+      const priceEle = parentEl.querySelector('.price')
+      const nameEle = parentEl.querySelector('.name')
+      var price = ""
+      for (i of data.products){
+        if(i.name === nameEle.innerText){
+          price = i.price
+        }
+      }
+      var totalPrice = 0
+      e.target.addEventListener('input', function(){
+        const newPrice = Number(price) * Number(e.target.value)
+        totalPrice += newPrice
+        console.log(totalPrice)
+        priceEle.innerText = `${newPrice}`
+      }) 
+    }
+  });
+}
+
+
+
+function deleteOrder(){
   $("table").click(function (e) { 
     e.preventDefault();
     var btnDelete =e.target.matches(".btn-delete")
@@ -40,24 +82,22 @@ $(document).ready(function () {
       });
     }
   });
+}
 
-  
+
+
+function pay(){
   $(".btn-pay").click(function (e) { 
     e.preventDefault();
     var numberValues = document.querySelectorAll(".number")
-    var check = []
+    var check = true
     for (var i of numberValues){
       if (i.value==0){
-        check = []
-        check.push(false)
-      }
-      else{
-        check = []
-        check.push(true)
+        check = false
       }
     }
-    if(!check[0]){
-      alert('nhập số lượng')
+    if(!check){
+      alert("can nhap so luong")
     }
     else{
       const orders = document.querySelectorAll("tbody tr")
@@ -77,17 +117,27 @@ $(document).ready(function () {
         }
         container.push(block)
       }
-      console.log(container)
+      for (i of container){
+        $.ajax({
+          type: "POST",
+          url: "http://localhost:3333/api/pay/create",
+          data: i,
+          dataType: "json",
+          success: function (data) {
+            console.log(data)
+            location.reload()
+          }
+        });
+      }
     }
-    
-     
-    
-
   });
+  
+  
+}
 
 
 
-});
+
 
 function renderProducts(data) {
   const row = document.querySelector("table tbody")
@@ -101,7 +151,6 @@ function renderProducts(data) {
   var htmls = ''
   var count = 1
   for (var i of data.products) {
-    console.log(i)
       htmls += `
       <tr>
                   <th hidden ><p class="id-product">${i.id} </p></th>

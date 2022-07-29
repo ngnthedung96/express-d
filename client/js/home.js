@@ -96,6 +96,7 @@ function haveUserLogin(data) {
 
 function postProductTocart(data) {
   $(".btn__buy").click(function (e) {
+    console.log(1)
       e.preventDefault();
       const parentDiv = e.target.parentElement
       const nameProduct = parentDiv.querySelector(".name-product").innerText

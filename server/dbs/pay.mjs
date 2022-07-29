@@ -31,12 +31,11 @@ const createOrder = async(user_id,item_id,name,price,number)=>{
         number)
     let res = null;
     try{
-        const pr = Number(price)*Number(number)
         res = await Pay.create({
             user_id: user_id,
             item_id: item_id,
             name: name,
-            price:  `${pr}`,
+            price:  price,
             number: number
         }, { fields: ['user_id',"item_id", 'name','price','number'] })
     } catch (err) {

@@ -52,6 +52,17 @@ const findProducts = async (value, field) => {
   }
   return res;
 }
+const findAllProducts = async (value, field) => {
+    let res = null;
+    try {
+        res = await Cart.findAll(
+      )
+    }
+    catch(err) {
+        logger.error(err)
+    }
+    return res;
+  }
 
 const findProduct = async (value, field) => {
     let res = null;
@@ -99,10 +110,29 @@ const findProductById = async (value, field) => {
     }
     return res;
   }
+
+
+  
+  const deleteAll= async () => {
+    let res = null;
+    try {
+        res = await Cart.destroy({
+            truncate: true
+        }
+            
+      )
+    }
+    catch(err) {
+        logger.error(err)
+    }
+    return res;
+  }
 export const cartDb = {
     createProduct,
     findProducts,
     findProduct,
     deleteProduct,
-    findProductById
+    findProductById,
+    findAllProducts,
+    deleteAll
 }
