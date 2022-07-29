@@ -115,10 +115,14 @@ function postProductTocart(data) {
           dataType: "json",
           success: function (response) {
               console.log('success')
-              window.open('/client/page/cart.html')
+              setTimeout(function(){
+                window.open('/client/page/cart.html')
+              },1000)
           }
       });
-      window.open('/client/page/cart.html')
+      setTimeout(function(){
+        window.open('/client/page/cart.html')
+      },1500)
   });
 }
 

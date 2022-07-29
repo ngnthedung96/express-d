@@ -66,6 +66,10 @@ router.get('/item/show',
 router.post('/pay/create',
     payController.createOrder
 )
+router.get('/pay/show',
+    tokenValidate.verifyToken,
+    payController.showOrders
+)
 
 
 

@@ -6,45 +6,43 @@ const Pay= sequelize.define('Pay', {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    item_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
-    name: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    price: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    number: {
+    detail: {
         type: DataTypes.STRING,
         allowNull: false
     }
 }, {});
-const createOrder = async(user_id,item_id,name,price,number)=>{
-    console.log(user_id,
-        item_id,
-        name,
-        price,
-        number)
+const createOrder = async(user_id,details)=>{
     let res = null;
     try{
         res = await Pay.create({
             user_id: user_id,
-            item_id: item_id,
-            name: name,
-            price:  price,
-            number: number
-        }, { fields: ['user_id',"item_id", 'name','price','number'] })
+            detail : `[${details}]`
+        }, { fields: ['user_id',"detail"]})
     } catch (err) {
         logger.error(err)
     }
     console.log(res)
     return res;
 }
+
+const findOrders = async (value, field) => {
+    let res = null;
+    try {
+        res = await Pay.findAll(
+            {
+                where: { "user_id": value },
+            }
+      )
+    }
+    catch(err) {
+        logger.error(err)
+    }
+    return res;
+  }
+
+
 export const payDb = {
-    createOrder
+    createOrder,
+    findOrders
 }
 

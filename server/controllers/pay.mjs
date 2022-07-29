@@ -3,12 +3,21 @@ import { cartDb } from '../dbs/index.mjs'
 import { validationResult } from 'express-validator';
 import jwt from "jsonwebtoken"
 import { resolve } from 'path';
+import { request } from 'http';
+import { stringify } from 'querystring';
+import { JSONB } from 'sequelize';
 
 
 const createOrder = async(req, res, next) => {
-  const { user_id,item_id, name, price ,number} = req.body;
+  const {user_id,detail} = req.body;
+  console.log(req.body)
+  var details = []
+  
+  for (var i of detail){
+    details.push(JSON.stringify(i))
+  }
   try {
-      const order = await payDb.createOrder(user_id,item_id, name, price ,number)
+      const order = await payDb.createOrder(user_id,details)
       await cartDb.deleteAll()
       res.json({
         status: "success",
@@ -20,6 +29,24 @@ const createOrder = async(req, res, next) => {
   }
 }
 
+
+const showOrders=  async (req, res, next) =>{
+  try {
+    if(req.user){
+        const orders = await payDb.findOrders(req.user.id, 'user_id')
+        res.json({
+          status: true,
+          orders
+        })
+    }
+  }
+  catch (err) {
+      console.log(err)
+  }
+}
+
+
 export const payController = {
-    createOrder
+    createOrder,
+    showOrders
   }

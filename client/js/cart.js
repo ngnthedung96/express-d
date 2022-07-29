@@ -10,7 +10,7 @@ $(document).ready(function () {
           if (data.status) {
               renderProducts(data)
               deleteOrder()
-              totalPrice(data)
+              handleTotalPrice(data)
               pay()
           }
       }
@@ -19,8 +19,9 @@ $(document).ready(function () {
 
 
 
-async function totalPrice(data){
+function handleTotalPrice(data){
   $("table").click(function (e) { 
+
     e.preventDefault();
     if (e.target.matches('.number')){
       var parentEl
@@ -33,6 +34,7 @@ async function totalPrice(data){
         element = element.parentElement
       }
       const priceEle = parentEl.querySelector('.price')
+    
       const nameEle = parentEl.querySelector('.name')
       var price = ""
       for (i of data.products){
@@ -40,15 +42,25 @@ async function totalPrice(data){
           price = i.price
         }
       }
-      var totalPrice = 0
+      
       e.target.addEventListener('input', function(){
         const newPrice = Number(price) * Number(e.target.value)
-        totalPrice += newPrice
-        console.log(totalPrice)
         priceEle.innerText = `${newPrice}`
+        totalPrice()
       }) 
     }
   });
+  totalPrice()
+}
+
+function totalPrice(){
+  var price = document.querySelectorAll(".price")
+  var total = 0
+  for (i of price){
+    total += Number(i.innerText)
+  }
+  var totalPriceDiv = document.querySelector("#total-price")
+  totalPriceDiv.innerText = total
 }
 
 
@@ -88,48 +100,59 @@ function deleteOrder(){
 
 function pay(){
   $(".btn-pay").click(function (e) { 
-    e.preventDefault();
-    var numberValues = document.querySelectorAll(".number")
-    var check = true
-    for (var i of numberValues){
-      if (i.value==0){
-        check = false
-      }
-    }
-    if(!check){
-      alert("can nhap so luong")
-    }
-    else{
-      const orders = document.querySelectorAll("tbody tr")
-      const container = []
-      for (i of orders){
-        const user_id = i.querySelector(".id-user").innerText 
-        const item_id = i.querySelector(".id-item").innerText 
-        const name = i.querySelector(".name").innerText 
-        const price = i.querySelector(".price").innerText 
-        const number = i.querySelector(".number").value
-        const block = {
-          user_id,
-          item_id,
-          name,
-          price,
-          number
+    var checkOrder = document.querySelector(".no-order")
+    if(!checkOrder){
+      e.preventDefault();
+      var numberValues = document.querySelectorAll(".number")
+      var check = true
+      for (var i of numberValues){
+        if (i.value==0){
+          check = false
         }
-        container.push(block)
       }
-      for (i of container){
+      if(!check){
+        alert("can nhap so luong")
+      }
+      else{
+        const orders = document.querySelectorAll("tbody tr")
+        const container = []
+        for (i of orders){
+          const user_id = i.querySelector(".id-user").innerText 
+          const item_id = i.querySelector(".id-item").innerText 
+          const name = i.querySelector(".name").innerText 
+          const price = i.querySelector(".price").innerText 
+          const number = i.querySelector(".number").value
+          const block = {
+            user_id,
+            item_id,
+            name,
+            price,
+            number
+          }
+          container.push(block)
+        }
+        const user_id = document.querySelector(".id-user").innerText 
         $.ajax({
           type: "POST",
           url: "http://localhost:3333/api/pay/create",
-          data: i,
+          data: {
+            user_id,
+            detail:container
+          }
+          ,
           dataType: "json",
           success: function (data) {
             console.log(data)
             location.reload()
           }
         });
+        alert("thanh toán thành công")
       }
     }
+    else{
+      alert("bạn cần chọn sản phẩm")
+    }
+    
   });
   
   
@@ -143,7 +166,7 @@ function renderProducts(data) {
   const row = document.querySelector("table tbody")
   const first =  `<tr>
   <th></th>
-  <th>Chưa có sản phẩm</th>
+  <th class= "no-order">Chưa có sản phẩm</th>
   <th></th>
   <th></th>
   <th></th>
