@@ -10,7 +10,11 @@ const Items = sequelize.define('Items', {
     price: {
         type: DataTypes.STRING,
         allowNull: false
-    }
+    },
+    img: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
 }, {});
 
 const findItems = async (value, field) => {

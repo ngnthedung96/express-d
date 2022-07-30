@@ -1,73 +1,235 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
-        crossorigin="anonymous" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="./css/home/base.css">
+    <link rel="stylesheet" href="./css/home/color.css">
+    <link rel="stylesheet" href="./css/home/main.css">
+    <link rel="stylesheet" href="./css/grid.css">
     <script src="https://kit.fontawesome.com/025c1ecb3f.js" crossorigin="anonymous"></script>
-    <title>Home</title>
-    <link rel="stylesheet" href="./css/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alata&family=Roboto:wght@100;300;400;700;900&display=swap"
+        rel="stylesheet">
+    <title>Fresh Garden</title>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link sign-in__btn" href="./page/login.html">Sign In</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link sign-up__btn" href="./page/register.html">Sign Up</a>
-                    </li>
-                    <li class="nav-item dropdown hide">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            User
+    <header>
+        <div class="row1">
+            <div class="header-logo">
+                <a href="">
+                    <img src="https://theme.hstatic.net/200000411281/1000827595/14/logo.png?v=158" alt="">
+                </a>
+            </div>
+            <div class="header-nav">
+                <ul>
+                    <li class="login-register-nav">
+                        <a href="./page/login.html" class="login">
+                            <span>Đăng nhập</span>
                         </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="./page/changeInfor.html">Change Information</a></li>
-                            <li><a class="dropdown-item" href="./page/cart.html">Cart</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item log-out__btn" href="#">Log Out</a></li>
-                        </ul>
+                        <a href="./page/login.html" class="register">
+                            <span>Đăng ký</span>
+                        </a>
                     </li>
+                    <a href="#">
+                        <li>
+                            <i class="fa-solid fa-phone-volume"></i>
+                            <span>024 3856 3856</span>
+                        </li>
+                    </a>
+                    <a href="#">
+                        <li>
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>infor@freshgarden.vn</span>
+                        </li>
+                    </a>
+                    <a href="#">
+                        <li>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span> 46 An Dương, Hà Nội</span>
+                        </li>
+                    </a>
+                    <a href="#" class="header-nav__btn">
+                        <li><i class="fa-solid fa-magnifying-glass"></i> </li>
+                    </a>
+                    <li class="user-logout-nav hide">
+                        <a href="#" class="user-name">
+                            <span>ngnthedung</span>
+                        </a>
+                        <a href="#" class="log-out">
+                            <span>Đăng Xuất</span>
+                        </a>
+                    </li>
+                    <a href="">
+                        <li class="header-nav__btn cart-shopping">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </li>
+                    </a>
+                    <a href="#" class="header-nav__btn js-category-nav__btn">
+                        <li><i class="fa-solid fa-bars"></i></li>
+                    </a>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                <div class="clearfix"></div>
             </div>
         </div>
-    </nav>
-    <div class="row mt-lg-4 ms-auto items">
+        <div class="nsContact-nav">
+            <a class="nsContact-nav-item ">
+                <img src="https://file.hstatic.net/200000259495/file/zalo_d9dc3417eb744b91a44643f29b8c7161.svg" alt="">
+                <span>Zalo</span>
+            </a>
+            <a class="nsContact-nav-item">
+                <img src="https://file.hstatic.net/200000259495/file/messager_208d7389c4ac46b5a01afad457684cd6.svg"
+                    alt="">
+                <span>Messenger</span>
+            </a>
+            <a class="nsContact-nav-item">
+                <img src="https://file.hstatic.net/200000259495/file/instagram_81b9ae8829a940a7aa5b7926152ed378.svg"
+                    alt="">
+                <span>Instagram</span>
+            </a>
+        </div>
+        <div class="contact-nav">
+            <a href="">
+                <i class="fa-solid fa-comments"></i>
+                <span>Liên hệ</span>
+            </a>
+        </div>
+        <div class="category-nav-section">
+            <div class="js-category-nav">
+                <ul>
+                    <li> <a href="#"><i class="fa-solid fa-right-long js-category-nav__back-btn"></i></a></li>
+                    <li><a href="">Trang chủ</a></li>
+                    <li><a href="">Giới thiệu</a></li>
+                    <li>
+                        <ul class="category-nav__products flex">
+                            <a href="">Sản phẩm</a>
+                            <a href="#"><i class="fa-solid fa-angle-down js-category-nav__product-btn"></i></a>
+                        </ul>
+                        <ul class="category-sub-nav__products">
+                            <li><a href=""> Bánh kem</a></li>
+                            <li><a href=""> Bánh mì</a></li>
+                            <li><a href=""> Bánh ngọt</a></li>
+                            <li><a href=""> Bánh tráng miệng</a> </li>
+                            <li><a href=""> Bánh kem</a></li>
+                            <li><a href=""> Bánh mì</a></li>
+                            <li><a href=""> Bánh ngọt</a></li>
+                            <li><a href=""> Bánh tráng miệng</a> </li>
+                        </ul>
+                    </li>
+                    <li><a href="">Tin tức</a></li>
+                    <li><a href="">Thẻ tích điểm</a></li>
+                    <li><a href="">Hệ thống cửa hàng</a></li>
+                    <li><a href="">Liên hệ</a></li>
+                    <li><a href="">Tuyển dụng</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="slider-section">
+        <div style="background-image:url('https://theme.hstatic.net/200000411281/1000827595/14/home_slider_image_3.jpg?v=158') ;"
+            class="slider-container">
+            <div class="row2 slider-content">
+                <div class="slider-nav-btn">
+                    <i class='bx bx-chevron-left btn-left'></i>
+                    <i class='bx bx-chevron-right btn-right'></i>
+                </div>
+            </div>
+        </div>
+        <div class="slider-footer">
+            <div class="slider-footer__img">
+                <img data-set="0" class="borderSlider"
+                    src="https://theme.hstatic.net/200000411281/1000827595/14/home_slider_image_3.jpg?v=158" alt="">
+            </div>
+            <div class="slider-footer__img">
+                <img data-set="1"
+                    src="https://theme.hstatic.net/200000411281/1000827595/14/home_slider_image_1.jpg?v=193" alt="">
+            </div>
+            <div class="slider-footer__img">
+                <img data-set="2"
+                    src="https://theme.hstatic.net/200000411281/1000827595/14/home_slider_image_2.jpg?v=193" alt="">
+            </div>
+        </div>
     </div>
-    
+    <div class="outstanding-products">
+        <div class="row2">
+            <div class="outstanding-products__header">
+                <img class="section-title__icon"
+                    src="https://theme.hstatic.net/200000411281/1000827595/14/icon-title-home-featured-product.png?v=176"
+                    alt="">
+                <h1>Sản phẩm nổi bật</h1>
+                <h2>Cập nhật về những sản phẩm nổi bật nhất từ Fresh Garden</h2>
+            </div>
+            <div class="outstanding-products__content flex">
+                <div class="oustanding-product">
+                    
+                </div>
+                <div class="oustanding-product">
+                    
+                </div>
+                <div class="oustanding-product">
+                    
+                </div>
+                <div class="oustanding-product">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="products-section">
+        <div class="row2">
+            <div class="products-header">
+                <img class="section-title__icon"
+                    src="https://theme.hstatic.net/200000411281/1000827595/14/icon-title-home-featured-product.png?v=176"
+                    alt="">
+                <h1>Sản phẩm</h1>
+                <h2>Chào mừng bạn đến với bộ sưu tập bánh Fresh Garden</h2>
+            </div>
+            <div class="products-content">
+                <div class="js-products-content__item">
+                    <div class="col span-1-of-4">
+                        <div class="products-content__product">
+                
+                        </div>
+                        <div class="products-content__product">
+                            
+                        </div>
+                    </div>
+                    <div class="col span-1-of-4">
+                        <div class="products-content__product">
+                            
+                        </div>
+                        <div class="products-content__product">
+                           
+                        </div>
+                    </div>
+                    <div class="col span-1-of-4">
+                        <div class="products-content__product">
+                           
+                        </div>
+                        <div class="products-content__product">
+                            <a href="" data-set="6">
+                               
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col span-1-of-4">
+                        <div class="products-content__product">
+                            
+                        </div>
+                        <div class="products-content__product">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
 </body>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
-    integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
-    integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
-    crossorigin="anonymous"></script>
 <script type="module" src="./js/home.js"></script>
 
 </html>

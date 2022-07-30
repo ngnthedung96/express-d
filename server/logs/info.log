@@ -2844,3 +2844,74 @@
 {"level":"info","message":"Executing (default): SELECT `id`, `user_id`, `item_id`, `name`, `price`, `createdAt`, `updatedAt` FROM `Cart` AS `Cart` WHERE `Cart`.`user_id` = 10;","timestamp":"2022-07-29T10:37:50.290Z"}
 {"level":"info","message":"Executing (default): SELECT `id`, `user_id`, `item_id`, `name`, `price`, `createdAt`, `updatedAt` FROM `Cart` AS `Cart` WHERE `Cart`.`item_id` = '2' LIMIT 1;","timestamp":"2022-07-29T10:37:53.289Z"}
 {"level":"info","message":"Executing (default): SELECT `id`, `user_id`, `item_id`, `name`, `price`, `createdAt`, `updatedAt` FROM `Cart` AS `Cart` WHERE `Cart`.`user_id` = 10;","timestamp":"2022-07-29T10:37:54.854Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2022-07-30T05:49:05.150Z"}
+{"level":"info","message":"Connection has been established successfully.","timestamp":"2022-07-30T05:49:05.220Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T05:49:19.150Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T05:49:51.362Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T05:50:04.350Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T05:50:24.594Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T05:53:33.786Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T05:53:54.731Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T05:55:58.734Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T05:55:58.801Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T05:56:04.174Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T05:56:40.270Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T05:56:40.336Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T05:58:04.537Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T05:58:08.444Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T05:58:17.999Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T05:58:40.411Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2022-07-30T06:00:41.705Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:00:41.708Z"}
+{"level":"info","message":"Connection has been established successfully.","timestamp":"2022-07-30T06:00:41.771Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:01:49.588Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:02:32.955Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:03:26.714Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:03:53.976Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:06:58.686Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:07:42.220Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:07:42.274Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:08:17.600Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:08:59.589Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:08:59.630Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:09:33.527Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:09:33.982Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:10:37.608Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:11:02.588Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:16:31.495Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:17:27.192Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:18:47.205Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:18:47.889Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:18:48.519Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:18:50.444Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:19:49.065Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:20:41.666Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:22:06.455Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:22:11.180Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:22:11.737Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:22:14.478Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2022-07-30T06:26:05.487Z"}
+{"level":"info","message":"Connection has been established successfully.","timestamp":"2022-07-30T06:26:05.554Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:26:06.053Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:28:09.511Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:28:34.024Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:30:50.815Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:31:19.664Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:31:46.857Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:31:59.219Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:32:06.005Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:32:52.575Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:33:55.104Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:34:27.306Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:35:59.127Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:37:01.790Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:40:19.166Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:40:32.985Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:40:53.740Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:41:07.750Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`email` = 'thedungtb@gmail.com' LIMIT 1;","timestamp":"2022-07-30T06:41:18.239Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`email` = 'thedungtb@gmail.com' LIMIT 1;","timestamp":"2022-07-30T06:41:18.292Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:41:20.024Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = 12;","timestamp":"2022-07-30T06:41:20.079Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-07-30T06:41:52.766Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = 12;","timestamp":"2022-07-30T06:41:52.791Z"}
