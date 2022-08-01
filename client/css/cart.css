@@ -1,0 +1,172 @@
+.cart-section {
+  margin-top: 55px;
+  text-align: center;
+  position: relative;
+}
+
+.cart-content {
+  position: relative;
+}
+
+.line {
+  position: absolute;
+  bottom: -40%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10%;
+  height: 5px;
+  background-color: black;
+}
+
+.table-order-img {
+  width: 5%;
+  height: 5%;
+}
+
+.table-order-img img {
+  width: 100%;
+}
+
+
+
+td,
+th {
+  padding: 8px;
+  padding: .5rem;
+}
+
+th {
+  text-align: left;
+  font-weight: 300;
+
+}
+
+td {
+  font-family: 'Avenir Next', 'Segoe UI', 'Lucida Grande', sans-serif;
+}
+
+.table {
+  width: 100%;
+  padding: 16px;
+  padding: 1rem;
+}
+
+.table__content {
+  text-align: left;
+  border-top: 2px solid #b6d032;
+}
+
+.table-order {
+  margin-top: 55px;
+  font-size: 180%;
+}
+
+.numberOrder input {
+  display: inline;
+  padding: 5px 5px;
+  outline: none;
+  border: 2px solid grey;
+  width: 5%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+@media (max-width: 32rem) {
+  .table__heading {
+      display: none;
+  }
+
+  .table__content {
+      display: block;
+      padding: .5rem 0;
+  }
+
+  .table__row {
+      margin: .25rem 1rem;
+      padding: .5rem 0;
+      display: block;
+      border-bottom: 2px solid #FFC842;
+  }
+
+  .table__content:before {
+      content: attr(data-heading);
+      display: inline-block;
+      width: 5rem;
+      margin-right: .5rem;
+      color: #999;
+      font-size: .75rem;
+      font-weight: 700;
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+  }
+}
+
+
+.cart-footer{
+  margin-top: 55px;
+  font-size: 200%;
+}
+.left{
+  width: 100%;
+}
+.left h3{
+  text-align: left;
+}
+.left textarea{
+  outline: none;
+  border: none;
+  background-color: #ededed;
+  margin-top: 30px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  width: 100%;
+  padding: 15px;
+}
+.right{
+  position: relative;
+  text-align: left;
+}
+.right p{
+  display: inline-block;
+  margin: 20px 0px;
+}
+.total-price{
+  font-size: 150%;
+  font-weight: 600;
+  color: #b6d032;
+}
+.right> h3{
+  text-align: left;
+}
+.right .title-date-time{
+  color: red;
+}
+.btn-buy{
+  margin-top: 55px;
+  transform: translateY(150%);
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  display: inline-block;
+  padding: 10px;
+  background-color: #343a40;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+.btn-buy:hover{
+  background-color:#25282c ;
+}
+.date, .time{
+  display: block;
+  padding: 5px;
+  margin: 10px 0px;
+  width: 200px;
+}
+
+
+

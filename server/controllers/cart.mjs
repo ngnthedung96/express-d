@@ -5,11 +5,11 @@ import { resolve } from 'path';
 
 
 const createProduct = async(req, res, next) => {
-  const { user_id,item_id , name, price } = req.body;
+  const { user_id,item_id , name, price,img } = req.body;
   try {
       const check =  await cartDb.findProductById(item_id);
       if(!check){
-        const product = await cartDb.createProduct( user_id,item_id,name, price);
+        const product = await cartDb.createProduct( user_id,item_id,name, price,img);
         res.status(200).json({
           status: true,
           msg: 'Chọn sản phẩm thành công',

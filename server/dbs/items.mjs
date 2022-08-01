@@ -22,12 +22,25 @@ const findItems = async (value, field) => {
     try {
         res = await Items.findAll()
     }
-    catch(err) {
+    catch (err) {
         logger.error(err)
     }
     return res;
-  }
+}
+const findItem = async (value, field) => {
+    let res = null;
+    try {
+        res = await Items.findOne({
+            where: { "id": value },
+        })
+    }
+    catch (err) {
+        logger.error(err)
+    }
+    return res;
+}
 
 export const itemsDb = {
-    findItems
+    findItems,
+    findItem
 }

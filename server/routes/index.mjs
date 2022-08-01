@@ -21,7 +21,7 @@ router.post('/users/login',
 //     tokenValidate.verifyToken, // run valdiate
 // )
 router.post('/users/logout',
-    tokenValidate.verifyToken, 
+    tokenValidate.verifyToken,
     userController.logOut
 )
 
@@ -60,6 +60,10 @@ router.post('/cart/delete',
 // --------------------------items--------------------------
 router.get('/item/show',
     itemsController.showItems
+)
+
+router.post('/item/showitem',
+    itemsController.showItem
 )
 
 //------------------------Pay--------------------------

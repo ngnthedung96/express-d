@@ -17,21 +17,23 @@ const Cart = sequelize.define('Cart', {
     price: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    img: {
+        type: DataTypes.STRING,
+        allowNull: false
     }
 }, {});
-const createProduct = async(user_id,item_id,name,price)=>{
-    console.log(user_id,
-        item_id,
-        name,
-        price)
+const createProduct = async(user_id,item_id,name,price,img)=>{
     let res = null;
     try{
+        console.log(user_id,item_id,name,price,img)
         res = await Cart.create({
-            user_id: user_id,
-            item_id: item_id,
-            name: name,
-            price: price
-        }, { fields: ['user_id',"item_id", 'name','price'] })
+            user_id: Number(user_id),
+            item_id: Number(item_id),
+            name: `${name}`,
+            price: `${price}`,
+            img:`${img}`
+        }, { fields: ['user_id',"item_id", 'name','price','img'] })
     } catch (err) {
         logger.error(err)
     }
