@@ -106,109 +106,105 @@ $(document).ready(function () {
     success: function (data) {
       if (data.status) {
         renderItems(data.items)
+        if (localStorage.getItem("accessToken")) {
+          $.ajax({
+            url: "http://localhost:3333/api/users/home",
+            type: "GET",
+            dataType: 'json',
+            headers: {
+              token: 'Bearer ' + localStorage.getItem("accessToken"),
+            }
+          })
+            .done(function (data, textStatus, jqXHR) {
+              if (data.status) {
+                logOut()
+                haveUserLogin(data)
+                postProductTocart(data)
+              }
+            })
+        }
+        else {
+          $(".oustanding-product").click(function (e) {
+            e.preventDefault();
+            if (e.target.closest(".addToCart")) {
+              errorFunction("Bạn cần đăng nhập")
+            }
+          });
+          $(".products-content__product").click(function (e) {
+            e.preventDefault();
+            if (e.target.closest(".addToCart")) {
+              errorFunction("Bạn cần đăng nhập")
+            }
+          });
+        }
       }
     }
   });
-  if (localStorage.getItem("accessToken")) {
-    $.ajax({
-      url: "http://localhost:3333/api/users/home",
-      type: "GET",
-      dataType: 'json',
-      headers: {
-        token: 'Bearer ' + localStorage.getItem("accessToken"),
-      }
-    })
-      .done(function (data, textStatus, jqXHR) {
-        if (data.status) {
-          logOut()
-          haveUserLogin(data)
-          postProductTocart(data)
-        }
-      })
-  }
-  else {
-    $(".oustanding-product").click(function (e) {
-      e.preventDefault();
-      if (e.target.closest(".addToCart")) {
-        alert("bạn cần đăng nhập")
-      }
-    });
-    $(".products-content__product").click(function (e) {
-      e.preventDefault();
-      if (e.target.closest(".addToCart")) {
-        alert("bạn cần đăng nhập")
-      }
-    });
-
-  }
-
-
-
-
-
-  //------------render--------------
-  function renderItems(items) {
-    //------------------------outstanding------------------------------
-    const outstandingProducts = document.querySelectorAll(".oustanding-product")
-    for (var i = 0; i < items.length; i++) {
-      for (var j = 0; j < outstandingProducts.length; j++) {
-        const item = items[i]
-        const imgOfItem = (JSON.parse(item.img)[0])
-        const outstandingProductDiv = outstandingProducts[j]
-        var htmls = ''
-        if (i === j) {
-          htmls += `
-                    <a>
-                        <p class="id hide">${item.id}</p>
-                        <img class= "img" src="${imgOfItem}"
-                            alt="">
-                        <h4 class = "name"> ${item.name}</h4>
-                        <p class="price">${item.price}</p>
-                    </a>
-                    <div class="hoverProduct">
-                        <a href="" class="addToCart">
-                            <i class="fa-solid fa-cart-plus"></i>
-                        </a>
-                        <a href="" class="viewProduct">
-                            <i class="fa-solid fa-eye"></i>
-                        </a>
-                    </div>`
-          outstandingProductDiv.innerHTML = htmls
-        }
-      }
-    }
-
-
-
-    //-----------------------------------products-----------------------------
-    const products = document.querySelectorAll(".js-products-content__item .products-content__product")
-    for (var i = 0; i < items.length; i++) {
-      for (var j = 0; j < products.length; j++) {
-        const item = items[i]
-        const imgOfItem = (JSON.parse(item.img)[0])
-        const productDiv = products[j]
-        var htmls = ''
-        if (i === j) {
-          htmls += `
-            <p class="id hide">${item.id}</p>
-            <img class = "img" src="${imgOfItem}"
-                alt="">
-            <h4 class="name">${item.name}</h4>
-            <p class="price">${item.price}</p>
-            <div class="hoverProduct">
-              <a href="" class="addToCart">
-                <i class="fa-solid fa-cart-plus"></i>
-              </a>
-              <a href="" class="viewProduct">
-                <i class="fa-solid fa-eye"></i>
-              </a>
-            </div>`
-          productDiv.innerHTML = htmls
-        }
-      }
-    }
-  }
 });
+
+
+//------------render--------------
+function renderItems(items) {
+  //------------------------outstanding------------------------------
+  const outstandingProducts = document.querySelectorAll(".oustanding-product")
+  for (var i = 0; i < items.length; i++) {
+    for (var j = 0; j < outstandingProducts.length; j++) {
+      const item = items[i]
+      const imgOfItem = (JSON.parse(item.img)[0])
+      const outstandingProductDiv = outstandingProducts[j]
+      var htmls = ''
+      if (i === j) {
+        htmls += `
+                  <a>
+                      <p class="id hide">${item.id}</p>
+                      <img class= "img" src="${imgOfItem}"
+                          alt="">
+                      <h4 class = "name"> ${item.name}</h4>
+                      <p class="price">${item.price}</p>
+                  </a>
+                  <div class="hoverProduct">
+                      <a href="" class="addToCart">
+                          <i class="fa-solid fa-cart-plus"></i>
+                      </a>
+                      <a href="" class="viewProduct">
+                          <i class="fa-solid fa-eye"></i>
+                      </a>
+                  </div>`
+        outstandingProductDiv.innerHTML = htmls
+      }
+    }
+  }
+
+
+
+  //-----------------------------------products-----------------------------
+  const products = document.querySelectorAll(".js-products-content__item .products-content__product")
+  for (var i = 0; i < items.length; i++) {
+    for (var j = 0; j < products.length; j++) {
+      const item = items[i]
+      const imgOfItem = (JSON.parse(item.img)[0])
+      const productDiv = products[j]
+      var htmls = ''
+      if (i === j) {
+        htmls += `
+          <p class="id hide">${item.id}</p>
+          <img class = "img" src="${imgOfItem}"
+              alt="">
+          <h4 class="name">${item.name}</h4>
+          <p class="price">${item.price}</p>
+          <div class="hoverProduct">
+            <a href="" class="addToCart">
+              <i class="fa-solid fa-cart-plus"></i>
+            </a>
+            <a href="" class="viewProduct">
+              <i class="fa-solid fa-eye"></i>
+            </a>
+          </div>`
+        productDiv.innerHTML = htmls
+      }
+    }
+  }
+}
 
 
 
@@ -235,14 +231,17 @@ function logOut() {
     })
       .done(function (data, textStatus, jqXHR) {
         localStorage.removeItem('accessToken');
-        alert(data.msg)
-        location.reload()
+        successFunction(data)
+        setTimeout(function () {
+          location.reload()
+        }, 1000)
       })
   });
 }
 
 function postProductTocart(data) {
   $(".addToCart").click(function (e) {
+    console.log(1)
     e.preventDefault();
     var parentDiv = this.parentElement.parentElement
     const nameItem = parentDiv.querySelector(".name").innerText
@@ -260,8 +259,8 @@ function postProductTocart(data) {
         "img": `${imgOfItem}`,
       },
       dataType: "json",
-      success: function (response) {
-        console.log('success')
+      success: function (data) {
+        successFunction(data)
         setTimeout(function () {
           window.open('/client/page/cart.html')
         }, 1000)
@@ -273,3 +272,30 @@ function postProductTocart(data) {
   });
 }
 
+
+
+// ------toast---------------
+import toast from "./toast.js"
+function successFunction(data) {
+  if (data.status) {
+    toast({
+      title: 'Success',
+      message: `${data.msg}`,
+      type: 'success'
+    })
+    setTimeout(function () {
+      window.close()
+      window.open('/client/index.html')
+    }, 1500)
+    // setTimeout(function () {
+    //     location.reload()
+    // }, 2000)
+  }
+}
+function errorFunction(message) {
+  toast({
+    title: 'Error',
+    message: `${message}`,
+    type: 'error'
+  })
+}

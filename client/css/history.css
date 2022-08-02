@@ -1,0 +1,59 @@
+td,
+th {
+  padding: 8px;
+  padding: .5rem;
+}
+
+th {
+  text-align: left;
+  font-weight: 300;
+
+}
+
+td {
+  font-family: 'Avenir Next', 'Segoe UI', 'Lucida Grande', sans-serif;
+}
+
+.table {
+  width: 100%;
+  padding: 16px;
+  padding: 1rem;
+}
+
+.table__content {
+  text-align: left;
+  border-top: 2px solid #b6d032;
+}
+
+.table-order {
+  font-size: 180%;
+}
+
+.table-order-img {
+  width: 5%;
+  height: 5%;
+}
+
+.table-order-img img {
+  width: 100%;
+}
+
+.history-section {
+  margin-top: 55px;
+}
+
+.history-header {
+  text-align: center;
+}
+
+.history-content {
+  margin-top: 55px;
+}
+
+.day {
+  margin-top: 30px;
+}
+
+.day-title {
+  font-size: 250%
+}

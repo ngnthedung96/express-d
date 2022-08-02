@@ -28,7 +28,7 @@ function handleTotalPrice(data) {
       const parentOfRow = e.target.parentElement.parentElement.parentElement
       const priceDiv = parentOfRow.querySelector('.table-order-price').innerText
       var price = []
-      for (i of priceDiv.split('')) {
+      for (var i of priceDiv.split('')) {
         if (i != "đ" && i != ",") {
           price.push(i)
         }
@@ -44,7 +44,7 @@ function handleTotalPrice(data) {
       var container = `${a}`.split('').reverse()
       var b = []
       var count = 0
-      for (i of container) {
+      for (var i of container) {
         count++
         if (count === 3) {
           count = 0
@@ -67,7 +67,7 @@ function handleTotalPrice(data) {
       const parentOfRow = e.target.parentElement.parentElement.parentElement
       const priceDiv = parentOfRow.querySelector('.table-order-price').innerText
       var price = []
-      for (i of priceDiv.split('')) {
+      for (var i of priceDiv.split('')) {
         if (i != "đ" && i != ",") {
           price.push(i)
         }
@@ -81,7 +81,7 @@ function handleTotalPrice(data) {
       var container = `${a}`.split('').reverse()
       var b = []
       var count = 0
-      for (i of container) {
+      for (var i of container) {
         count++
         if (count === 3) {
           count = 0
@@ -106,7 +106,7 @@ function handleTotalPrice(data) {
       const inputNumber = parentOfRow.querySelector('.number')
       const priceDiv = parentOfRow.querySelector('.table-order-price').innerText
       var price = []
-      for (i of priceDiv.split('')) {
+      for (var i of priceDiv.split('')) {
         if (i != "đ" && i != ",") {
           price.push(i)
         }
@@ -117,7 +117,7 @@ function handleTotalPrice(data) {
         var container = `${a}`.split('').reverse()
         var b = []
         var count = 0
-        for (i of container) {
+        for (var i of container) {
           count++
           if (count === 3) {
             count = 0
@@ -146,7 +146,7 @@ function totalPrice() {
   var price = []
   for (var i of prices) {
     var container = []
-    for (j of i.innerText.split('')) {
+    for (var j of i.innerText.split('')) {
       if (j != "đ" && j != ",") {
         container.push(j)
       }
@@ -154,14 +154,14 @@ function totalPrice() {
     price.push(container.join(''))
   }
   var total = 0
-  for (i of price) {
+  for (var i of price) {
     total += Number(i)
   }
   var totalPriceDiv = document.querySelector(".total-price")
   var container = `${total}`.split('').reverse()
   var b = []
   var count = 0
-  for (i of container) {
+  for (var i of container) {
     count++
     if (count === 3) {
       count = 0
@@ -221,16 +221,15 @@ function pay() {
     if (checkOrder) {
       e.preventDefault();
       const orders = document.querySelectorAll(".table-order-row")
-      console.log(orders)
       const container = []
-      for (i of orders) {
-        const user_id = i.querySelector(".table-order-user-id").innerText
+      for (var i of orders) {
+        const item_img = i.querySelector(".table-order-img img").getAttribute("src")
         const item_id = i.querySelector(".table-order-item-id").innerText
         const name = i.querySelector(".table-order-name").innerText
         const price = i.querySelector(".table-order-total").innerText
         const number = i.querySelector(".numberOrder .number").value
         const block = {
-          user_id,
+          img: item_img,
           item_id,
           name,
           price,
@@ -242,25 +241,33 @@ function pay() {
       const note = document.querySelector(".cart-footer #note").value
       const date = document.querySelector(".cart-footer #date").value
       const time = document.querySelector(".cart-footer #time").value
-      console.log(container)
-      //   $.ajax({
-      //     type: "POST",
-      //     url: "http://localhost:3333/api/pay/create",
-      //     data: {
-      //       user_id,
-      //       detail: container
-      //     }
-      //     ,
-      //     dataType: "json",
-      //     success: function (data) {
-      //       console.log(data)
-      //       location.reload()
-      //     }
-      //   });
-      //   alert("thanh toán thành công")
+      if (date && time) {
+        $.ajax({
+          type: "POST",
+          url: "http://localhost:3333/api/pay/create",
+          data: {
+            user_id,
+            note,
+            date,
+            time,
+            detail: container
+          }
+          ,
+          dataType: "json",
+          success: function (data) {
+            successFunction(data)
+            setTimeout(function () {
+              location.reload()
+            }, 1000)
+          }
+        });
+      }
+      else {
+        errorFunction("Bạn cần nhập thời gian giao hàng")
+      }
     }
     else {
-      alert("bạn cần chọn sản phẩm")
+      errorFunction("Bạn cần chọn sản phẩm")
     }
 
   });
@@ -308,4 +315,29 @@ function renderProducts(data) {
   }
 }
 
+// ------toast---------------
+import toast from "./toast.js"
+function successFunction(data) {
+  if (data.status) {
+    toast({
+      title: 'Success',
+      message: `${data.msg}`,
+      type: 'success'
+    })
+    setTimeout(function () {
+      window.close()
+      window.open('/client/index.html')
+    }, 1500)
+    // setTimeout(function () {
+    //     location.reload()
+    // }, 2000)
+  }
+}
+function errorFunction(message) {
+  toast({
+    title: 'Error',
+    message: `${message}`,
+    type: 'error'
+  })
+}
 

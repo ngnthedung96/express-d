@@ -6,7 +6,7 @@ const catNavContent = document.querySelector(".js-category-nav")
 function showCatNav() {
   catNavSection.classList.add('open')
   catNavContent.style.animation = ' ShowcatNav ease-in 0.2s forwards'
-  console.log(catNavContent.style.animation)
+
 
 }
 function hideCatNav() {
@@ -75,10 +75,40 @@ function logOut() {
     })
       .done(function (data, textStatus, jqXHR) {
         localStorage.removeItem('accessToken');
-        alert(data.msg)
-        location.reload()
+        successFunction(data)
+        setTimeout(function () {
+          location.reload()
+        }, 1000)
       })
   });
+}
+
+
+
+// ------toast---------------
+import toast from "./toast.js"
+function successFunction(data) {
+  if (data.status) {
+    toast({
+      title: 'Success',
+      message: `${data.msg}`,
+      type: 'success'
+    })
+    setTimeout(function () {
+      window.close()
+      window.open('/client/index.html')
+    }, 1500)
+    // setTimeout(function () {
+    //     location.reload()
+    // }, 2000)
+  }
+}
+function errorFunction(message) {
+  toast({
+    title: 'Error',
+    message: `${message}`,
+    type: 'error'
+  })
 }
 
 

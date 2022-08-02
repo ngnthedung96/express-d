@@ -16,7 +16,6 @@ const showItems = async (req, res, next) => {
   }
 }
 const showItem = async (req, res, next) => {
-  console.log(req.body.item_id)
   try {
     const items = await itemsDb.findItem(req.body.item_id)
     res.json({

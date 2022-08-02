@@ -8,45 +8,48 @@ import { stringify } from 'querystring';
 import { JSONB } from 'sequelize';
 
 
-const createOrder = async(req, res, next) => {
-  const {user_id,detail} = req.body;
-  console.log(req.body)
+const createOrder = async (req, res, next) => {
+  var { user_id, note, date, time, detail } = req.body;
   var details = []
-  
-  for (var i of detail){
+
+  for (var i of detail) {
     details.push(JSON.stringify(i))
   }
   try {
-      const order = await payDb.createOrder(user_id,details)
-      await cartDb.deleteAll()
-      res.json({
-        status: "success",
-        order
-      })
+    if (!note) {
+      note = " "
+    }
+    const order = await payDb.createOrder(user_id, note, date, time, details)
+    await cartDb.deleteAll()
+    res.json({
+      status: "success",
+      msg: "Thanh toán thành công",
+      order
+    })
   } catch (e) {
-      console.log(e.message)
-      res.sendStatus(500) && next(e)
+    console.log(e.message)
+    res.sendStatus(500) && next(e)
   }
 }
 
 
-const showOrders=  async (req, res, next) =>{
+const showOrders = async (req, res, next) => {
   try {
-    if(req.user){
-        const orders = await payDb.findOrders(req.user.id, 'user_id')
-        res.json({
-          status: true,
-          orders
-        })
+    if (req.user) {
+      const orders = await payDb.findOrders(req.user.id, 'user_id')
+      res.json({
+        status: true,
+        orders
+      })
     }
   }
   catch (err) {
-      console.log(err)
+    console.log(err)
   }
 }
 
 
 export const payController = {
-    createOrder,
-    showOrders
-  }
+  createOrder,
+  showOrders
+}

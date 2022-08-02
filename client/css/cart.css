@@ -77,47 +77,50 @@ input::-webkit-inner-spin-button {
 
 @media (max-width: 32rem) {
   .table__heading {
-      display: none;
+    display: none;
   }
 
   .table__content {
-      display: block;
-      padding: .5rem 0;
+    display: block;
+    padding: .5rem 0;
   }
 
   .table__row {
-      margin: .25rem 1rem;
-      padding: .5rem 0;
-      display: block;
-      border-bottom: 2px solid #FFC842;
+    margin: .25rem 1rem;
+    padding: .5rem 0;
+    display: block;
+    border-bottom: 2px solid #FFC842;
   }
 
   .table__content:before {
-      content: attr(data-heading);
-      display: inline-block;
-      width: 5rem;
-      margin-right: .5rem;
-      color: #999;
-      font-size: .75rem;
-      font-weight: 700;
-      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 2px;
+    content: attr(data-heading);
+    display: inline-block;
+    width: 5rem;
+    margin-right: .5rem;
+    color: #999;
+    font-size: .75rem;
+    font-weight: 700;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
   }
 }
 
 
-.cart-footer{
+.cart-footer {
   margin-top: 55px;
   font-size: 200%;
 }
-.left{
+
+.left {
   width: 100%;
 }
-.left h3{
+
+.left h3 {
   text-align: left;
 }
-.left textarea{
+
+.left textarea {
   outline: none;
   border: none;
   background-color: #ededed;
@@ -126,26 +129,32 @@ input::-webkit-inner-spin-button {
   width: 100%;
   padding: 15px;
 }
-.right{
+
+.right {
   position: relative;
   text-align: left;
 }
-.right p{
+
+.right p {
   display: inline-block;
   margin: 20px 0px;
 }
-.total-price{
+
+.total-price {
   font-size: 150%;
   font-weight: 600;
   color: #b6d032;
 }
-.right> h3{
+
+.right>h3 {
   text-align: left;
 }
-.right .title-date-time{
+
+.right .title-date-time {
   color: red;
 }
-.btn-buy{
+
+.btn-buy {
   margin-top: 55px;
   transform: translateY(150%);
   bottom: 0;
@@ -158,15 +167,19 @@ input::-webkit-inner-spin-button {
   text-decoration: none;
   border-radius: 5px;
 }
-.btn-buy:hover{
-  background-color:#25282c ;
+
+.btn-buy:hover {
+  background-color: #25282c;
 }
-.date, .time{
+
+.date,
+.time {
   display: block;
   padding: 5px;
   margin: 10px 0px;
   width: 200px;
 }
 
-
-
+.table-order-delete {
+  cursor: pointer;
+}
