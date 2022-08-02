@@ -17,10 +17,11 @@ const showItems = async (req, res, next) => {
 }
 const showItem = async (req, res, next) => {
   try {
-    const items = await itemsDb.findItem(req.body.item_id)
+    const items = await itemsDb.findItem(req.params.id)
     res.json({
       status: true,
-      item: items
+      item: items,
+      user_id: req.user.id
     })
   }
   catch (err) {

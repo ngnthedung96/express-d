@@ -120,6 +120,7 @@ $(document).ready(function () {
                 logOut()
                 haveUserLogin(data)
                 postProductTocart(data)
+                viewItem(data)
               }
             })
         }
@@ -133,6 +134,18 @@ $(document).ready(function () {
           $(".products-content__product").click(function (e) {
             e.preventDefault();
             if (e.target.closest(".addToCart")) {
+              errorFunction("Bạn cần đăng nhập")
+            }
+          });
+          $(".oustanding-product").click(function (e) {
+            e.preventDefault();
+            if (e.target.closest(".viewProduct")) {
+              errorFunction("Bạn cần đăng nhập")
+            }
+          });
+          $(".products-content__product").click(function (e) {
+            e.preventDefault();
+            if (e.target.closest(".viewProduct")) {
               errorFunction("Bạn cần đăng nhập")
             }
           });
@@ -166,7 +179,7 @@ function renderItems(items) {
                       <a href="" class="addToCart">
                           <i class="fa-solid fa-cart-plus"></i>
                       </a>
-                      <a href="" class="viewProduct">
+                      <a href="" class="viewProduct"  data-set = "${item.id}">
                           <i class="fa-solid fa-eye"></i>
                       </a>
                   </div>`
@@ -187,25 +200,33 @@ function renderItems(items) {
       var htmls = ''
       if (i === j) {
         htmls += `
-          <p class="id hide">${item.id}</p>
-          <img class = "img" src="${imgOfItem}"
-              alt="">
-          <h4 class="name">${item.name}</h4>
-          <p class="price">${item.price}</p>
-          <div class="hoverProduct">
-            <a href="" class="addToCart">
-              <i class="fa-solid fa-cart-plus"></i>
-            </a>
-            <a href="" class="viewProduct">
-              <i class="fa-solid fa-eye"></i>
-            </a>
-          </div>`
+        <p class="id hide">${item.id}</p>
+        <img class = "img" src="${imgOfItem}"
+            alt="">
+        <h4 class="name">${item.name}</h4>
+        <p class="price">${item.price}</p>
+        <div class="hoverProduct">
+          <a href="" class="addToCart">
+            <i class="fa-solid fa-cart-plus"></i>
+          </a>
+          <a href="" class="viewProduct" data-set= "${item.id}">
+            <i class="fa-solid fa-eye"></i>
+          </a>
+        </div>`
         productDiv.innerHTML = htmls
       }
     }
   }
 }
 
+function viewItem(items) {
+  $(".hoverProduct").click(function (e) {
+    if (e.target.closest('.viewProduct')) {
+      const idItem = (this.querySelector(".viewProduct").getAttribute("data-set"))
+      window.open(`./page/product.html?id=${idItem}`)
+    }
+  });
+}
 
 
 function haveUserLogin(data) {
@@ -271,6 +292,7 @@ function postProductTocart(data) {
     }, 1500)
   });
 }
+
 
 
 

@@ -15,10 +15,11 @@ $(document).ready(function () {
 function renderOrder(data) {
     const historyContentDiv = document.querySelector('.history-content')
     for (var order of data.orders) {
+        const date = (order.date.split('-').reverse().join('-'))
         const dayDiv = document.createElement('div')
         dayDiv.classList.add('day')
         dayDiv.innerHTML = `
-        <h4 class="day-title">Ngày ${order.date}</h4>
+        <h4 class="day-title">Ngày nhận: ${date}</h4>
             <table class="table table-order">
                 <tr>
                     <th class="table__heading"></th>

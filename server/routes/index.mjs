@@ -58,13 +58,16 @@ router.post('/cart/delete',
     cartController.deleteProduct
 )
 // --------------------------items--------------------------
+router.get('/item/showitem/:id',
+    tokenValidate.verifyToken,
+    itemsController.showItem
+)
 router.get('/item/show',
     itemsController.showItems
 )
 
-router.post('/item/showitem',
-    itemsController.showItem
-)
+
+
 
 //------------------------Pay--------------------------
 router.post('/pay/create',

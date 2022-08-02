@@ -25,31 +25,48 @@
       </div>
       <div class="header-nav">
         <ul>
-          <a href="">
+          <li class="login-register-nav">
+            <a href="./login.html" class="login">
+              <span>Đăng nhập</span>
+            </a>
+            <a href="./login.html" class="register">
+              <span>Đăng ký</span>
+            </a>
+          </li>
+          <a href="#">
             <li>
               <i class="fa-solid fa-phone-volume"></i>
               <span>024 3856 3856</span>
             </li>
           </a>
-          <a href="">
+          <a href="#">
             <li>
               <i class="fa-solid fa-envelope"></i>
               <span>infor@freshgarden.vn</span>
             </li>
           </a>
-          <a href="">
+          <a href="#">
             <li>
               <i class="fa-solid fa-location-dot"></i>
               <span> 46 An Dương, Hà Nội</span>
             </li>
           </a>
-          <a href="" class="header-nav__btn">
+          <a href="#" class="header-nav__btn">
             <li><i class="fa-solid fa-magnifying-glass"></i> </li>
           </a>
-          <li class="header-nav__btn cart-shopping">
-            <i class="fa-solid fa-cart-shopping"></i>
+          <li class="user-logout-nav hide">
+            <a href="#" class="user-name">
+              <span>ngnthedung</span>
+            </a>
+            <a href="#" class="log-out__btn">
+              <span>Đăng Xuất</span>
+            </a>
           </li>
-
+          <a href="./cart.html">
+            <li class="header-nav__btn cart-shopping">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </li>
+          </a>
           <a href="#" class="header-nav__btn js-category-nav__btn">
             <li><i class="fa-solid fa-bars"></i></li>
           </a>
@@ -103,7 +120,7 @@
           <li><a href="">Thẻ tích điểm</a></li>
           <li><a href="">Hệ thống cửa hàng</a></li>
           <li><a href="">Liên hệ</a></li>
-          <li><a href="">Tuyển dụng</a></li>
+          <li><a href="./history.html">Lịch sử</a></li>
         </ul>
       </div>
     </div>
@@ -112,23 +129,18 @@
     <div class="row2">
       <div class="col span-1-of-2 left">
         <div class="main-img">
-          <img src="https://product.hstatic.net/200000411281/product/2_862efa1275f7462c9e2680575e45da5f_master.jpg"
-            alt="">
+          <img alt="">
         </div>
         <div class="sub-img">
-          <img data-set="0" class="borderSlider"
-            src="https://product.hstatic.net/200000411281/product/2_862efa1275f7462c9e2680575e45da5f_master.jpg" alt="">
-          <img data-set="1"
-            src="https://product.hstatic.net/200000411281/product/1_9c863005cd8b4d939a241bec1b35a97f_master.jpg" alt="">
-          <img data-set="2"
-            src="https://product.hstatic.net/200000411281/product/banh-mi-nuong-caramen_1328c9a1a5d441f6b58d793a0b0170ff_master.jpg"
-            alt="">
+          <img data-set="0" class="borderSlider" alt="">
+          <img data-set="1" alt="">
+          <img data-set="2" alt="">
         </div>
       </div>
       <div class="col span-1-of-2 right">
-        <h3 class="name">BÁNH MÌ NƯỚNG CARAMEN</h3>
-        <p class="price">12,000đ</p>
-        <a href="" class="addToCart">THÊM VÀO GIỎ</a>
+        <h3 class="name"></h3>
+        <p class="price"></p>
+        <a href="#" class="addToCart">THÊM VÀO GIỎ</a>
         <div class="inforOfProduct">
           <div class="inforOfProduct-header">
             <a href="#">Thông tin sản phẩm</a>
@@ -157,6 +169,9 @@
     </div>
   </div>
   <div class="clearfix"></div>
+  <div id="toast">
+
+  </div>
   <footer>
     <div class="row2">
       <div class="footer-contact">
@@ -185,7 +200,7 @@
     </div>
   </footer>
 </body>
-<script src="../js/product.js"></script>
-<script src="../js/base.js"></script>
+<script type="module" src="../js/product.js"></script>
+<script type="module" src="../js/base.js"></script>
 
 </html>

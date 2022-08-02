@@ -11,7 +11,7 @@ const sliderEffect = {
     }
     subImg[this.currentIndex].classList.add('borderSlider')
     setTimeout(() => {
-      mainImg.attributes.src.value = subImg[this.currentIndex].attributes.src.value
+      mainImg.src = subImg[this.currentIndex].src
     }, 200)
   },
   clickImg() {
@@ -28,72 +28,6 @@ const sliderEffect = {
     this.clickImg()
   }
 }
-sliderEffect.start()
-
-
-
-
-
-
-
-
-$(document).ready(function () {
-  $(".prev").click(function (e) {
-    e.preventDefault();
-    const priceDiv = document.querySelector('.price').innerText
-    var price = []
-    for (i of priceDiv.split('')) {
-      if (i != "đ" && i != ",") {
-        price.push(i)
-      }
-    }
-    const parentElement = e.target.parentElement
-    const inputNumber = parentElement.querySelector('.number')
-    var valueOfInput = inputNumber.value
-    if (valueOfInput != 1) {
-      inputNumber.value = valueOfInput - 1
-    }
-    console.log(Number(price.join('')) * Number(inputNumber.value))
-  });
-  $(".next").click(function (e) {
-    e.preventDefault();
-    const priceDiv = document.querySelector('.price').innerText
-    var price = []
-    for (i of priceDiv.split('')) {
-      if (i != "đ" && i != ",") {
-        price.push(i)
-      }
-    }
-    const parentElement = e.target.parentElement
-    const inputNumber = parentElement.querySelector('.number')
-    var valueOfInput = inputNumber.value
-    inputNumber.value = Number(valueOfInput) + 1
-    console.log(Number(price.join('')) * Number(inputNumber.value))
-  });
-  const number = document.querySelector('.number')
-  number.addEventListener('input', function () {
-    const priceDiv = document.querySelector('.price').innerText
-    var price = []
-    for (i of priceDiv.split('')) {
-      if (i != "đ" && i != ",") {
-        price.push(i)
-      }
-    }
-    if (number.value) {
-      console.log(Number(price.join('')) * Number(number.value))
-    }
-  })
-
-  //default
-  const priceDiv = document.querySelector('.price').innerText
-  var price = []
-  for (i of priceDiv.split('')) {
-    if (i != "đ" && i != ",") {
-      price.push(i)
-    }
-  }
-  console.log(Number(price.join('')) * Number(number.value))
-});
 
 
 // -------------------slide-down---------------------
@@ -117,3 +51,109 @@ $(document).ready(function () {
   });
 });
 
+// ------------------------------------api---------------------------------
+$(document).ready(function () {
+  const path = (window.location.search.split(''))
+  var id = null
+  for (var i = 0; i < path.length; i++) {
+    if (path[i] === '=') {
+      id = path.splice(i + 1, path.length).join('')
+    }
+  }
+  $.ajax({
+    type: "GET",
+    url: `http://localhost:3333/api/item/showitem/${id}`,
+    headers: {
+      token: 'Bearer ' + localStorage.getItem("accessToken"),
+    },
+    success: function (data) {
+      renderItem(data)
+      postProductTocart(data, id)
+    }
+  });
+});
+
+
+function renderItem(data) {
+  var name = document.querySelector('.products .right .name')
+  var price = document.querySelector('.products .right .price')
+  name.innerText = data.item.name
+  price.innerText = data.item.price
+  const imgOfData = JSON.parse(data.item.img)
+  var mainImg = document.querySelector('.products .left .main-img img')
+  mainImg.src = imgOfData[0]
+  var subImg = document.querySelectorAll('.products .left .sub-img img')
+  for (var i = 0; i < subImg.length; i++) {
+    for (var j = 0; j < imgOfData.length; j++) {
+      if (i == j) {
+        subImg[i].src = imgOfData[j]
+      }
+    }
+  }
+  sliderEffect.start()
+}
+function postProductTocart(data, id) {
+  $(".addToCart").click(function (e) {
+    e.preventDefault();
+    var parentEl
+    var element = this.parentElement
+    while (element) {
+      if (element.matches('.products')) {
+        parentEl = element
+        break
+      }
+      element = element.parentElement
+    }
+    const nameItem = parentEl.querySelector(".name").innerText
+    var priceItem = parentEl.querySelector(".price").innerText
+    const imgOfItem = parentEl.querySelector(".main-img img").getAttribute("src")
+    $.ajax({
+      type: "POST",
+      url: "http://localhost:3333/api/cart/create",
+      data: {
+        "user_id": data.user_id,
+        "item_id": Number(id),
+        "name": `${nameItem}`,
+        "price": `${priceItem}`,
+        "img": `${imgOfItem}`,
+      },
+      dataType: "json",
+      success: function (data) {
+        console.log(data)
+        successFunction(data)
+        setTimeout(function () {
+          window.open('/client/page/cart.html')
+        }, 1000)
+      }
+    });
+    setTimeout(function () {
+      window.open('/client/page/cart.html')
+    }, 1500)
+  });
+}
+
+// ------toast---------------
+import toast from "./toast.js"
+function successFunction(data) {
+  if (data.status) {
+    toast({
+      title: 'Success',
+      message: `${data.msg}`,
+      type: 'success'
+    })
+    setTimeout(function () {
+      window.close()
+      window.open('/client/index.html')
+    }, 1500)
+    // setTimeout(function () {
+    //     location.reload()
+    // }, 2000)
+  }
+}
+function errorFunction(message) {
+  toast({
+    title: 'Error',
+    message: `${message}`,
+    type: 'error'
+  })
+}
