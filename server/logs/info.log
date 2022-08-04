@@ -6709,3 +6709,12 @@
 {"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-04T05:17:02.798Z"}
 {"level":"info","message":"Connection has been established successfully.","timestamp":"2022-08-04T05:17:02.824Z"}
 {"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Admins` AS `Admins` WHERE `Admins`.`id` = '6';","timestamp":"2022-08-04T05:17:02.878Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2022-08-04T05:17:15.930Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-04T05:17:15.935Z"}
+{"level":"info","message":"Connection has been established successfully.","timestamp":"2022-08-04T05:17:15.995Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Admins` AS `Admins` WHERE `Admins`.`id` = '6';","timestamp":"2022-08-04T05:17:16.016Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items` WHERE `Items`.`name` = 'BÁNH MÌ NƯỚNG BƠ TỎI\\t' LIMIT 1;","timestamp":"2022-08-04T05:17:23.764Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items` WHERE `Items`.`name` = 'BÁNH MÌ NƯỚNG BƠ TỎI' LIMIT 1;","timestamp":"2022-08-04T05:17:33.499Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items` WHERE `Items`.`name` = 'BÁNH MÌ NƯỚNG BƠ TỎI' LIMIT 1;","timestamp":"2022-08-04T05:17:37.689Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items` WHERE `Items`.`name` = 'BÁNH MÌ NƯỚNG BƠ TỎI' LIMIT 1;","timestamp":"2022-08-04T05:17:39.513Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `createdAt`, `updatedAt` FROM `Items` AS `Items` WHERE `Items`.`name` = 'BÁNH MÌ NƯỚNG BƠ TỎI' LIMIT 1;","timestamp":"2022-08-04T05:17:40.344Z"}
