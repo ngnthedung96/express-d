@@ -162,6 +162,27 @@ const updateInfor = async (req, res, next) => {
     }
 }
 
+const showUsers = async (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        res.status(422).json({ errors: errors.array() });
+        return;
+    }
+    try {
+        if (req.user) {
+            const user = await userDb.findUsers()
+            res.json({
+                status: true,
+                user,
+                id: req.user.id
+            })
+        }
+    } catch (e) {
+        console.log(e.message)
+        res.sendStatus(500) && next(e)
+    }
+}
+
 
 
 export const userController = {
@@ -170,5 +191,6 @@ export const userController = {
     home,
     logOut,
     getInfor,
-    updateInfor
+    updateInfor,
+    showUsers
 }

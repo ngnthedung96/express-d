@@ -1,9 +1,11 @@
 import express from 'express'
 import { userController } from '../controllers/index.mjs'
+import { adminController } from '../controllers/index.mjs'
 import { cartController } from '../controllers/index.mjs'
 import { itemsController } from '../controllers/index.mjs'
 import { payController } from '../controllers/index.mjs'
 import userValidate from '../validates/users.mjs'
+import adminValidate from '../validates/admins.mjs'
 import tokenValidate from '../validates/tokenValidate.mjs'
 const router = express.Router() // create new router
 
@@ -78,7 +80,32 @@ router.get('/pay/show',
     payController.showOrders
 )
 
+//----------------------------------Admin------------------------------------------------
+router.post('/admins/register',
+    adminValidate('register'), // run valdiate
+    adminController.register
+)
+router.post('/admins/login',
+    adminValidate('login'), // run valdiate
+    adminController.login
+)
+router.get('/admins/showusers',
+    tokenValidate.verifyToken,
+    userController.showUsers
+)
+router.get('/admins/infor/:id',
+    adminController.getInfor
+)
 
+router.get('/admins/showitems',
+    tokenValidate.verifyToken,
+    itemsController.showItemsToken
+)
+router.post('/admins/createitem',
+    adminValidate('addItem'), // run valdiate
+    tokenValidate.verifyToken,
+    itemsController.createItem
+)
 
 
 export default router;

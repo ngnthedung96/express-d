@@ -204,9 +204,12 @@ function deleteOrder() {
           "id": id
         },
         dataType: "json",
-        success: function (response) {
-          alert("xóa sản phẩm thành công")
-          location.reload()
+        success: function (data) {
+          successFunction(data)
+          setTimeout(function () {
+            location.reload()
+          }, 1000)
+
         }
       });
     }

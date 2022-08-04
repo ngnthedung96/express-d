@@ -10,7 +10,7 @@ const Users = sequelize.define('Users', {
     },
     password: {
         type: DataTypes.STRING
-            // allowNull defaults to true
+        // allowNull defaults to true
     }
 }, {});
 const findByPassword = async (value, field) => {
@@ -18,11 +18,11 @@ const findByPassword = async (value, field) => {
     try {
         res = await Users.findOne({
             where: {
-                'password' : value,
-            } 
+                'password': value,
+            }
         });
     }
-    catch(err) {
+    catch (err) {
         logger.error(err)
     }
     return res;
@@ -32,31 +32,31 @@ const findById = async (value, field) => {
     try {
         res = await Users.findOne({
             where: {
-                'id' : value,
-            } 
+                'id': value,
+            }
         });
     }
-    catch(err) {
+    catch (err) {
         logger.error(err)
     }
     return res;
 }
-const findByEmail= async (value, field) => {
+const findByEmail = async (value, field) => {
     let res = null;
     try {
         res = await Users.findOne({
             where: {
-                'email' : value,
-            } 
+                'email': value,
+            }
         });
     }
-    catch(err) {
-        logger.error(err) 
+    catch (err) {
+        logger.error(err)
     }
     return res;
 }
 
-const register = async(email, password) => {
+const register = async (email, password) => {
     let res = null;
     try {
         // Create a new user
@@ -69,10 +69,22 @@ const register = async(email, password) => {
     }
     return res;
 }
+
+const findUsers = async (value, field) => {
+    let res = null;
+    try {
+        res = await Users.findAll()
+    }
+    catch (err) {
+        logger.error(err)
+    }
+    return res;
+}
+
 export const userDb = {
     register,
     findByEmail,
     findByPassword,
-    findById
-
+    findById,
+    findUsers
 }
