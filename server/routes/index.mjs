@@ -107,5 +107,18 @@ router.post('/admins/createitem',
     itemsController.createItem
 )
 
+router.delete('/admins/deleteitem/:id',
+    tokenValidate.verifyToken,
+    itemsController.deleteItem
+)
+
+router.put('/admins/updateitem',
+    tokenValidate.verifyToken,
+    itemsController.updateItem
+)
+
+router.post('/admins/logout',
+    adminController.logOut
+)
 
 export default router;

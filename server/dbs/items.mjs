@@ -66,9 +66,26 @@ const createItem = async (name, price, imgs) => {
     }
     return res;
 }
+
+const deleteItem = async (value, field) => {
+    let res = null;
+    try {
+        res = await Items.destroy(
+            {
+                where: { "id": value },
+            }
+        )
+    }
+    catch (err) {
+        logger.error(err)
+    }
+    return res;
+}
+
 export const itemsDb = {
     findItems,
     findItem,
     findItemByName,
-    createItem
+    createItem,
+    deleteItem
 }

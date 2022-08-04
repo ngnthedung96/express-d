@@ -56,7 +56,7 @@ const validate = (method) => {
       break;
     case 'addItem': {
       err = [
-        body('name', 'Name không hợp lệ').exists().isEmail().custom(value => {
+        body('name', 'Name không hợp lệ').exists().custom(value => {
           return itemsDb.findItemByName(value, 'name').then(item => {
             if (item) {
               return Promise.reject('Name đã được sử dụng');

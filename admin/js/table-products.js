@@ -62,3 +62,25 @@ function haveAdminLogin(data) {
   });
 
 }
+
+function logOut() {
+  //-------log out--------------
+  $('.log-out__btn').click(function (e) {
+    e.preventDefault();
+    $.ajax({
+      url: "http://localhost:3333/api/users/logout",
+      type: "POST",
+      dataType: 'json',
+      headers: {
+        token: 'Bearer ' + localStorage.getItem("accessToken"),
+      }
+    })
+      .done(function (data, textStatus, jqXHR) {
+        localStorage.removeItem('accessToken');
+        successFunction(data)
+        setTimeout(function () {
+          location.reload()
+        }, 1000)
+      })
+  });
+}

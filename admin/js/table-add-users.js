@@ -40,27 +40,7 @@ $(document).ready(function () {
   }
 });
 
-// ------toast---------------
-import toast from "./toast.js"
-function successFunction(data) {
-  if (data.status) {
-    toast({
-      title: 'Success',
-      message: `${data.msg}`,
-      type: 'success'
-    })
-    setTimeout(function () {
-      location.reload()
-    }, 1500)
-  }
-}
-function errorFunction(message) {
-  toast({
-    title: 'Error',
-    message: `${message}`,
-    type: 'error'
-  })
-}
+
 
 
 function haveAdminLogin(data) {
@@ -101,4 +81,48 @@ function renderUsers(data) {
   }
   bodyTable.innerHTML = htmls
 
+}
+
+function logOut() {
+  //-------log out--------------
+  $('.log-out__btn').click(function (e) {
+    e.preventDefault();
+    $.ajax({
+      url: "http://localhost:3333/api/users/logout",
+      type: "POST",
+      dataType: 'json',
+      headers: {
+        token: 'Bearer ' + localStorage.getItem("accessToken"),
+      }
+    })
+      .done(function (data, textStatus, jqXHR) {
+        localStorage.removeItem('accessToken');
+        successFunction(data)
+        setTimeout(function () {
+          location.reload()
+        }, 1000)
+      })
+  });
+}
+
+// ------toast---------------
+import toast from "./toast.js"
+function successFunction(data) {
+  if (data.status) {
+    toast({
+      title: 'Success',
+      message: `${data.msg}`,
+      type: 'success'
+    })
+    setTimeout(function () {
+      location.reload()
+    }, 1500)
+  }
+}
+function errorFunction(message) {
+  toast({
+    title: 'Error',
+    message: `${message}`,
+    type: 'error'
+  })
 }

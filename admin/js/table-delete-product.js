@@ -9,8 +9,7 @@ $(document).ready(function () {
       success: function (data) {
         renderProducts(data)
         haveAdminLogin(data)
-        postItemToDb()
-
+        deleteProduct(data)
       }
     });
   }
@@ -18,6 +17,43 @@ $(document).ready(function () {
     window.open('/admin/page-error-400.html')
   }
 });
+
+
+function deleteProduct(data) {
+  $('.table-products').click(function (e) {
+    e.preventDefault();
+    if (e.target.closest('.btn-delete')) {
+      var parentEl
+      var element = e.target.parentElement
+      while (element) {
+        if (element.matches('tr')) {
+          parentEl = element
+          break
+        }
+        element = element.parentElement
+      }
+      const id = parentEl.querySelector('.id').innerText
+      $.ajax({
+        type: "DELETE",
+        url: `http://localhost:3333/api/admins/deleteitem/${id}`,
+        dataType: "json",
+        headers: {
+          token: 'Bearer ' + localStorage.getItem("accessToken"),
+        },
+        success: function (data) {
+          successFunction(data)
+        },
+        error: function (data) {
+          const errors = JSON.parse(data.responseText).errors
+          for (var i of errors) {
+            errorFunction(i.msg)
+          }
+        }
+      });
+    }
+
+  });
+}
 
 
 function renderProducts(data) {
@@ -29,10 +65,10 @@ function renderProducts(data) {
       <th class = "count">
       <p>${count} </p>
       </th>
-      <td>${product.name}</td>
-      <td>${product.id}
+      <td class = "name">${product.name}</td>
+      <td class = "id">${product.id}
       </td>
-      <td>${product.price}</td>
+      <td class = "price">${product.price}</td>
         `
     const imgCol = document.createElement('td')
     for (var img of JSON.parse(product.img)) {
@@ -40,7 +76,10 @@ function renderProducts(data) {
       imgOfCol.src = img
       imgCol.appendChild(imgOfCol)
     }
+    const deleteBtn = document.createElement('td')
+    deleteBtn.innerHTML = `<button type="button" class="btn btn-outline-danger btn-delete">Xóa sản phẩm</button>`
     rowDiv.appendChild(imgCol)
+    rowDiv.appendChild(deleteBtn)
     bodyTable.appendChild(rowDiv)
     count++
   }
@@ -63,45 +102,25 @@ function haveAdminLogin(data) {
 
 }
 
-function postItemToDb() {
-  $(".btn-add").click(function (e) {
+function logOut() {
+  //-------log out--------------
+  $('.log-out__btn').click(function (e) {
     e.preventDefault();
-    const name = document.querySelector('#name').value
-    const price = document.querySelector('#price').value
-    const imgs = document.querySelectorAll('#img')
-    const imgContainer = []
-    for (var img of imgs) {
-      if (img.value) {
-        imgContainer.push(img.value)
+    $.ajax({
+      url: "http://localhost:3333/api/users/logout",
+      type: "POST",
+      dataType: 'json',
+      headers: {
+        token: 'Bearer ' + localStorage.getItem("accessToken"),
       }
-    }
-    if (name && price && imgContainer) {
-      $.ajax({
-        type: "POST",
-        url: "http://localhost:3333/api/admins/createitem",
-        data: {
-          name: name,
-          price: price,
-          img: imgContainer
-        },
-        dataType: "json",
-        headers: {
-          token: 'Bearer ' + localStorage.getItem("accessToken"),
-        },
-        success: function (data) {
-          successFunction(data)
-        },
-        error: function (data) {
-          const errors = JSON.parse(data.responseText).errors
-          for (var i of errors) {
-            errorFunction(i.msg)
-          }
-        }
-      });
-    }
-    else {
-      errorFunction('Bạn cần nhập đủ thông tin!')
-    }
+    })
+      .done(function (data, textStatus, jqXHR) {
+        localStorage.removeItem('accessToken');
+        successFunction(data)
+        setTimeout(function () {
+          location.reload()
+        }, 1000)
+      })
   });
 }
 
@@ -125,26 +144,4 @@ function errorFunction(message) {
     message: `${message}`,
     type: 'error'
   })
-}
-
-function logOut() {
-  //-------log out--------------
-  $('.log-out__btn').click(function (e) {
-    e.preventDefault();
-    $.ajax({
-      url: "http://localhost:3333/api/users/logout",
-      type: "POST",
-      dataType: 'json',
-      headers: {
-        token: 'Bearer ' + localStorage.getItem("accessToken"),
-      }
-    })
-      .done(function (data, textStatus, jqXHR) {
-        localStorage.removeItem('accessToken');
-        successFunction(data)
-        setTimeout(function () {
-          location.reload()
-        }, 1000)
-      })
-  });
 }

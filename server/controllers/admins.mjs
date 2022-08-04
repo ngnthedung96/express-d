@@ -161,12 +161,11 @@ const updateInfor = async (req, res, next) => {
 }
 
 
-
 export const adminController = {
     register,
     login,
     home,
-    logOut,
     getInfor,
-    updateInfor
+    updateInfor,
+    logOut
 }
