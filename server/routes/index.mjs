@@ -7,6 +7,7 @@ import { payController } from '../controllers/index.mjs'
 import userValidate from '../validates/users.mjs'
 import adminValidate from '../validates/admins.mjs'
 import tokenValidate from '../validates/tokenValidate.mjs'
+import { codesController } from '../controllers/code.mjs'
 const router = express.Router() // create new router
 
 //--------------------user------------------------------------
@@ -89,6 +90,8 @@ router.post('/admins/login',
     adminValidate('login'), // run valdiate
     adminController.login
 )
+
+
 router.get('/admins/showusers',
     tokenValidate.verifyToken,
     userController.showUsers
@@ -120,5 +123,20 @@ router.put('/admins/updateitem',
 router.post('/admins/logout',
     adminController.logOut
 )
+router.get('/admins/showorder',
+    tokenValidate.verifyToken,
+    payController.showAllOrders
+)
+
+router.get('/admins/getuser/:id',
+    userController.getUser
+)
+
+//-----------------sale----------------------
+router.get('/code/show',
+    tokenValidate.verifyToken,
+    codesController.showCode
+)
+
 
 export default router;

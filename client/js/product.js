@@ -77,6 +77,9 @@ $(document).ready(function () {
 function renderItem(data) {
   var name = document.querySelector('.products .right .name')
   var price = document.querySelector('.products .right .price')
+  var number = document.querySelector('.products .right .number')
+  number.innerText = `Số lượng sản phẩm còn lại: ${data.item.number}`
+
   name.innerText = data.item.name
   price.innerText = data.item.price
   const imgOfData = JSON.parse(data.item.img)

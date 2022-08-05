@@ -98,7 +98,9 @@ const reqRefreshToken = (req, res, next) => {
 const home = async (req, res, next) => {
     try {
         if (req.user) {
+            console.log(req.user.id)
             const user = await userDb.findById(req.user.id, 'id')
+            console.log(user)
             res.json({
                 status: true,
                 user
@@ -109,6 +111,20 @@ const home = async (req, res, next) => {
         res.sendStatus(500) && next(e)
     }
 }
+
+const getUser = async (req, res, next) => {
+    try {
+        const user = await userDb.findById(req.params.id, 'id')
+        res.json({
+            status: true,
+            user
+        })
+    } catch (e) {
+        console.log(e.message)
+        res.sendStatus(500) && next(e)
+    }
+}
+
 const logOut = async (req, res, next) => {
     try {
         res.clearCookie("refreshToken")
@@ -192,5 +208,6 @@ export const userController = {
     logOut,
     getInfor,
     updateInfor,
-    showUsers
+    showUsers,
+    getUser
 }

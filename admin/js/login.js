@@ -14,7 +14,7 @@ $(document).ready(function () {
         dataType: "json",
         success: function (data) {
           successFunction(data)
-          localStorage.setItem('accessToken', data.accesstoken);
+          localStorage.setItem('accessAdminToken', data.accesstoken);
         },
         error: function (data) {
           const errors = JSON.parse(data.responseText).errors

@@ -97,7 +97,8 @@
                                                 <span>Profile</span></a>
                                         </li>
                                         <hr class="my-2">
-                                        <li><a href="page-login.html"><i class="icon-key"></i> <span>Logout</span></a>
+                                        <li><a href="#" class="log-out__btn"><i class="icon-key"></i>
+                                                <span>Logout</span></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -176,6 +177,16 @@
                             <li><a href="./table-orders.html" aria-expanded="false">Đơn hàng</a></li>
                         </ul>
                     </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-menu menu-icon"></i><span class="nav-text">Sales</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="./table-sales.html" aria-expanded="false">Mã giảm giá</a></li>
+                            <li><a href="./table-sales.html" aria-expanded="false">Thêm mã giảm giá</a></li>
+                            <li><a href="./table-sales.html" aria-expanded="false">Xóa mã giảm giá</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -187,81 +198,41 @@
             Content body start
         ***********************************-->
         <div class="content-body">
-
+            <!-- row -->
             <div class="row page-titles mx-0">
                 <div class="col p-md-0">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                        <li class="breadcrumb-item active"><a href="javascript:void(0)">Add Users</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0)">Order</a></li>
                     </ol>
                 </div>
             </div>
-            <!-- row -->
 
-            <div class="container-fluid table-add-users">
+
+            <div class="container-fluid table-orders">
                 <div class="row">
                     <div class="card">
                         <div class="card-body">
-                            <div class="card-title">
-                                <h4>Thêm mới khách hàng</h4>
-                            </div>
+                            <h4 class="card-title">Đơn hàng</h4>
                             <div class="table-responsive">
-                                <table class="table">
+                                <table class="table header-border">
                                     <thead>
                                         <tr>
-                                            <th>Email</th>
-                                            <th>Password</th>
                                             <th></th>
+                                            <th>Khách hàng</th>
+                                            <th>Ngày đặt</th>
+                                            <th>Sản phẩm</th>
+                                            <th>Tổng tiền</th>
+                                            <th>Trạng thái</th>
+                                            <th>Ngày nhận</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-
-                                            <td> <input id="email" type="email" class="form-control"
-                                                    placeholder="Email">
-                                            </td>
-                                            <td><input id="password" type="password" class="form-control"
-                                                    placeholder="Password">
-                                            </td>
-                                            <td><button type="button"
-                                                    class="btn btn-outline-success btn-add">Thêm</button>
-                                            </td>
-                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-                    <div class="container-fluid table-users">
-                        <div class="row">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="card-title">
-                                        <h4>Khách hàng</h4>
-                                    </div>
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Email</th>
-                                                    <th>ID</th>
-                                                    <th>Password</th>
-                                                    <th>Date</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- /# column -->
                 </div>
             </div>
             <!-- #/ container -->
@@ -271,15 +242,7 @@
         ***********************************-->
 
 
-        <!--**********************************
-            Footer start
-        ***********************************-->
-        <div id="toast">
 
-        </div>
-        <!--**********************************
-            Footer end
-        ***********************************-->
     </div>
     <!--**********************************
         Main wrapper end
@@ -288,13 +251,12 @@
     <!--**********************************
         Scripts
     ***********************************-->
+    <script src="./js/table-orders.js"></script>
     <script src="plugins/common/common.min.js"></script>
     <script src="js/custom.min.js"></script>
     <script src="js/settings.js"></script>
     <script src="js/gleek.js"></script>
     <script src="js/styleSwitcher.js"></script>
-
-    <script type="module" src="./js/table-add-users.js"></script>
 
 </body>
 

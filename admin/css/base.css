@@ -152,8 +152,31 @@
   width: 20%;
 }
 
+.table-orders tbody tr td img {
+  display: inline;
+  margin: 0px 20px 10px 0px;
+  width: 20%;
+}
+
+.table-orders tbody tr td p {
+  display: inline;
+}
+
+.products-col {
+  font-size: 80%;
+}
+
+.product {
+  margin: 10px 0px;
+}
+
 table {
   width: 100%;
+}
+
+.table-orders table td,
+.table-orders table th {
+  min-width: 200px;
 }
 
 .table-products table td,

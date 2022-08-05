@@ -15,6 +15,10 @@ const Items = sequelize.define('Items', {
         type: DataTypes.STRING,
         allowNull: false
     },
+    number: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    }
 }, {});
 
 const findItems = async (value, field) => {

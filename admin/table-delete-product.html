@@ -84,10 +84,9 @@
         </div>
         <div class="header-right">
           <ul class="clearfix">
-
             <li class="icons dropdown hide">
               <div class="user-email c-pointer position-relative" data-toggle="dropdown">
-                <span>Ngnthedung</span>
+                <span></span>
               </div>
               <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                 <div class="dropdown-content-body">
@@ -97,16 +96,32 @@
                         <span>Profile</span></a>
                     </li>
                     <hr class="my-2">
-                    <li><a href="page-login.html"><i class="icon-key"></i> <span>Logout</span></a>
+                    <li><a href="#" class="log-out__btn"><i class="icon-key"></i>
+                        <span>Logout</span></a>
                     </li>
                   </ul>
                 </div>
               </div>
             </li>
-            <li class="header-right login-register">
-              <span>User</span>
-              <a href="./page-login.html">Login</span>
-                <a href="./page-register.html">Register</span>
+            <li class="icons dropdown default">
+              <div class="user-email c-pointer position-relative" data-toggle="dropdown">
+                <span>User</span>
+              </div>
+              <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                <div class="dropdown-content-body">
+                  <ul>
+                    <li>
+                      <a href="./page-register.html"><i class="icon-user"></i>
+                        <span> Register</span></a>
+                    </li>
+                    <hr class="my-2">
+                    <li>
+                      <a href="./page-login.html"><i class="icon-user"></i>
+                        <span>Login</span></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </li>
           </ul>
         </div>
@@ -149,8 +164,16 @@
             <ul aria-expanded="false">
               <li><a href="./table-products.html" aria-expanded="false">Sản phẩm</a></li>
               <li><a href="./table-add-product.html" aria-expanded="false">Thêm sản phẩm</a></li>
-              <li><a href="./table-edit-product.html" aria-expanded="false">Sửa sản phẩm</a></li>
-              <li> <a href="./table-delete-product.html" aria-expanded="false">Xóa sản phẩm</a></li>
+              <li><a href="./table-add-product.html" aria-expanded="false">Sửa sản phẩm</a></li>
+              <li><a href="./table-add-product.html" aria-expanded="false">Xóa sản phẩm</a></li>
+            </ul>
+          </li>
+          <li>
+            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+              <i class="icon-menu menu-icon"></i><span class="nav-text">Orders</span>
+            </a>
+            <ul aria-expanded="false">
+              <li><a href="./table-orders.html" aria-expanded="false">Đơn hàng</a></li>
             </ul>
           </li>
         </ul>

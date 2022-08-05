@@ -714,7 +714,9 @@ pre code {
 .container-fluid.table-edit-products .row,
 .container-fluid.table-delete-products .row,
 .container-fluid.table-products .row,
-.container-fluid.table-add-products .row {
+.container-fluid.table-add-products .row,
+.container-fluid.table-codes .row,
+.container-fluid.table-add-codes .row {
   display: block;
 }
 

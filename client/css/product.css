@@ -25,6 +25,11 @@
   font-size: 200%;
 }
 
+.right .number {
+  margin-top: 20px;
+  font-size: 150%;
+}
+
 .right .price {
   margin-top: 5%;
   font-size: 250%;

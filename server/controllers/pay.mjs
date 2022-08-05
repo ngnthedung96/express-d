@@ -1,5 +1,6 @@
 import { payDb } from '../dbs/index.mjs'
 import { cartDb } from '../dbs/index.mjs'
+import { itemsDb } from '../dbs/index.mjs'
 import { validationResult } from 'express-validator';
 import jwt from "jsonwebtoken"
 import { resolve } from 'path';
@@ -9,7 +10,7 @@ import { JSONB } from 'sequelize';
 
 
 const createOrder = async (req, res, next) => {
-  var { user_id, note, date, time, detail } = req.body;
+  var { user_id, note, price, date, time, detail } = req.body;
   var details = []
 
   for (var i of detail) {
@@ -19,7 +20,14 @@ const createOrder = async (req, res, next) => {
     if (!note) {
       note = " "
     }
-    const order = await payDb.createOrder(user_id, note, date, time, details)
+    const order = await payDb.createOrder(user_id, note, price, date, time, details)
+    for (var i of detail) {
+      const item = await itemsDb.findItem(i.item_id)
+      await item.update({
+        number: item.dataValues.number - Number(i.number),
+      })
+      await item.save()
+    }
     await cartDb.deleteAll()
     res.json({
       status: "success",
@@ -47,9 +55,26 @@ const showOrders = async (req, res, next) => {
     console.log(err)
   }
 }
+const showAllOrders = async (req, res, next) => {
+  try {
+    if (req.user) {
+      const orders = await payDb.findAllOrders()
+      res.json({
+        status: true,
+        orders
+      })
+    }
+  }
+  catch (err) {
+    console.log(err)
+  }
+}
+
+
 
 
 export const payController = {
   createOrder,
-  showOrders
+  showOrders,
+  showAllOrders
 }

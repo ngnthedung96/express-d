@@ -240,6 +240,8 @@ function pay() {
         }
         container.push(block)
       }
+      const price = document.querySelector(".total-price").innerText
+      console.log(price)
       const user_id = document.querySelector(".table-order-user-id").innerText
       const note = document.querySelector(".cart-footer #note").value
       const date = document.querySelector(".cart-footer #date").value
@@ -251,6 +253,7 @@ function pay() {
           data: {
             user_id,
             note,
+            price,
             date,
             time,
             detail: container

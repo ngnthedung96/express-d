@@ -4,7 +4,7 @@ $(document).ready(function () {
       type: "GET",
       url: "http://localhost:3333/api/admins/showusers",
       headers: {
-        token: 'Bearer ' + localStorage.getItem("accessToken"),
+        token: 'Bearer ' + localStorage.getItem("accessAdminToken"),
       },
       success: function (data) {
         logOut()
@@ -66,11 +66,11 @@ function logOut() {
       type: "POST",
       dataType: 'json',
       headers: {
-        token: 'Bearer ' + localStorage.getItem("accessToken"),
+        token: 'Bearer ' + localStorage.getItem("accessAdminToken"),
       }
     })
       .done(function (data, textStatus, jqXHR) {
-        localStorage.removeItem('accessToken');
+        localStorage.removeItem('accessAdminToken');
         successFunction(data)
         setTimeout(function () {
           window.open('/admin/page-login.html')

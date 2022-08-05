@@ -4,7 +4,7 @@ $(document).ready(function () {
       type: "GET",
       url: "http://localhost:3333/api/admins/showitems",
       headers: {
-        token: 'Bearer ' + localStorage.getItem("accessToken"),
+        token: 'Bearer ' + localStorage.getItem("accessAdminToken"),
       },
       success: function (data) {
         renderProducts(data)
@@ -22,6 +22,7 @@ function renderProducts(data) {
   const bodyTable = document.querySelector('.table-products .table tbody')
   var count = 1
   for (var product of data.items) {
+    console.log(product)
     const rowDiv = document.createElement('tr')
     rowDiv.innerHTML = `
       <th class = "count">
@@ -31,6 +32,7 @@ function renderProducts(data) {
       <td>${product.id}
       </td>
       <td>${product.price}</td>
+      <td>${product.number}</td>
         `
     const imgCol = document.createElement('td')
     for (var img of JSON.parse(product.img)) {
@@ -45,8 +47,7 @@ function renderProducts(data) {
 }
 
 function haveAdminLogin(data) {
-  console.log(data)
-  const loginDiv = document.querySelector(".header-right.login-register")
+  const loginDiv = document.querySelector(".header-right .default")
   loginDiv.classList.add('hide')
   const adminEmailDiv = document.querySelector('.icons.dropdown')
   const adminEmailText = document.querySelector('.icons.dropdown .user-email')
@@ -55,7 +56,6 @@ function haveAdminLogin(data) {
     type: "GET",
     url: `http://localhost:3333/api/admins/infor/${data.id}`,
     success: function (data) {
-      console.log(data)
       adminEmailText.innerText = data.admin.email
     }
 
@@ -72,11 +72,11 @@ function logOut() {
       type: "POST",
       dataType: 'json',
       headers: {
-        token: 'Bearer ' + localStorage.getItem("accessToken"),
+        token: 'Bearer ' + localStorage.getItem("accessAdminToken"),
       }
     })
       .done(function (data, textStatus, jqXHR) {
-        localStorage.removeItem('accessToken');
+        localStorage.removeItem('accessAdminToken');
         successFunction(data)
         setTimeout(function () {
           location.reload()

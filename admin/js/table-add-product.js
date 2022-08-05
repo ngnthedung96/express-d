@@ -4,7 +4,7 @@ $(document).ready(function () {
       type: "GET",
       url: "http://localhost:3333/api/admins/showitems",
       headers: {
-        token: 'Bearer ' + localStorage.getItem("accessToken"),
+        token: 'Bearer ' + localStorage.getItem("accessAdminToken"),
       },
       success: function (data) {
         renderProducts(data)
@@ -47,7 +47,7 @@ function renderProducts(data) {
 }
 
 function haveAdminLogin(data) {
-  const loginDiv = document.querySelector(".header-right.login-register")
+  const loginDiv = document.querySelector(".header-right .default")
   loginDiv.classList.add('hide')
   const adminEmailDiv = document.querySelector('.icons.dropdown')
   const adminEmailText = document.querySelector('.icons.dropdown .user-email')
@@ -86,7 +86,7 @@ function postItemToDb() {
         },
         dataType: "json",
         headers: {
-          token: 'Bearer ' + localStorage.getItem("accessToken"),
+          token: 'Bearer ' + localStorage.getItem("accessAdminToken"),
         },
         success: function (data) {
           successFunction(data)

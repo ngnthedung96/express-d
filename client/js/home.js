@@ -230,12 +230,14 @@ function viewItem(items) {
 
 
 function haveUserLogin(data) {
+  console.log(data)
   const user = document.querySelector('.header-nav .user-logout-nav')
   const signIn = document.querySelector('.header-nav .login-register-nav')
   signIn.classList.toggle('hide')
   user.classList.toggle('hide')
   const name = user.querySelector('.user-name span')
   name.innerText = `${data.user.email}`
+
 }
 
 function logOut() {
