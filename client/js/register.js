@@ -15,14 +15,14 @@ $(document).ready(function () {
                 },
                 success: function (data) {
                     successFunction(data)
-                  },
-                  error: function (data) {
+                },
+                error: function (data) {
                     const errors = JSON.parse(data.responseText).errors
                     console.log(errors)
-                    for (var i of errors){
+                    for (var i of errors) {
                         errorFunction(i.msg)
-                    } 
-                  }
+                    }
+                }
             })
         }
     });
@@ -37,9 +37,9 @@ function successFunction(data) {
             message: `${data.msg}`,
             type: 'success'
         })
-        // setTimeout(function () {
-        //     location.reload()
-        // }, 2000)
+        setTimeout(function () {
+            location.reload()
+        }, 2000)
     }
 }
 function errorFunction(message) {

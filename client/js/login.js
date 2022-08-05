@@ -1,10 +1,10 @@
 $(document).ready(function () {
-    $('.form-submit').click( async function (e) {
+    $('.form-submit').click(async function (e) {
         e.preventDefault()
         const email = document.querySelector("#email")
         const password = document.querySelector("#password")
         if (email.value && password.value) {
-            await  $.ajax({
+            await $.ajax({
                 url: 'http://localhost:3333/api/users/login',
                 dataType: 'json',
                 type: "POST",
@@ -15,14 +15,14 @@ $(document).ready(function () {
                 success: function (data) {
                     successFunction(data)
                     localStorage.setItem('accessToken', data.accesstoken);
-                  },
-                  error: function (data) {
+                },
+                error: function (data) {
                     const errors = JSON.parse(data.responseText).errors
                     console.log(errors)
-                    for (var i of errors){
+                    for (var i of errors) {
                         errorFunction(i.msg)
-                    } 
-                  }
+                    }
+                }
             })
         }
     });
@@ -37,10 +37,10 @@ function successFunction(data) {
             message: `${data.msg}`,
             type: 'success'
         })
-        setTimeout(function(){
+        setTimeout(function () {
             window.close()
-            window.open('/client/index.html')
-        },1500)
+            window.open('/client/page/index.html')
+        }, 1500)
         // setTimeout(function () {
         //     location.reload()
         // }, 2000)

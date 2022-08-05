@@ -223,7 +223,7 @@ function viewItem(items) {
   $(".hoverProduct").click(function (e) {
     if (e.target.closest('.viewProduct')) {
       const idItem = (this.querySelector(".viewProduct").getAttribute("data-set"))
-      window.open(`./page/product.html?id=${idItem}`)
+      window.open(`./product.html?id=${idItem}`)
     }
   });
 }
