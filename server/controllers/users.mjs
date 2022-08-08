@@ -98,9 +98,7 @@ const reqRefreshToken = (req, res, next) => {
 const home = async (req, res, next) => {
     try {
         if (req.user) {
-            console.log(req.user.id)
             const user = await userDb.findById(req.user.id, 'id')
-            console.log(user)
             res.json({
                 status: true,
                 user

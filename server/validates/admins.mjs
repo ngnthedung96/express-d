@@ -2,6 +2,8 @@ import e from 'express';
 import { check, body } from 'express-validator';
 import { adminDb } from '../dbs/index.mjs'
 import { itemsDb } from '../dbs/index.mjs'
+import { codeDb } from '../dbs/index.mjs'
+import { userDb } from '../dbs/index.mjs'
 
 const validate = (method) => {
   let err = [];
@@ -60,6 +62,28 @@ const validate = (method) => {
           return itemsDb.findItemByName(value, 'name').then(item => {
             if (item) {
               return Promise.reject('Name đã được sử dụng');
+            }
+          });
+        })
+      ]
+    }
+      break;
+    case 'addSale': {
+      err = [
+        body('code', 'Code không hợp lệ').exists().custom(value => {
+          return codeDb.findCode(value, 'name').then(code => {
+            if (!code) {
+              return Promise.reject('Code không tồn tại');
+            }
+            else if (Number(code.number) === 0) {
+              return Promise.reject('Code đã sử dụng hết ');
+            }
+          });
+        }),
+        body('user_id', 'ID khách hàng không hợp lệ').exists().custom(value => {
+          return userDb.findById(value, 'id').then(user => {
+            if (!user) {
+              return Promise.reject('Khách hàng không tồn tại');
             }
           });
         })

@@ -8,6 +8,7 @@ import userValidate from '../validates/users.mjs'
 import adminValidate from '../validates/admins.mjs'
 import tokenValidate from '../validates/tokenValidate.mjs'
 import { codesController } from '../controllers/code.mjs'
+import { saleController } from '../controllers/sale.mjs'
 const router = express.Router() // create new router
 
 //--------------------user------------------------------------
@@ -86,6 +87,12 @@ router.post('/admins/register',
     adminValidate('register'), // run valdiate
     adminController.register
 )
+
+router.get('/admins/home',
+    tokenValidate.verifyToken,
+    adminController.getAdmin
+)
+
 router.post('/admins/login',
     adminValidate('login'), // run valdiate
     adminController.login
@@ -133,10 +140,30 @@ router.get('/admins/getuser/:id',
 )
 
 //-----------------sale----------------------
+router.get('/sale/show/:id/:code',
+    saleController.showSalesOfUser
+)
+
+router.get('/sale/show/',
+    saleController.showSales
+)
 router.get('/code/show',
     tokenValidate.verifyToken,
     codesController.showCode
 )
+
+
+
+
+router.post('/sale/create',
+    adminValidate('addSale'), // run valdiate
+    tokenValidate.verifyToken,
+    saleController.createSale
+)
+// router.delete('/sale/delete',
+//     tokenValidate.verifyToken,
+//     saleController.showCode
+// )
 
 
 export default router;

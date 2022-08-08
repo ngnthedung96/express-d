@@ -11,6 +11,7 @@ $(document).ready(function () {
       if (data.status) {
         renderProducts(data)
         deleteOrder()
+        handleInputCode(data)
         handleTotalPrice(data)
         pay()
       }
@@ -141,7 +142,7 @@ function handleTotalPrice(data) {
   totalPrice()
 }
 
-function totalPrice() {
+function totalPrice(code) {
   var prices = document.querySelectorAll(".table-order-total")
   var price = []
   for (var i of prices) {
@@ -156,6 +157,10 @@ function totalPrice() {
   var total = 0
   for (var i of price) {
     total += Number(i)
+  }
+  if (code) {
+    const discount = total * parseInt(code) / 100
+    total -= Math.round(discount)
   }
   var totalPriceDiv = document.querySelector(".total-price")
   var container = `${total}`.split('').reverse()
@@ -180,6 +185,27 @@ function totalPrice() {
   }
 }
 
+function handleInputCode(data) {
+  const inputCode = document.querySelector('#code')
+  inputCode.addEventListener('input', function () {
+    if (inputCode.value) {
+      $.ajax({
+        type: "GET",
+        url: `http://localhost:3333/api/sale/show/${data.products[0].user_id}/${inputCode.value}`,
+        success: function (data) {
+          if (data.code) {
+            const code = data.code.discount
+            const number = data.code.number
+            totalPrice(code)
+          }
+          else {
+            totalPrice()
+          }
+        }
+      });
+    }
+  })
+}
 
 
 function deleteOrder() {
@@ -236,16 +262,16 @@ function pay() {
           item_id,
           name,
           price,
-          number,
+          number
         }
         container.push(block)
       }
       const price = document.querySelector(".total-price").innerText
-      console.log(price)
       const user_id = document.querySelector(".table-order-user-id").innerText
       const note = document.querySelector(".cart-footer #note").value
       const date = document.querySelector(".cart-footer #date").value
       const time = document.querySelector(".cart-footer #time").value
+      const code = document.querySelector(".cart-footer #code").value
       if (date && time) {
         $.ajax({
           type: "POST",
@@ -254,6 +280,7 @@ function pay() {
             user_id,
             note,
             price,
+            code,
             date,
             time,
             detail: container

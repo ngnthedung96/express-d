@@ -134,6 +134,22 @@ const getInfor = async (req, res, next) => {
         res.sendStatus(500) && next(e)
     }
 }
+
+const getAdmin = async (req, res, next) => {
+    try {
+        if (req.user) {
+            const admin = await adminDb.findById(req.user.id, 'id')
+            res.json({
+                status: true,
+                admin
+            })
+        }
+    } catch (e) {
+        console.log(e.message)
+        res.sendStatus(500) && next(e)
+    }
+}
+
 const updateInfor = async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -167,5 +183,6 @@ export const adminController = {
     home,
     getInfor,
     updateInfor,
-    logOut
+    logOut,
+    getAdmin
 }

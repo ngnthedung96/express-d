@@ -53,7 +53,6 @@ function haveAdminLogin(data) {
     type: "GET",
     url: `http://localhost:3333/api/admins/infor/${data.id}`,
     success: function (data) {
-      console.log(data)
       adminEmailText.innerText = data.admin.email
     }
 

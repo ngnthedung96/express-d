@@ -41,8 +41,23 @@ const findAllCode = async (value, field) => {
     return res;
 }
 
+const findCode = async (value, field) => {
+    let res = null;
+    try {
+        res = await Code.findOne({
+            where: { "code": value }
+        }
+        )
+    }
+    catch (err) {
+        logger.error(err)
+    }
+    return res;
+}
+
 
 export const codeDb = {
     createCode,
-    findAllCode
+    findAllCode,
+    findCode
 }

@@ -30,7 +30,6 @@ const findByPassword = async (value, field) => {
 const findById = async (value, field) => {
     let res = null;
     try {
-        console.log(value)
         res = await Users.findOne({
             where: {
                 'id': value,

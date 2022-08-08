@@ -14,6 +14,10 @@ const Pay = sequelize.define('Pay', {
         type: DataTypes.STRING,
         allowNull: false
     },
+    code: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     date: {
         type: DataTypes.STRING,
         allowNull: false
@@ -27,17 +31,18 @@ const Pay = sequelize.define('Pay', {
         allowNull: false
     }
 }, {});
-const createOrder = async (user_id, note, price, date, time, details) => {
+const createOrder = async (user_id, note, price, code, date, time, details) => {
     let res = null;
     try {
         res = await Pay.create({
             user_id: user_id,
             note: note,
             price: price,
+            code: code,
             date: date,
             time: time,
             detail: `[${details}]`
-        }, { fields: ['user_id', 'note', 'price', 'date', 'time', "detail"] })
+        }, { fields: ['user_id', 'note', 'price', 'code', 'date', 'time', "detail"] })
     } catch (err) {
         logger.error(err)
     }

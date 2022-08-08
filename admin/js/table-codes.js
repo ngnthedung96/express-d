@@ -7,7 +7,6 @@ $(document).ready(function () {
                 token: 'Bearer ' + localStorage.getItem("accessAdminToken"),
             },
             success: function (data) {
-                console.log(data)
                 renderProducts(data)
                 // haveAdminLogin(data)
             }

@@ -1,4 +1,4 @@
-import { payDb } from '../dbs/index.mjs'
+import { codeDb, payDb, saleDb } from '../dbs/index.mjs'
 import { cartDb } from '../dbs/index.mjs'
 import { itemsDb } from '../dbs/index.mjs'
 import { validationResult } from 'express-validator';
@@ -10,7 +10,7 @@ import { JSONB } from 'sequelize';
 
 
 const createOrder = async (req, res, next) => {
-  var { user_id, note, price, date, time, detail } = req.body;
+  var { user_id, note, price, code, date, time, detail } = req.body;
   var details = []
 
   for (var i of detail) {
@@ -20,7 +20,10 @@ const createOrder = async (req, res, next) => {
     if (!note) {
       note = " "
     }
-    const order = await payDb.createOrder(user_id, note, price, date, time, details)
+    else if (!code) {
+      code = " "
+    }
+    const order = await payDb.createOrder(user_id, note, price, code, date, time, details)
     for (var i of detail) {
       const item = await itemsDb.findItem(i.item_id)
       await item.update({
@@ -28,6 +31,7 @@ const createOrder = async (req, res, next) => {
       })
       await item.save()
     }
+    await saleDb.deleteSale(code)
     await cartDb.deleteAll()
     res.json({
       status: "success",

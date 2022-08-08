@@ -48,7 +48,6 @@ const showItem = async (req, res, next) => {
 
 const deleteItem = async (req, res, next) => {
   try {
-    console.log(req.params.id)
     const items = await itemsDb.deleteItem(req.params.id)
     res.json({
       status: true,
