@@ -10681,3 +10681,8 @@
 {"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = 12;","timestamp":"2022-08-08T11:05:43.776Z"}
 {"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Admins` AS `Admins` WHERE `Admins`.`id` = 6;","timestamp":"2022-08-08T11:05:43.815Z"}
 {"level":"info","message":"Executing (default): SELECT `id`, `code`, `user_id`, `createdAt`, `updatedAt` FROM `Sale` AS `Sale`;","timestamp":"2022-08-08T11:05:43.817Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2022-08-09T02:58:21.640Z"}
+{"level":"info","message":"Connection has been established successfully.","timestamp":"2022-08-09T02:58:21.710Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-09T02:59:27.109Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-09T03:00:23.008Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-09T03:00:54.996Z"}
