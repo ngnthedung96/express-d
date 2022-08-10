@@ -291,7 +291,7 @@ function pay() {
             successFunction(data)
             setTimeout(function () {
               location.reload()
-            }, 1000)
+            }, 1500)
           }
         });
       }
@@ -353,14 +353,10 @@ import toast from "./toast.js"
 function successFunction(data) {
   if (data.status) {
     toast({
-      title: 'Success',
+      title: `${data.status}`,
       message: `${data.msg}`,
-      type: 'success'
+      type: `${data.status}`
     })
-    setTimeout(function () {
-      window.close()
-      window.open('/client/index.html')
-    }, 1500)
     // setTimeout(function () {
     //     location.reload()
     // }, 2000)

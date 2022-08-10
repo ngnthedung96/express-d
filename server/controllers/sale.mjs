@@ -19,27 +19,10 @@ const showSales = async (req, res, next) => {
     }
 }
 
-const showSalesOfUser = async (req, res, next) => {
-    try {
-        const sale = await saleDb.findSalesOfUser(Number(req.params.id), req.params.code)
-        var code = null
-        if (sale) {
-            code = await codeDb.findCode(sale.dataValues.code)
-        }
-        res.json({
-            status: true,
-            code
-        })
-    }
-    catch (err) {
-        console.log(err)
-    }
-}
-
-
-
 const createSale = async (req, res, next) => {
+    console.log(req.body)
     var { code, user_id } = req.body;
+
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         res.status(422).json({ errors: errors.array() });
@@ -48,12 +31,6 @@ const createSale = async (req, res, next) => {
     try {
         if (req.user) {
             var sale = await saleDb.createSale(code, user_id);
-            var code = await codeDb.findCode(code);
-            var numberOfCode = Number(code.dataValues.number) - 1
-            await code.update({
-                number: numberOfCode,
-            })
-            await code.save()
             res.status(200).json({
                 status: true,
                 msg: 'Thêm mã thành công',
@@ -71,9 +48,40 @@ const createSale = async (req, res, next) => {
 }
 
 
+const showSaleOfUser = async (req, res, next) => {
+    try {
+        const sale = await saleDb.findSaleOfUser(Number(req.params.id), req.params.code)
+        var code = null
+        if (sale) {
+            code = await codeDb.findCode(sale.dataValues.code)
+        }
+        res.json({
+            status: true,
+            code
+        })
+    }
+    catch (err) {
+        console.log(err)
+    }
+}
+
+
+const showSalesOfUser = async (req, res, next) => {
+    try {
+        const sale = await saleDb.findSaleOfUser(Number(req.params.id))
+        res.json({
+            status: true,
+            sale
+        })
+    }
+    catch (err) {
+        console.log(err)
+    }
+}
 
 export const saleController = {
     showSales,
     createSale,
+    showSaleOfUser,
     showSalesOfUser
 }

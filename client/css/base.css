@@ -566,43 +566,43 @@ footer {
   }
 }
 
-.toast--success {
+.toast--Success {
   border-color: #47d864;
 }
 
-.toast--success .toast__icon {
+.toast--Success .toast__icon {
   color: #47d864;
 }
 
-.toast--success .toast__icon i {
+.toast--Success .toast__icon i {
   color: #47d864;
 }
 
-.toast--info {
+.toast--Info {
   border-color: #2f86eb;
 }
 
-.toast--info .toast__icon {
+.toast--Info .toast__icon {
   color: #2f86eb;
 }
 
-.toast--warning {
+.toast--Warning {
   border-color: #ffc021;
 }
 
-.toast--warning .toast__icon {
+.toast--Warning .toast__icon {
   color: #ffc021;
 }
 
-.toast--error {
+.toast--Error {
   border-color: #ff623d;
 }
 
-.toast--error .toast__icon {
+.toast--Error .toast__icon {
   color: #ff623d !important;
 }
 
-.toast--error .toast__icon i {
+.toast--Error .toast__icon i {
   color: #ff623d !important;
 
 }

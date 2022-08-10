@@ -140,10 +140,12 @@ router.get('/admins/getuser/:id',
 )
 
 //-----------------sale----------------------
-router.get('/sale/show/:id/:code',
+router.get('/sale/show/:id',
     saleController.showSalesOfUser
 )
-
+router.get('/sale/show/:id/:code',
+    saleController.showSaleOfUser
+)
 router.get('/sale/show/',
     saleController.showSales
 )
