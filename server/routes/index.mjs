@@ -82,6 +82,11 @@ router.get('/pay/show',
     payController.showOrders
 )
 
+router.get('/pay/showall',
+    tokenValidate.verifyToken,
+    payController.showAllOrders
+)
+
 //----------------------------------Admin------------------------------------------------
 router.post('/admins/register',
     adminValidate('register'), // run valdiate

@@ -86,14 +86,9 @@
                 </div>
                 <div class="header-right">
                     <ul class="clearfix">
-                        <li class="header-right login-register">
-                            <span>User</span>
-                            <a href="./page-login.html">Login</span>
-                                <a href="./page-register.html">Register</span>
-                        </li>
                         <li class="icons dropdown hide">
                             <div class="user-email c-pointer position-relative" data-toggle="dropdown">
-                                <span>Ngnthedung</span>
+                                <span></span>
                             </div>
                             <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                                 <div class="dropdown-content-body">
@@ -103,7 +98,28 @@
                                                 <span>Profile</span></a>
                                         </li>
                                         <hr class="my-2">
-                                        <li><a href="page-login.html"><i class="icon-key"></i> <span>Logout</span></a>
+                                        <li><a href="#" class="log-out__btn"><i class="icon-key"></i>
+                                                <span>Logout</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="icons dropdown default">
+                            <div class="user-email c-pointer position-relative" data-toggle="dropdown">
+                                <span>User</span>
+                            </div>
+                            <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                                <div class="dropdown-content-body">
+                                    <ul>
+                                        <li>
+                                            <a href="./page-register.html"><i class="icon-user"></i>
+                                                <span> Register</span></a>
+                                        </li>
+                                        <hr class="my-2">
+                                        <li>
+                                            <a href="./page-login.html"><i class="icon-user"></i>
+                                                <span>Login</span></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -150,8 +166,8 @@
                         <ul aria-expanded="false">
                             <li><a href="./table-products.html" aria-expanded="false">Sản phẩm</a></li>
                             <li><a href="./table-add-product.html" aria-expanded="false">Thêm sản phẩm</a></li>
-                            <li><a href="./table-add-product.html" aria-expanded="false">Sửa sản phẩm</a></li>
-                            <li><a href="./table-add-product.html" aria-expanded="false">Xóa sản phẩm</a></li>
+                            <li><a href="./table-edit-product.html" aria-expanded="false">Sửa sản phẩm</a></li>
+                            <li><a href="./table-delete-product.html" aria-expanded="false">Xóa sản phẩm</a></li>
                         </ul>
                     </li>
                     <li>
@@ -160,6 +176,16 @@
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="./table-orders.html" aria-expanded="false">Đơn hàng</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-menu menu-icon"></i><span class="nav-text">Sales</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="./table-codes.html" aria-expanded="false">Mã giảm giá</a></li>
+                            <li><a href="./table-add-code.html" aria-expanded="false">Thêm mã giảm giá</a></li>
+                           
                         </ul>
                     </li>
                 </ul>
@@ -178,31 +204,21 @@
                 <div class="row">
                     <div class="col-lg-3 col-sm-6">
                         <div class="card gradient-1">
-                            <div class="card-body">
-                                <h3 class="card-title text-white">Products Sold</h3>
-                                <div class="d-inline-block">
-                                    <h2 class="text-white">4565</h2>
-                                    <p class="text-white mb-0">Jan - March 2019</p>
-                                </div>
-                                <span class="float-right display-5 opacity-5"><i class="fa fa-shopping-cart"></i></span>
+                            <div class="card-body" id="products-sold">
+                                
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <div class="card gradient-2">
-                            <div class="card-body">
-                                <h3 class="card-title text-white">Net Profit</h3>
-                                <div class="d-inline-block">
-                                    <h2 class="text-white">$ 8541</h2>
-                                    <p class="text-white mb-0">Jan - March 2019</p>
-                                </div>
-                                <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
+                            <div class="card-body" id="net-profit">
+                                
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <div class="card gradient-3">
-                            <div class="card-body">
+                            <div class="card-body new-customers">
                                 <h3 class="card-title text-white">New Customers</h3>
                                 <div class="d-inline-block">
                                     <h2 class="text-white">4565</h2>
