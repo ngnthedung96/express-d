@@ -1,9 +1,9 @@
-(function($) {
+(function ($) {
     "use strict"
 
 
     //todo list
-    $(".tdl-new").on('keypress', function(e) {
+    $(".tdl-new").on('keypress', function (e) {
 
         var code = (e.keyCode ? e.keyCode : e.which);
 
@@ -33,11 +33,11 @@
 
 
 
-    $(".tdl-content a").on("click", function() {
+    $(".tdl-content a").on("click", function () {
 
         var _li = $(this).parent().parent("li");
 
-        _li.addClass("remove").stop().delay(100).slideUp("fast", function() {
+        _li.addClass("remove").stop().delay(100).slideUp("fast", function () {
 
             _li.remove();
 
@@ -51,11 +51,11 @@
 
     // for dynamically created a tags
 
-    $(".tdl-content").on('click', "a", function() {
+    $(".tdl-content").on('click', "a", function () {
 
         var _li = $(this).parent().parent("li");
 
-        _li.addClass("remove").stop().delay(100).slideUp("fast", function() {
+        _li.addClass("remove").stop().delay(100).slideUp("fast", function () {
 
             _li.remove();
 
@@ -75,41 +75,41 @@
 })(jQuery);
 
 
-(function($) {
+(function ($) {
     "use strict"
 
-    var i = new Datamap( {
-        scope: "world", 
-        element: document.getElementById("world-map"), 
-        responsive: !0, 
+    var i = new Datamap({
+        scope: "world",
+        element: document.getElementById("world-map"),
+        responsive: !0,
         geographyConfig: {
-            popupOnHover: !1, 
-            highlightOnHover: !1, 
-            borderColor: "transparent", 
-            borderWidth: 1, 
-            highlightBorderWidth: 3, 
-            highlightFillColor: "rgba(0,123,255,0.5)", 
-            highlightBorderColor: "transparent", 
+            popupOnHover: !1,
+            highlightOnHover: !1,
+            borderColor: "transparent",
+            borderWidth: 1,
+            highlightBorderWidth: 3,
+            highlightFillColor: "rgba(0,123,255,0.5)",
+            highlightBorderColor: "transparent",
             borderWidth: 1
-        }, 
+        },
         bubblesConfig: {
             popupTemplate: function (e, i) {
                 return '<div class="datamap-sales-hover-tooltip">' + i.country + '<span class="ml-2"></span>' + i.sold + "</div>"
-            }, 
-            borderWidth: 0, 
-            highlightBorderWidth: 3, 
-            highlightFillColor: "rgba(0,123,255,0.5)", 
-            highlightBorderColor: "transparent", 
+            },
+            borderWidth: 0,
+            highlightBorderWidth: 3,
+            highlightFillColor: "rgba(0,123,255,0.5)",
+            highlightBorderColor: "transparent",
             fillOpacity: .75
-        }, 
+        },
         fills: {
-            Visited: "#777", 
-            neato: "#777", 
-            white: "#777", 
+            Visited: "#777",
+            neato: "#777",
+            white: "#777",
             defaultFill: "#EBEFF2"
         }
     });
-    
+
     i.bubbles([{
         centered: "USA", fillKey: "white", radius: 5, sold: "$500", country: "United States"
     }, {
@@ -126,66 +126,66 @@
         centered: "BGD", fillKey: "Visited", radius: 5, sold: "$1500", country: "Bangladesh"
     }
     ]),
-    window.addEventListener("resize", function (e) {
-        i.resize()
+        window.addEventListener("resize", function (e) {
+            i.resize()
+        });
+
+
+
+
+
+})(jQuery);
+
+(function ($) {
+    "use strict"
+
+
+    // LINE CHART
+    // Morris bar chart
+    Morris.Bar({
+        element: 'morris-bar-chart',
+        data: [{
+            y: '2016',
+            a: 100,
+            b: 90,
+        }, {
+            y: '2017',
+            a: 75,
+            b: 65,
+        }, {
+            y: '2018',
+            a: 50,
+            b: 40,
+        }, {
+            y: '2019',
+            a: 75,
+            b: 65,
+        }, {
+            y: '2020',
+            a: 50,
+            b: 40,
+        }, {
+            y: '2021',
+            a: 75,
+            b: 65,
+        }, {
+            y: '2022',
+            a: 100,
+            b: 90,
+        }],
+        xkey: 'y',
+        ykeys: ['a', 'b', 'c'],
+        labels: ['A', 'B', 'C'],
+        barColors: ['#FC6C8E', '#7571f9'],
+        hideHover: 'auto',
+        gridLineColor: 'transparent',
+        resize: true
     });
 
 
 
 
 
-})(jQuery);
-
-(function($) {
-    "use strict"
-
-
-     // LINE CHART
-      // Morris bar chart
- Morris.Bar({
-    element: 'morris-bar-chart',
-    data: [{
-        y: '2016',
-        a: 100,
-        b: 90,
-    }, {
-        y: '2017',
-        a: 75,
-        b: 65,
-    }, {
-        y: '2018',
-        a: 50,
-        b: 40,
-    }, {
-        y: '2019',
-        a: 75,
-        b: 65,
-    }, {
-        y: '2020',
-        a: 50,
-        b: 40,
-    }, {
-        y: '2021',
-        a: 75,
-        b: 65,
-    }, {
-        y: '2022',
-        a: 100,
-        b: 90,
-    }],
-    xkey: 'y',
-    ykeys: ['a', 'b', 'c'],
-    labels: ['A', 'B', 'C'],
-    barColors: ['#FC6C8E', '#7571f9'],
-    hideHover: 'auto',
-    gridLineColor: 'transparent',
-    resize: true
-});
-
-
-
-
-
 
 
 
@@ -193,7 +193,7 @@
 })(jQuery);
 
 
-(function($) {
+(function ($) {
     "use strict"
 
 
@@ -218,101 +218,208 @@
 })(jQuery);
 
 
-
-(function($) {
-    "use strict"
-
-    let ctx = document.getElementById("chart_widget_2");
-    ctx.height = 280;
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ["2010", "2011", "2012", "2013", "2014", "2015", "2016"],
-            type: 'line',
-            defaultFontFamily: 'Montserrat',
-            datasets: [{
-                data: [0, 15, 57, 12, 85, 10, 50],
-                label: "iPhone X",
-                backgroundColor: '#847DFA',
-                borderColor: '#847DFA',
-                borderWidth: 0.5,
-                pointStyle: 'circle',
-                pointRadius: 5,
-                pointBorderColor: 'transparent',
-                pointBackgroundColor: '#847DFA',
-            }, {
-                label: "Pixel 2",
-                data: [0, 30, 5, 53, 15, 55, 0],
-                backgroundColor: '#F196B0',
-                borderColor: '#F196B0',
-                borderWidth: 0.5,
-                pointStyle: 'circle',
-                pointRadius: 5,
-                pointBorderColor: 'transparent',
-                pointBackgroundColor: '#F196B0',
-            }]
-        },
-        options: {
-            responsive: !0,
-            maintainAspectRatio: false,
-            tooltips: {
-                mode: 'index',
-                titleFontSize: 12,
-                titleFontColor: '#000',
-                bodyFontColor: '#000',
-                backgroundColor: '#fff',
-                titleFontFamily: 'Montserrat',
-                bodyFontFamily: 'Montserrat',
-                cornerRadius: 3,
-                intersect: false,
-            },
-            legend: {
-                display: false,
-                position: 'top',
-                labels: {
-                    usePointStyle: true,
-                    fontFamily: 'Montserrat',
-                },
-
-
-            },
-            scales: {
-                xAxes: [{
-                    display: false,
-                    gridLines: {
-                        display: false,
-                        drawBorder: false
-                    },
-                    scaleLabel: {
-                        display: false,
-                        labelString: 'Month'
-                    }
-                }],
-                yAxes: [{
-                    display: false,
-                    gridLines: {
-                        display: false,
-                        drawBorder: false
-                    },
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Value'
-                    }
-                }]
-            },
-            title: {
-                display: false,
+$.ajax({
+    type: "GET",
+    url: "http://localhost:3333/api/pay/showall",
+    headers: {
+        token: 'Bearer ' + localStorage.getItem("accessAdminToken"),
+    },
+    success: function (data) {
+        renderChartMax(data)
+    }
+});
+function renderChartMax(data) {
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:3333/api/item/show",
+        success: function (response) {
+            const date = new Date()
+            const month = date.getMonth() + 1
+            const idItemContainer = []
+            const numberContainer = []
+            var countNumber = 0
+            for (item of response.items) {
+                idItemContainer.push(item.id)
+                numberContainer.push([])
             }
+            for (order of data.orders) {
+                const time = order.createdAt.split('-')
+                const [checkYear, checkMonth] = time
+                if (month === Number(checkMonth)) {
+                    for (product of JSON.parse(order.detail)) {
+                        countNumber += Number(product.number)
+                        for (var i = 0; i < idItemContainer.length; i++) {
+                            if (idItemContainer[i] === Number(product.item_id)) {
+                                numberContainer[i].push(Number(product.number))
+                            }
+                        }
+                    }
+                }
+            }
+            const duplicateList = numberContainer.slice()
+            const max = getMaxAndSum(numberContainer)
+            var idMax = 0
+            var idMaxInContainer1 = 0
+            var newNumberContainer = []
+            for (var i = 0; i < numberContainer.length; i++) {
+                if (numberContainer[i] === max) {
+                    idMaxInContainer1 = i
+                    idMax = idItemContainer[i]
+                    newNumberContainer = numberContainer.slice(i + 1, numberContainer.length)
+                }
+            }
+            var idMax2 = 0
+            var idMaxInContainer2 = 0
+            const max2 = getMaxAndSum(newNumberContainer)
+
+            for (var i = 0; i < numberContainer.length; i++) {
+                if (numberContainer[i] === max2) {
+                    idMaxInContainer2 = i
+                    idMax2 = idItemContainer[i]
+                }
+            }
+            const max1Div = document.querySelector(".best-seller .max-1")
+            const max2Div = document.querySelector(".best-seller .max-2")
+            handleListInChart(duplicateList, idMaxInContainer1, countNumber)
+            handleListInChart(duplicateList, idMaxInContainer2, countNumber)
+            for (item of response.items) {
+                if (item.id === idMax) {
+                    max1Div.innerText = item.name
+                }
+                else if (item.id === idMax2) {
+                    max2Div.innerText = item.name
+                }
+            }
+
+            (function ($) {
+                "use strict"
+                let ctx = document.getElementById("chart_widget_2");
+                ctx.height = 280;
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ["2010", "2011", "2012", "2013", "2014", "2015", "2016"],
+                        type: 'line',
+                        defaultFontFamily: 'Montserrat',
+                        datasets: [{
+                            data: duplicateList[idMaxInContainer1],
+                            label: max1Div.innerText,
+                            backgroundColor: '#847DFA',
+                            borderColor: '#847DFA',
+                            borderWidth: 0.5,
+                            pointStyle: 'circle',
+                            pointRadius: 5,
+                            pointBorderColor: 'transparent',
+                            pointBackgroundColor: '#847DFA',
+                        }, {
+                            label: max2Div.innerText,
+                            data: duplicateList[idMaxInContainer2],
+                            backgroundColor: '#F196B0',
+                            borderColor: '#F196B0',
+                            borderWidth: 0.5,
+                            pointStyle: 'circle',
+                            pointRadius: 5,
+                            pointBorderColor: 'transparent',
+                            pointBackgroundColor: '#F196B0',
+                        }]
+                    },
+                    options: {
+                        responsive: !0,
+                        maintainAspectRatio: false,
+                        tooltips: {
+                            mode: 'index',
+                            titleFontSize: 12,
+                            titleFontColor: '#000',
+                            bodyFontColor: '#000',
+                            backgroundColor: '#fff',
+                            titleFontFamily: 'Montserrat',
+                            bodyFontFamily: 'Montserrat',
+                            cornerRadius: 3,
+                            intersect: false,
+                        },
+                        legend: {
+                            display: false,
+                            position: 'top',
+                            labels: {
+                                usePointStyle: true,
+                                fontFamily: 'Montserrat',
+                            },
+
+
+                        },
+                        scales: {
+                            xAxes: [{
+                                display: false,
+                                gridLines: {
+                                    display: false,
+                                    drawBorder: false
+                                },
+                                scaleLabel: {
+                                    display: false,
+                                    labelString: 'Month'
+                                }
+                            }],
+                            yAxes: [{
+                                display: false,
+                                gridLines: {
+                                    display: false,
+                                    drawBorder: false
+                                },
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Value'
+                                }
+                            }]
+                        },
+                        title: {
+                            display: false,
+                        }
+                    }
+                });
+
+
+
+
+
+            })(jQuery);
         }
     });
+}
+
+function getMaxAndSum(list) {
+    var max = 0
+    for (var i = 0; i < list.length; i++) {
+        sum = 0
+        if (Array.isArray(list[i])) {
+            for (number of list[i]) {
+                sum += number
+            }
+            if (sum > max) {
+                max = sum
+            }
+            list[i] = sum
+        }
+        else {
+            if (max < list[i]) {
+                max = list[i]
+            }
+        }
+    }
+    return max
+}
+function handleListInChart(list, index, total) {
+    var data = []
+    list[index].unshift(0)
+    for (number of list[index]) {
+        number = number / total * 100
+        data.push(Math.round(number))
+    }
+    list[index] = data
+    console.log(list[index])
+}
 
 
-    
-
-
-})(jQuery);
-
-(function($) {
+(function ($) {
     "use strict"
 
     let ctx = document.getElementById("chart_widget_3");
@@ -390,7 +497,7 @@
     });
 
 
-    
+
 
 
 })(jQuery);
@@ -400,7 +507,7 @@
 /*******************
 Chart Chartist
 *******************/
-(function($) {
+(function ($) {
     "use strict"
 
 
@@ -462,3 +569,6 @@ Pignose Calender
     });
 
 })(jQuery);
+
+
+

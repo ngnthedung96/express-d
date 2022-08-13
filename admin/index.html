@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="./plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
     <!-- Custom Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
 
 </head>
 
@@ -185,7 +186,7 @@
                         <ul aria-expanded="false">
                             <li><a href="./table-codes.html" aria-expanded="false">Mã giảm giá</a></li>
                             <li><a href="./table-add-code.html" aria-expanded="false">Thêm mã giảm giá</a></li>
-                           
+
                         </ul>
                     </li>
                 </ul>
@@ -205,26 +206,21 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="card gradient-1">
                             <div class="card-body" id="products-sold">
-                                
+
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <div class="card gradient-2">
                             <div class="card-body" id="net-profit">
-                                
+
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <div class="card gradient-3">
-                            <div class="card-body new-customers">
-                                <h3 class="card-title text-white">New Customers</h3>
-                                <div class="d-inline-block">
-                                    <h2 class="text-white">4565</h2>
-                                    <p class="text-white mb-0">Jan - March 2019</p>
-                                </div>
-                                <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
+                            <div class="card-body" id="new-customers">
+
                             </div>
                         </div>
                     </div>
@@ -248,36 +244,27 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body pb-0 d-flex justify-content-between">
-                                        <div>
+                                        <div class="product-sales">
                                             <h4 class="mb-1">Product Sales</h4>
                                             <p>Total Earnings of the Month</p>
-                                            <h3 class="m-0">$ 12,555</h3>
-                                        </div>
-                                        <div>
-                                            <ul>
-                                                <li class="d-inline-block mr-3"><a class="text-dark" href="#">Day</a>
-                                                </li>
-                                                <li class="d-inline-block mr-3"><a class="text-dark" href="#">Week</a>
-                                                </li>
-                                                <li class="d-inline-block"><a class="text-dark" href="#">Month</a></li>
-                                            </ul>
+                                            <h3 class="m-0 total-earning-month"></h3>
                                         </div>
                                     </div>
                                     <div class="chart-wrapper">
                                         <canvas id="chart_widget_2"></canvas>
                                     </div>
                                     <div class="card-body">
-                                        <div class="d-flex justify-content-between">
-                                            <div class="w-100 mr-2">
-                                                <h6>Pixel 2</h6>
+                                        <div class="d-flex justify-content-between best-seller">
+                                            <div class="w-100 mr-2 product-max-1">
+                                                <h6 class="max-1"></h6>
                                                 <div class="progress" style="height: 6px">
-                                                    <div class="progress-bar bg-danger" style="width: 40%"></div>
+                                                    <div class="progress-bar bg-danger"></div>
                                                 </div>
                                             </div>
-                                            <div class="ml-2 w-100">
-                                                <h6>iPhone X</h6>
+                                            <div class="ml-2 w-100 product-max-2">
+                                                <h6 class="max-2"></h6>
                                                 <div class="progress" style="height: 6px">
-                                                    <div class="progress-bar bg-primary" style="width: 80%"></div>
+                                                    <div class="progress-bar bg-primary"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -420,149 +407,6 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="active-member">
-                                    <div class="table-responsive">
-                                        <table class="table table-xs mb-0">
-                                            <thead>
-                                                <tr>
-                                                    <th>Customers</th>
-                                                    <th>Product</th>
-                                                    <th>Country</th>
-                                                    <th>Status</th>
-                                                    <th>Payment Method</th>
-                                                    <th>Activity</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td><img src="./images/avatar/1.jpg" class=" rounded-circle mr-3"
-                                                            alt="">Sarah Smith</td>
-                                                    <td>iPhone X</td>
-                                                    <td>
-                                                        <span>United States</span>
-                                                    </td>
-                                                    <td>
-                                                        <div>
-                                                            <div class="progress" style="height: 6px">
-                                                                <div class="progress-bar bg-success" style="width: 50%">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td><i class="fa fa-circle-o text-success  mr-2"></i> Paid</td>
-                                                    <td>
-                                                        <span>Last Login</span>
-                                                        <span class="m-0 pl-3">10 sec ago</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><img src="./images/avatar/2.jpg" class=" rounded-circle mr-3"
-                                                            alt="">Walter R.</td>
-                                                    <td>Pixel 2</td>
-                                                    <td><span>Canada</span></td>
-                                                    <td>
-                                                        <div>
-                                                            <div class="progress" style="height: 6px">
-                                                                <div class="progress-bar bg-success" style="width: 50%">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td><i class="fa fa-circle-o text-success  mr-2"></i> Paid</td>
-                                                    <td>
-                                                        <span>Last Login</span>
-                                                        <span class="m-0 pl-3">50 sec ago</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><img src="./images/avatar/3.jpg" class=" rounded-circle mr-3"
-                                                            alt="">Andrew D.</td>
-                                                    <td>OnePlus</td>
-                                                    <td><span>Germany</span></td>
-                                                    <td>
-                                                        <div>
-                                                            <div class="progress" style="height: 6px">
-                                                                <div class="progress-bar bg-warning" style="width: 50%">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td><i class="fa fa-circle-o text-warning  mr-2"></i> Pending</td>
-                                                    <td>
-                                                        <span>Last Login</span>
-                                                        <span class="m-0 pl-3">10 sec ago</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><img src="./images/avatar/6.jpg" class=" rounded-circle mr-3"
-                                                            alt=""> Megan S.</td>
-                                                    <td>Galaxy</td>
-                                                    <td><span>Japan</span></td>
-                                                    <td>
-                                                        <div>
-                                                            <div class="progress" style="height: 6px">
-                                                                <div class="progress-bar bg-success" style="width: 50%">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td><i class="fa fa-circle-o text-success  mr-2"></i> Paid</td>
-                                                    <td>
-                                                        <span>Last Login</span>
-                                                        <span class="m-0 pl-3">10 sec ago</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><img src="./images/avatar/4.jpg" class=" rounded-circle mr-3"
-                                                            alt=""> Doris R.</td>
-                                                    <td>Moto Z2</td>
-                                                    <td><span>England</span></td>
-                                                    <td>
-                                                        <div>
-                                                            <div class="progress" style="height: 6px">
-                                                                <div class="progress-bar bg-success" style="width: 50%">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td><i class="fa fa-circle-o text-success  mr-2"></i> Paid</td>
-                                                    <td>
-                                                        <span>Last Login</span>
-                                                        <span class="m-0 pl-3">10 sec ago</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><img src="./images/avatar/5.jpg" class=" rounded-circle mr-3"
-                                                            alt="">Elizabeth W.</td>
-                                                    <td>Notebook Asus</td>
-                                                    <td><span>China</span></td>
-                                                    <td>
-                                                        <div>
-                                                            <div class="progress" style="height: 6px">
-                                                                <div class="progress-bar bg-warning" style="width: 50%">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td><i class="fa fa-circle-o text-warning  mr-2"></i> Pending</td>
-                                                    <td>
-                                                        <span>Last Login</span>
-                                                        <span class="m-0 pl-3">10 sec ago</span>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
                     <div class="col-xl-3 col-lg-6 col-sm-6 col-xxl-6">
 
                         <div class="card">
@@ -627,27 +471,7 @@
                                             <p class="mb-0">I shared this on my fb wall a few months back,</p>
                                         </div><span class="text-muted ">April 24, 2018</span>
                                     </div>
-                                    <div class="media border-bottom-1 pt-3 pb-3">
-                                        <img width="35" src="./images/avatar/2.jpg" class="mr-3 rounded-circle">
-                                        <div class="media-body">
-                                            <h5>Join new Manager</h5>
-                                            <p class="mb-0">I shared this on my fb wall a few months back,</p>
-                                        </div><span class="text-muted ">April 24, 2018</span>
-                                    </div>
-                                    <div class="media border-bottom-1 pt-3 pb-3">
-                                        <img width="35" src="./images/avatar/2.jpg" class="mr-3 rounded-circle">
-                                        <div class="media-body">
-                                            <h5>Branch open 5 min Late</h5>
-                                            <p class="mb-0">I shared this on my fb wall a few months back,</p>
-                                        </div><span class="text-muted ">April 24, 2018</span>
-                                    </div>
-                                    <div class="media border-bottom-1 pt-3 pb-3">
-                                        <img width="35" src="./images/avatar/2.jpg" class="mr-3 rounded-circle">
-                                        <div class="media-body">
-                                            <h5>New support ticket received</h5>
-                                            <p class="mb-0">I shared this on my fb wall a few months back,</p>
-                                        </div><span class="text-muted ">April 24, 2018</span>
-                                    </div>
+
                                     <div class="media pt-3 pb-3">
                                         <img width="35" src="./images/avatar/3.jpg" class="mr-3 rounded-circle">
                                         <div class="media-body">
@@ -671,92 +495,7 @@
 
 
 
-                <div class="row">
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card">
-                            <div class="social-graph-wrapper widget-facebook">
-                                <span class="s-icon"><i class="fa fa-facebook"></i></span>
-                            </div>
-                            <div class="row">
-                                <div class="col-6 border-right">
-                                    <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                                        <h4 class="m-1">89k</h4>
-                                        <p class="m-0">Friends</p>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                                        <h4 class="m-1">119k</h4>
-                                        <p class="m-0">Followers</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card">
-                            <div class="social-graph-wrapper widget-linkedin">
-                                <span class="s-icon"><i class="fa fa-linkedin"></i></span>
-                            </div>
-                            <div class="row">
-                                <div class="col-6 border-right">
-                                    <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                                        <h4 class="m-1">89k</h4>
-                                        <p class="m-0">Friends</p>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                                        <h4 class="m-1">119k</h4>
-                                        <p class="m-0">Followers</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card">
-                            <div class="social-graph-wrapper widget-googleplus">
-                                <span class="s-icon"><i class="fa fa-google-plus"></i></span>
-                            </div>
-                            <div class="row">
-                                <div class="col-6 border-right">
-                                    <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                                        <h4 class="m-1">89k</h4>
-                                        <p class="m-0">Friends</p>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                                        <h4 class="m-1">119k</h4>
-                                        <p class="m-0">Followers</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card">
-                            <div class="social-graph-wrapper widget-twitter">
-                                <span class="s-icon"><i class="fa fa-twitter"></i></span>
-                            </div>
-                            <div class="row">
-                                <div class="col-6 border-right">
-                                    <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                                        <h4 class="m-1">89k</h4>
-                                        <p class="m-0">Friends</p>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                                        <h4 class="m-1">119k</h4>
-                                        <p class="m-0">Followers</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
             <!-- #/ container -->
         </div>
