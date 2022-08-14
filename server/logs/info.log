@@ -11609,3 +11609,239 @@
 {"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-13T09:58:46.546Z"}
 {"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-13T09:58:46.612Z"}
 {"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-13T09:58:46.692Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2022-08-14T18:39:29.971Z"}
+{"level":"info","message":"Connection has been established successfully.","timestamp":"2022-08-14T18:39:30.045Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:39:47.039Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2022-08-14T18:41:21.011Z"}
+{"level":"info","message":"Connection has been established successfully.","timestamp":"2022-08-14T18:41:21.087Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2022-08-14T18:41:34.673Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:41:34.694Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items` WHERE `Items`.`id` = '4';","timestamp":"2022-08-14T18:41:34.698Z"}
+{"level":"info","message":"Connection has been established successfully.","timestamp":"2022-08-14T18:41:34.741Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items` WHERE `Items`.`id` = '3';","timestamp":"2022-08-14T18:41:44.759Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items` WHERE `Items`.`id` = '4';","timestamp":"2022-08-14T18:41:46.892Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `user_id`, `note`, `price`, `code`, `date`, `time`, `checkCode`, `detail`, `createdAt`, `updatedAt` FROM `Pay` AS `Pay`;","timestamp":"2022-08-14T18:42:15.736Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Admins` AS `Admins` WHERE `Admins`.`id` = 6;","timestamp":"2022-08-14T18:42:15.822Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users`;","timestamp":"2022-08-14T18:42:15.873Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `user_id`, `note`, `price`, `code`, `date`, `time`, `checkCode`, `detail`, `createdAt`, `updatedAt` FROM `Pay` AS `Pay`;","timestamp":"2022-08-14T18:42:15.897Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:42:15.931Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:42:16.054Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `code`, `discount`, `number`, `createdAt`, `updatedAt` FROM `Code` AS `Code`;","timestamp":"2022-08-14T18:42:28.424Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `code`, `user_id`, `createdAt`, `updatedAt` FROM `Sale` AS `Sale`;","timestamp":"2022-08-14T18:42:29.964Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Admins` AS `Admins` WHERE `Admins`.`id` = 6;","timestamp":"2022-08-14T18:42:30.032Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Admins` AS `Admins` WHERE `Admins`.`email` = 'thedungtb@gmail.com' LIMIT 1;","timestamp":"2022-08-14T18:42:55.911Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Admins` AS `Admins` WHERE `Admins`.`email` = 'thedungtb@gmail.com' LIMIT 1;","timestamp":"2022-08-14T18:42:55.994Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `user_id`, `note`, `price`, `code`, `date`, `time`, `checkCode`, `detail`, `createdAt`, `updatedAt` FROM `Pay` AS `Pay`;","timestamp":"2022-08-14T18:42:58.303Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `user_id`, `note`, `price`, `code`, `date`, `time`, `checkCode`, `detail`, `createdAt`, `updatedAt` FROM `Pay` AS `Pay`;","timestamp":"2022-08-14T18:42:58.398Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Admins` AS `Admins` WHERE `Admins`.`id` = 6;","timestamp":"2022-08-14T18:42:58.472Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users`;","timestamp":"2022-08-14T18:42:58.548Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:42:58.609Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:42:58.678Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users`;","timestamp":"2022-08-14T18:43:54.874Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Admins` AS `Admins` WHERE `Admins`.`id` = '6';","timestamp":"2022-08-14T18:43:54.992Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:43:55.898Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users`;","timestamp":"2022-08-14T18:44:12.780Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:44:13.712Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users`;","timestamp":"2022-08-14T18:44:19.274Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users`;","timestamp":"2022-08-14T18:45:10.475Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:45:10.539Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users`;","timestamp":"2022-08-14T18:45:41.358Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Admins` AS `Admins` WHERE `Admins`.`id` = '6';","timestamp":"2022-08-14T18:45:41.520Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:45:42.264Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users`;","timestamp":"2022-08-14T18:45:51.085Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Admins` AS `Admins` WHERE `Admins`.`id` = '6';","timestamp":"2022-08-14T18:45:51.185Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `code`, `discount`, `number`, `createdAt`, `updatedAt` FROM `Code` AS `Code`;","timestamp":"2022-08-14T18:46:08.697Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `code`, `user_id`, `createdAt`, `updatedAt` FROM `Sale` AS `Sale`;","timestamp":"2022-08-14T18:46:12.268Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Admins` AS `Admins` WHERE `Admins`.`id` = 6;","timestamp":"2022-08-14T18:46:12.337Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `code`, `discount`, `number`, `createdAt`, `updatedAt` FROM `Code` AS `Code`;","timestamp":"2022-08-14T18:46:14.100Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:47:32.895Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:47:33.769Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:47:35.653Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:47:36.771Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Admins` AS `Admins` WHERE `Admins`.`id` = '6';","timestamp":"2022-08-14T18:47:36.873Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:47:37.539Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:47:38.621Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Admins` AS `Admins` WHERE `Admins`.`id` = '6';","timestamp":"2022-08-14T18:47:38.725Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:47:40.491Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Admins` AS `Admins` WHERE `Admins`.`id` = '6';","timestamp":"2022-08-14T18:47:40.577Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:47:41.711Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Admins` AS `Admins` WHERE `Admins`.`id` = '6';","timestamp":"2022-08-14T18:47:41.797Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:47:43.657Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Admins` AS `Admins` WHERE `Admins`.`id` = '6';","timestamp":"2022-08-14T18:47:43.755Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:47:45.947Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Admins` AS `Admins` WHERE `Admins`.`id` = '6';","timestamp":"2022-08-14T18:47:46.033Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `user_id`, `note`, `price`, `code`, `date`, `time`, `checkCode`, `detail`, `createdAt`, `updatedAt` FROM `Pay` AS `Pay`;","timestamp":"2022-08-14T18:47:50.478Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:47:50.561Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:47:50.630Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:47:50.699Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:47:50.772Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:47:50.838Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:47:50.904Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:47:50.975Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:47:51.039Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:47:51.115Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:47:51.198Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:47:51.277Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:47:51.358Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:47:51.438Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `user_id`, `note`, `price`, `code`, `date`, `time`, `checkCode`, `detail`, `createdAt`, `updatedAt` FROM `Pay` AS `Pay`;","timestamp":"2022-08-14T18:48:20.373Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:48:20.442Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:20.455Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:20.530Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:20.644Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:20.727Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:20.859Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:20.995Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:21.085Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:21.170Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:21.254Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:21.335Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:21.425Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:21.497Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:21.580Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Admins` AS `Admins` WHERE `Admins`.`id` = 'undefined';","timestamp":"2022-08-14T18:48:21.652Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `user_id`, `note`, `price`, `code`, `date`, `time`, `checkCode`, `detail`, `createdAt`, `updatedAt` FROM `Pay` AS `Pay`;","timestamp":"2022-08-14T18:48:25.316Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:25.396Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:25.477Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:25.549Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:25.627Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:25.700Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:25.794Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:25.860Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:25.929Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:25.996Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:26.139Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:26.239Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:26.323Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:26.407Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Admins` AS `Admins` WHERE `Admins`.`id` = 'undefined';","timestamp":"2022-08-14T18:48:26.517Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:48:49.727Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `user_id`, `note`, `price`, `code`, `date`, `time`, `checkCode`, `detail`, `createdAt`, `updatedAt` FROM `Pay` AS `Pay`;","timestamp":"2022-08-14T18:48:49.788Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:49.875Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:49.964Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:50.025Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:50.095Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:50.176Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:50.255Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:50.328Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:50.399Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:50.478Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:50.563Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:50.667Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:50.831Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:50.899Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Admins` AS `Admins` WHERE `Admins`.`id` = 'undefined';","timestamp":"2022-08-14T18:48:50.966Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `user_id`, `note`, `price`, `code`, `date`, `time`, `checkCode`, `detail`, `createdAt`, `updatedAt` FROM `Pay` AS `Pay`;","timestamp":"2022-08-14T18:48:52.888Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:52.962Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:53.063Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:53.152Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:53.222Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:53.293Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:53.375Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:53.446Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:53.528Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:53.599Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:53.676Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:53.748Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:53.822Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:48:53.934Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Admins` AS `Admins` WHERE `Admins`.`id` = 'undefined';","timestamp":"2022-08-14T18:48:54.016Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `user_id`, `note`, `price`, `code`, `date`, `time`, `checkCode`, `detail`, `createdAt`, `updatedAt` FROM `Pay` AS `Pay`;","timestamp":"2022-08-14T18:49:50.549Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:49:50.551Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:49:50.638Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:49:50.724Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:49:50.810Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:49:50.985Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:49:51.075Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:49:51.158Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:49:51.251Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:49:51.419Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:49:51.508Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:49:51.638Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:49:51.756Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:49:51.867Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:49:51.955Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Admins` AS `Admins` WHERE `Admins`.`id` = 'undefined';","timestamp":"2022-08-14T18:49:52.042Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2022-08-14T18:51:45.478Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `user_id`, `note`, `price`, `code`, `date`, `time`, `checkCode`, `detail`, `createdAt`, `updatedAt` FROM `Pay` AS `Pay`;","timestamp":"2022-08-14T18:51:45.491Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:51:45.494Z"}
+{"level":"info","message":"Connection has been established successfully.","timestamp":"2022-08-14T18:51:45.566Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:51:45.611Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:51:45.729Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:51:45.806Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:51:45.903Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:51:46.011Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:51:46.098Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:51:46.196Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:51:46.297Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:51:46.383Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:51:46.463Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:51:46.574Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:51:46.667Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:51:46.764Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Admins` AS `Admins` WHERE `Admins`.`id` = 'undefined';","timestamp":"2022-08-14T18:51:46.857Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `user_id`, `note`, `price`, `code`, `date`, `time`, `checkCode`, `detail`, `createdAt`, `updatedAt` FROM `Pay` AS `Pay`;","timestamp":"2022-08-14T18:51:56.763Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:51:56.897Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:51:56.970Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:51:57.041Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:51:57.127Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:51:57.205Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:51:57.295Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:51:57.381Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:51:57.465Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:51:57.540Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:51:57.634Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:51:57.727Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:51:57.824Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:51:57.922Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:51:58.008Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Admins` AS `Admins` WHERE `Admins`.`id` = 'undefined';","timestamp":"2022-08-14T18:51:58.096Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `user_id`, `note`, `price`, `code`, `date`, `time`, `checkCode`, `detail`, `createdAt`, `updatedAt` FROM `Pay` AS `Pay`;","timestamp":"2022-08-14T18:52:11.236Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:52:11.335Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:52:11.413Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:52:11.487Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:52:11.567Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:52:11.625Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:52:11.689Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:52:11.755Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:52:11.823Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:52:11.903Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:52:11.982Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:52:12.055Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:52:12.143Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:52:12.225Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:52:12.307Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Admins` AS `Admins` WHERE `Admins`.`id` = 'undefined';","timestamp":"2022-08-14T18:52:12.389Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:52:29.341Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Admins` AS `Admins` WHERE `Admins`.`id` = '6';","timestamp":"2022-08-14T18:52:29.475Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:52:38.787Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:52:39.068Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Admins` AS `Admins` WHERE `Admins`.`id` = '6';","timestamp":"2022-08-14T18:52:39.226Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:52:54.036Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Admins` AS `Admins` WHERE `Admins`.`id` = '6';","timestamp":"2022-08-14T18:52:54.279Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:52:55.712Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:53:06.005Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Admins` AS `Admins` WHERE `Admins`.`id` = '6';","timestamp":"2022-08-14T18:53:06.364Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:53:07.326Z"}
+{"level":"info","message":"Executing (default): SELECT 1+1 AS result","timestamp":"2022-08-14T18:53:19.028Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:53:19.034Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:53:19.035Z"}
+{"level":"info","message":"Connection has been established successfully.","timestamp":"2022-08-14T18:53:19.116Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Admins` AS `Admins` WHERE `Admins`.`id` = '6';","timestamp":"2022-08-14T18:53:19.169Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `name`, `price`, `img`, `number`, `createdAt`, `updatedAt` FROM `Items` AS `Items`;","timestamp":"2022-08-14T18:53:20.850Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Admins` AS `Admins` WHERE `Admins`.`id` = '6';","timestamp":"2022-08-14T18:53:20.972Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `user_id`, `note`, `price`, `code`, `date`, `time`, `checkCode`, `detail`, `createdAt`, `updatedAt` FROM `Pay` AS `Pay`;","timestamp":"2022-08-14T18:53:23.745Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:53:23.838Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:53:23.914Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:53:23.991Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:53:24.068Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:53:24.151Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:53:24.236Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:53:24.307Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:53:24.383Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:53:24.471Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:53:24.549Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:53:24.617Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:53:24.694Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Users` AS `Users` WHERE `Users`.`id` = '12';","timestamp":"2022-08-14T18:53:24.770Z"}
+{"level":"info","message":"Executing (default): SELECT `id`, `email`, `password`, `createdAt`, `updatedAt` FROM `Admins` AS `Admins` WHERE `Admins`.`id` = '6';","timestamp":"2022-08-14T18:53:24.837Z"}

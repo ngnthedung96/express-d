@@ -128,7 +128,8 @@ const showAllOrders = async (req, res, next) => {
       const orders = await payDb.findAllOrders()
       res.json({
         status: true,
-        orders
+        orders,
+        id: req.user.id
       })
     }
   }

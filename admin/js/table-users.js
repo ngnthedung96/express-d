@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  if (localStorage.getItem("accessToken")) {
+  if (localStorage.getItem("accessAdminToken")) {
     $.ajax({
       type: "GET",
       url: "http://localhost:3333/api/admins/showusers",

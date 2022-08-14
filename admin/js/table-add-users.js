@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  if (localStorage.getItem("accessToken")) {
+  if (localStorage.getItem("accessAdminToken")) {
     $.ajax({
       type: "GET",
       url: "http://localhost:3333/api/admins/showusers",
@@ -44,7 +44,7 @@ $(document).ready(function () {
 
 
 function haveAdminLogin(data) {
-  const loginDiv = document.querySelector(".header-right.login-register")
+  const loginDiv = document.querySelector(".header-right .default")
   loginDiv.classList.add('hide')
   const adminEmailDiv = document.querySelector('.icons.dropdown')
   const adminEmailText = document.querySelector('.icons.dropdown .user-email')

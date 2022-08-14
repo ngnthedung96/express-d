@@ -1,14 +1,15 @@
 $(document).ready(function () {
-    console.log(1)
     $.ajax({
         type: "GET",
         url: "http://localhost:3333/api/admins/showorder",
         dataType: "json",
         headers: {
-            token: 'Bearer ' + localStorage.getItem("accessToken"),
+            token: 'Bearer ' + localStorage.getItem("accessAdminToken"),
         },
         success: function (data) {
+            console.log(data)
             renderOrders(data)
+            haveAdminLogin(data)
 
         }
     });
@@ -62,4 +63,21 @@ function renderOrders(data) {
         tableBody.appendChild(tableRow)
         countTable++
     }
-}   
+}
+
+function haveAdminLogin(data) {
+    const loginDiv = document.querySelector(".header-right .default")
+    loginDiv.classList.add('hide')
+    const adminEmailDiv = document.querySelector('.icons.dropdown')
+    const adminEmailText = document.querySelector('.icons.dropdown .user-email')
+    adminEmailDiv.classList.remove('hide')
+    $.ajax({
+        type: "GET",
+        url: `http://localhost:3333/api/admins/infor/${data.id}`,
+        success: function (data) {
+            adminEmailText.innerText = data.admin.email
+        }
+
+    });
+
+}

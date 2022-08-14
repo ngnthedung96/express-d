@@ -63,7 +63,6 @@ router.post('/cart/delete',
 )
 // --------------------------items--------------------------
 router.get('/item/showitem/:id',
-    tokenValidate.verifyToken,
     itemsController.showItem
 )
 router.get('/item/show',

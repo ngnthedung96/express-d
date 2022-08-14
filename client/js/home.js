@@ -94,7 +94,26 @@ const sliderEffect = {
   }
 }
 sliderEffect.start()
+//-----------------------search-nav----------------------------
+$(".search-nav-btn").click(function (e) {
+  e.preventDefault();
+  const searchSection = document.querySelector(".search-nav-section")
+  searchSection.classList.add('open')
+});
+$(".search-nav-section").click(function (e) {
+  e.preventDefault();
+  const searchSection = document.querySelector(".search-nav-section")
+  searchSection.classList.remove('open')
+});
+$(".search-nav-section .search-nav-content").click(function (e) {
+  e.stopPropagation();
 
+});
+$(".search-nav-content .btn-close-nav").click(function (e) {
+  e.stopPropagation();
+  const searchSection = document.querySelector(".search-nav-section")
+  searchSection.classList.remove('open')
+});
 //-------------------------API--------------------------------
 
 
@@ -106,57 +125,46 @@ $(document).ready(function () {
     success: function (data) {
       if (data.status) {
         renderItems(data.items)
-        if (localStorage.getItem("accessToken")) {
-          $.ajax({
-            url: "http://localhost:3333/api/users/home",
-            type: "GET",
-            dataType: 'json',
-            headers: {
-              token: 'Bearer ' + localStorage.getItem("accessToken"),
-            }
-          })
-            .done(function (data, textStatus, jqXHR) {
-              if (data.status) {
-                logOut()
-                haveUserLogin(data)
-                postProductTocart(data)
-                viewItem(data)
-              }
-            })
-        }
-        else {
-          $(".oustanding-product").click(function (e) {
-            e.preventDefault();
-            if (e.target.closest(".addToCart")) {
-              errorFunction("Bạn cần đăng nhập")
-            }
-          });
-          $(".products-content__product").click(function (e) {
-            e.preventDefault();
-            if (e.target.closest(".addToCart")) {
-              errorFunction("Bạn cần đăng nhập")
-            }
-          });
-          $(".oustanding-product").click(function (e) {
-            e.preventDefault();
-            if (e.target.closest(".viewProduct")) {
-              errorFunction("Bạn cần đăng nhập")
-            }
-          });
-          $(".products-content__product").click(function (e) {
-            e.preventDefault();
-            if (e.target.closest(".viewProduct")) {
-              errorFunction("Bạn cần đăng nhập")
-            }
-          });
-        }
+        viewItem(data)
+        searchInput(data)
       }
     }
   });
+  if (localStorage.getItem("accessToken")) {
+    $.ajax({
+      url: "http://localhost:3333/api/users/home",
+      type: "GET",
+      dataType: 'json',
+      headers: {
+        token: 'Bearer ' + localStorage.getItem("accessToken"),
+      }
+    })
+      .done(function (data, textStatus, jqXHR) {
+        if (data.status) {
+          logOut()
+          haveUserLogin(data)
+          postProductTocart(data)
+        }
+      })
+  }
+  else {
+    $(".oustanding-product").click(function (e) {
+      e.preventDefault();
+      if (e.target.closest(".addToCart")) {
+        errorFunction("Bạn cần đăng nhập")
+      }
+    });
+    $(".products-content__product").click(function (e) {
+      e.preventDefault();
+      if (e.target.closest(".addToCart")) {
+        errorFunction("Bạn cần đăng nhập")
+      }
+    });
+  }
 });
 
 
-//------------render--------------
+//------------function--------------
 function renderItems(items) {
   //------------------------outstanding------------------------------
   const outstandingProducts = document.querySelectorAll(".oustanding-product")
@@ -228,6 +236,49 @@ function viewItem(items) {
   });
 }
 
+function searchInput(data) {
+  const searchResultsContainer = document.querySelector(".search-results")
+  const inputSearch = document.querySelector(".search-nav-section .input-search")
+  inputSearch.addEventListener("input", (e) => {
+    const search = e.target.value.toLowerCase().trim()
+    if (search) {
+      searchResultsContainer.innerHTML = ''
+      const searchResults = []
+      for (var result of data.items) {
+        if (result.name.toLowerCase().trim().includes(search)) {
+          searchResults.push(result)
+        }
+      }
+      for (var searchResult of searchResults) {
+        const product = document.createElement("div")
+        product.classList.add('search-product')
+        const imgOfProduct = JSON.parse(searchResult.img)[0]
+        product.innerHTML = `
+        <img src="${imgOfProduct}" alt="">
+        <div class="search-product-description">
+            <p class = "id hide">${searchResult.id}</p>
+            <p class="name">${searchResult.name}</p>
+            <p class="price">${searchResult.price}</p>
+        </div>
+        `
+        searchResultsContainer.appendChild(product)
+      }
+      clickSearch()
+    }
+    else {
+      searchResultsContainer.innerHTML = ''
+    }
+  })
+
+}
+
+function clickSearch() {
+  $(".search-product").click(function (e) {
+    e.preventDefault();
+    const idProduct = this.querySelector(".search-product-description .id").innerText
+    window.open(`./product.html?id=${idProduct}`)
+  });
+}
 
 function haveUserLogin(data) {
   console.log(data)
@@ -323,3 +374,4 @@ function errorFunction(message) {
     type: 'error'
   })
 }
+

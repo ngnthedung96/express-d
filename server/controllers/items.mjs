@@ -37,8 +37,7 @@ const showItem = async (req, res, next) => {
     const items = await itemsDb.findItem(req.params.id)
     res.json({
       status: true,
-      item: items,
-      user_id: req.user.id
+      item: items
     })
   }
   catch (err) {
