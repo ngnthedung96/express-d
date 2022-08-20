@@ -1,223 +1,3 @@
-(function ($) {
-    "use strict"
-
-
-    //todo list
-    $(".tdl-new").on('keypress', function (e) {
-
-        var code = (e.keyCode ? e.keyCode : e.which);
-
-        if (code == 13) {
-
-            var v = $(this).val();
-
-            var s = v.replace(/ +?/g, '');
-
-            if (s == "") {
-
-                return false;
-
-            } else {
-
-                $(".tdl-content ul").append("<li><label><input type='checkbox'><i></i><span>" + v + "</span><a href='#' class='ti-trash'></a></label></li>");
-
-                $(this).val("");
-
-            }
-
-        }
-
-    });
-
-
-
-
-
-    $(".tdl-content a").on("click", function () {
-
-        var _li = $(this).parent().parent("li");
-
-        _li.addClass("remove").stop().delay(100).slideUp("fast", function () {
-
-            _li.remove();
-
-        });
-
-        return false;
-
-    });
-
-
-
-    // for dynamically created a tags
-
-    $(".tdl-content").on('click', "a", function () {
-
-        var _li = $(this).parent().parent("li");
-
-        _li.addClass("remove").stop().delay(100).slideUp("fast", function () {
-
-            _li.remove();
-
-        });
-
-        return false;
-
-    });
-
-
-
-
-
-
-
-
-})(jQuery);
-
-
-(function ($) {
-    "use strict"
-
-    var i = new Datamap({
-        scope: "world",
-        element: document.getElementById("world-map"),
-        responsive: !0,
-        geographyConfig: {
-            popupOnHover: !1,
-            highlightOnHover: !1,
-            borderColor: "transparent",
-            borderWidth: 1,
-            highlightBorderWidth: 3,
-            highlightFillColor: "rgba(0,123,255,0.5)",
-            highlightBorderColor: "transparent",
-            borderWidth: 1
-        },
-        bubblesConfig: {
-            popupTemplate: function (e, i) {
-                return '<div class="datamap-sales-hover-tooltip">' + i.country + '<span class="ml-2"></span>' + i.sold + "</div>"
-            },
-            borderWidth: 0,
-            highlightBorderWidth: 3,
-            highlightFillColor: "rgba(0,123,255,0.5)",
-            highlightBorderColor: "transparent",
-            fillOpacity: .75
-        },
-        fills: {
-            Visited: "#777",
-            neato: "#777",
-            white: "#777",
-            defaultFill: "#EBEFF2"
-        }
-    });
-
-    i.bubbles([{
-        centered: "USA", fillKey: "white", radius: 5, sold: "$500", country: "United States"
-    }, {
-        centered: "SAU", fillKey: "Visited", radius: 5, sold: "$900", country: "Saudia Arabia"
-    }, {
-        centered: "RUS", fillKey: "neato", radius: 5, sold: "$250", country: "Russia"
-    }, {
-        centered: "CAN", fillKey: "white", radius: 5, sold: "$1000", country: "Canada"
-    }, {
-        centered: "IND", fillKey: "Visited", radius: 5, sold: "$50", country: "India"
-    }, {
-        centered: "AUS", fillKey: "white", radius: 5, sold: "$700", country: "Australia"
-    }, {
-        centered: "BGD", fillKey: "Visited", radius: 5, sold: "$1500", country: "Bangladesh"
-    }
-    ]),
-        window.addEventListener("resize", function (e) {
-            i.resize()
-        });
-
-
-
-
-
-})(jQuery);
-
-(function ($) {
-    "use strict"
-
-
-    // LINE CHART
-    // Morris bar chart
-    Morris.Bar({
-        element: 'morris-bar-chart',
-        data: [{
-            y: '2016',
-            a: 100,
-            b: 90,
-        }, {
-            y: '2017',
-            a: 75,
-            b: 65,
-        }, {
-            y: '2018',
-            a: 50,
-            b: 40,
-        }, {
-            y: '2019',
-            a: 75,
-            b: 65,
-        }, {
-            y: '2020',
-            a: 50,
-            b: 40,
-        }, {
-            y: '2021',
-            a: 75,
-            b: 65,
-        }, {
-            y: '2022',
-            a: 100,
-            b: 90,
-        }],
-        xkey: 'y',
-        ykeys: ['a', 'b', 'c'],
-        labels: ['A', 'B', 'C'],
-        barColors: ['#FC6C8E', '#7571f9'],
-        hideHover: 'auto',
-        gridLineColor: 'transparent',
-        resize: true
-    });
-
-
-
-
-
-
-
-
-
-})(jQuery);
-
-
-(function ($) {
-    "use strict"
-
-
-    $('#todo_list').slimscroll({
-        position: "right",
-        size: "5px",
-        height: "250px",
-        color: "transparent"
-    });
-
-    $('#activity').slimscroll({
-        position: "right",
-        size: "5px",
-        height: "390px",
-        color: "transparent"
-    });
-
-
-
-
-
-})(jQuery);
-
-
 $.ajax({
     type: "GET",
     url: "http://localhost:3333/api/pay/showall",
@@ -226,8 +6,89 @@ $.ajax({
     },
     success: function (data) {
         renderChartMax(data)
+        renderMorrisChart(data)
     }
 });
+function renderMorrisChart(data) {
+    var monthContainer = []
+    for (order of data.orders) {
+        const time = order.createdAt.split('-')
+        const [checkYear, checkMonth] = time
+        if (!monthContainer.includes(checkMonth)) {
+            monthContainer.push(checkMonth)
+        }
+    }
+    monthContainer = monthContainer.map(value => {
+        return Number(value)
+    });
+    for (var i = 0; i < monthContainer.length - 1; i++) {
+        for (var j = i + 1; j < monthContainer.length; j++) {
+            if (monthContainer[i] < monthContainer[j]) {
+                var a = monthContainer[i]
+                var b = monthContainer[j]
+                monthContainer[j] = a
+                monthContainer[i] = b
+            }
+        }
+    }
+    monthContainer = monthContainer.slice(0, 4).reverse();
+    const list = []
+    for (var i = 0; i < monthContainer.length; i++) {
+        list.push([])
+        for (order of data.orders) {
+            const time = order.createdAt.split('-')
+            const [checkYear, checkMonth] = time
+            if (monthContainer[i] === Number(checkMonth)) {
+                for (product of JSON.parse(order.detail)) {
+                    list[i].push(Number(product.number))
+                }
+            }
+        }
+    }
+    for (var i = 0; i < list.length; i++) {
+        if (list[i].length == 1) {
+            list[i] = list[i][0]
+        }
+        else {
+            var sum = 0
+            for (number of list[i]) {
+                sum += number
+            }
+            list[i] = sum
+        }
+    }
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+    (function ($) {
+        "use strict"
+        // LINE CHART
+        // Morris bar chart
+        Morris.Bar({
+            element: 'morris-bar-chart',
+            data: [{
+                y: `${monthNames[monthContainer[0] - 1]}`,
+                a: list[0]
+            }, {
+                y: `${monthNames[monthContainer[1] - 1]}`,
+                a: list[1]
+            }, {
+                y: `${monthNames[monthContainer[2] - 1]}`,
+                a: list[2]
+            }, {
+                y: `${monthNames[monthContainer[3] - 1]}`,
+                a: list[3]
+            }],
+            xkey: 'y',
+            ykeys: ['a'],
+            labels: ['Sản phẩm'],
+            barColors: ['#47d864'],
+            hideHover: 'auto',
+            gridLineColor: 'transparent',
+            resize: true
+        });
+    })(jQuery);
+}
 function renderChartMax(data) {
     $.ajax({
         type: "GET",
@@ -238,6 +99,8 @@ function renderChartMax(data) {
             const idItemContainer = []
             const numberContainer = []
             var countNumber = 0
+
+
             for (item of response.items) {
                 idItemContainer.push(item.id)
                 numberContainer.push([])
@@ -256,7 +119,6 @@ function renderChartMax(data) {
                     }
                 }
             }
-            const duplicateList = numberContainer.slice()
             const max = getMaxAndSum(numberContainer)
             var idMax = 0
             var idMaxInContainer1 = 0
@@ -271,7 +133,6 @@ function renderChartMax(data) {
             var idMax2 = 0
             var idMaxInContainer2 = 0
             const max2 = getMaxAndSum(newNumberContainer)
-
             for (var i = 0; i < numberContainer.length; i++) {
                 if (numberContainer[i] === max2) {
                     idMaxInContainer2 = i
@@ -280,8 +141,8 @@ function renderChartMax(data) {
             }
             const max1Div = document.querySelector(".best-seller .max-1")
             const max2Div = document.querySelector(".best-seller .max-2")
-            handleListInChart(duplicateList, idMaxInContainer1, countNumber)
-            handleListInChart(duplicateList, idMaxInContainer2, countNumber)
+            const numberByDate1 = [[], []]
+            const numberByDate2 = [[], []]
             for (item of response.items) {
                 if (item.id === idMax) {
                     max1Div.innerText = item.name
@@ -290,7 +151,37 @@ function renderChartMax(data) {
                     max2Div.innerText = item.name
                 }
             }
+            for (order of data.orders) {
+                const time = order.createdAt.split('-')
+                const [checkYear, checkMonth] = time
+                if (month === Number(checkMonth)) {
+                    for (product of JSON.parse(order.detail)) {
+                        if (Number(product.item_id) === idMax) {
+                            const time = order.createdAt.split('-')
+                            const [checkYear, checkMonth, checkDate] = time
+                            if (Number(checkDate) <= 15) {
+                                numberByDate1[0].push(product.number)
+                            }
+                            else {
+                                numberByDate1[1].push(product.number)
+                            }
+                        }
+                        else if (Number(product.item_id) === idMax2) {
+                            const time = order.createdAt.split('-')
+                            const [checkYear, checkMonth, checkDate] = time
+                            if (Number(checkDate) <= 15) {
+                                numberByDate2[0].push(product.number)
+                            }
+                            else {
+                                numberByDate2[1].push(product.number)
+                            }
+                        }
+                    }
+                }
 
+            }
+            sumArray(numberByDate1)
+            sumArray(numberByDate2);
             (function ($) {
                 "use strict"
                 let ctx = document.getElementById("chart_widget_2");
@@ -298,11 +189,11 @@ function renderChartMax(data) {
                 new Chart(ctx, {
                     type: 'line',
                     data: {
-                        labels: ["2010", "2011", "2012", "2013", "2014", "2015", "2016"],
+                        labels: ['', 'Trước ngày 15', 'Sau ngày 15'],
                         type: 'line',
                         defaultFontFamily: 'Montserrat',
                         datasets: [{
-                            data: duplicateList[idMaxInContainer1],
+                            data: numberByDate1,
                             label: max1Div.innerText,
                             backgroundColor: '#847DFA',
                             borderColor: '#847DFA',
@@ -313,7 +204,7 @@ function renderChartMax(data) {
                             pointBackgroundColor: '#847DFA',
                         }, {
                             label: max2Div.innerText,
-                            data: duplicateList[idMaxInContainer2],
+                            data: numberByDate2,
                             backgroundColor: '#F196B0',
                             borderColor: '#F196B0',
                             borderWidth: 0.5,
@@ -407,151 +298,26 @@ function getMaxAndSum(list) {
     }
     return max
 }
-function handleListInChart(list, index, total) {
-    var data = []
-    list[index].unshift(0)
-    for (number of list[index]) {
-        number = number / total * 100
-        data.push(Math.round(number))
+function sumArray(list, index, total) {
+    list.unshift([0])
+    for (var i = 0; i < list.length; i++) {
+        if (list[i].length == 1) {
+            list[i] = Number(list[i][0])
+        }
+        else {
+            var sum = 0
+            for (number of list[i]) {
+                sum += Number(number)
+            }
+            list[i] = sum
+        }
     }
-    list[index] = data
-    console.log(list[index])
 }
 
 
-(function ($) {
-    "use strict"
-
-    let ctx = document.getElementById("chart_widget_3");
-    ctx.height = 130;
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-            type: 'line',
-            defaultFontFamily: 'Montserrat',
-            datasets: [{
-                data: [0, 15, 57, 12, 85, 10],
-                label: "iPhone X",
-                backgroundColor: 'transparent',
-                borderColor: '#847DFA',
-                borderWidth: 2,
-                pointStyle: 'circle',
-                pointRadius: 5,
-                pointBorderColor: '#847DFA',
-                pointBackgroundColor: '#fff',
-            }]
-        },
-        options: {
-            responsive: !0,
-            maintainAspectRatio: true,
-            tooltips: {
-                mode: 'index',
-                titleFontSize: 12,
-                titleFontColor: '#fff',
-                bodyFontColor: '#fff',
-                backgroundColor: '#000',
-                titleFontFamily: 'Montserrat',
-                bodyFontFamily: 'Montserrat',
-                cornerRadius: 3,
-                intersect: false,
-            },
-            legend: {
-                display: false,
-                position: 'top',
-                labels: {
-                    usePointStyle: true,
-                    fontFamily: 'Montserrat',
-                },
-
-
-            },
-            scales: {
-                xAxes: [{
-                    display: false,
-                    gridLines: {
-                        display: false,
-                        drawBorder: false
-                    },
-                    scaleLabel: {
-                        display: false,
-                        labelString: 'Month'
-                    }
-                }],
-                yAxes: [{
-                    display: false,
-                    gridLines: {
-                        display: false,
-                        drawBorder: false
-                    },
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Value'
-                    }
-                }]
-            },
-            title: {
-                display: false,
-            }
-        }
-    });
 
 
 
-
-
-})(jQuery);
-
-
-
-/*******************
-Chart Chartist
-*******************/
-(function ($) {
-    "use strict"
-
-
-    new Chartist.Line("#chart_widget_3", {
-        labels: ["1", "2", "3", "4", "5", "6", "7", "8"],
-        series: [
-            [4, 5, 1.5, 6, 7, 5.5, 5.8, 4.6]
-        ]
-    }, {
-        low: 0,
-        showArea: !1,
-        showPoint: !0,
-        showLine: !0,
-        fullWidth: !0,
-        lineSmooth: !1,
-        chartPadding: {
-            top: 4,
-            right: 4,
-            bottom: -20,
-            left: 4
-        },
-        axisX: {
-            showLabel: !1,
-            showGrid: !1,
-            offset: 0
-        },
-        axisY: {
-            showLabel: !1,
-            showGrid: !1,
-            offset: 0
-        }
-    });
-
-
-    new Chartist.Pie("#chart_widget_3_1", {
-        series: [35, 65]
-    }, {
-        donut: !0,
-        donutWidth: 10,
-        startAngle: 0,
-        showLabel: !1
-    });
-
-})(jQuery);
 
 
 

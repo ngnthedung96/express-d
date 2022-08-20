@@ -353,9 +353,10 @@ import toast from "./toast.js"
 function successFunction(data) {
   if (data.status) {
     toast({
-      title: `${data.status}`,
+      title: `Success`,
       message: `${data.msg}`,
-      type: `${data.status}`
+      type: `Success`,
+      duration: 5000
     })
     // setTimeout(function () {
     //     location.reload()
@@ -366,7 +367,7 @@ function errorFunction(message) {
   toast({
     title: 'Error',
     message: `${message}`,
-    type: 'error'
+    type: 'Error'
   })
 }
 

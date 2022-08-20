@@ -1,3 +1,7 @@
+.open {
+  display: block !important;
+}
+
 /* --------------------------------toast------------------------------ */
 #toast {
   position: fixed;
@@ -72,11 +76,11 @@
 }
 
 .toast--success .toast__icon {
-  color: #47d864;
+  color: #47d864 !important;
 }
 
 .toast--success .toast__icon i {
-  color: #47d864;
+  color: #47d864 !important;
 }
 
 .toast--info {
@@ -193,4 +197,33 @@ table .count p {
   top: 50%;
 
   transform: translate(0, -50%);
+}
+
+
+.admins .text-center img {
+  width: 35px;
+  height: 30px;
+}
+
+/* -------------modal--------------------- */
+
+.modal-detail-section {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 20;
+  display: none;
+}
+
+.modal-detail-content {
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  width: 70%;
 }

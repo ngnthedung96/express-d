@@ -127,6 +127,7 @@ $(document).ready(function () {
         renderItems(data.items)
         viewItem(data)
         searchInput(data)
+        goToCate()
       }
     }
   });
@@ -315,7 +316,6 @@ function logOut() {
 
 function postProductTocart(data) {
   $(".addToCart").click(function (e) {
-    console.log(1)
     e.preventDefault();
     var parentDiv = this.parentElement.parentElement
     const nameItem = parentDiv.querySelector(".name").innerText
@@ -325,6 +325,9 @@ function postProductTocart(data) {
     $.ajax({
       type: "POST",
       url: "http://localhost:3333/api/cart/create",
+      headers: {
+        token: 'Bearer ' + localStorage.getItem("accessToken"),
+      },
       data: {
         "user_id": data.user.id,
         "item_id": Number(idOfItem),
@@ -335,17 +338,27 @@ function postProductTocart(data) {
       dataType: "json",
       success: function (data) {
         successFunction(data)
-        setTimeout(function () {
-          window.open('/client/page/cart.html')
-        }, 1000)
+      },
+      error: function (data) {
+        errorFunction(data.responseJSON.msg)
       }
     });
-    setTimeout(function () {
-      window.open('/client/page/cart.html')
-    }, 1500)
   });
 }
 
+function goToCate() {
+  $(".allProducts").click(function (e) {
+    const title = "home"
+    e.preventDefault();
+    window.open(`./category.html?title=${title}`)
+  });
+  $(".category-sub-nav__products").click(function (e) {
+    e.preventDefault();
+    if (e.target.closest(".nav")) {
+      window.open(`./category.html?title=${e.target.innerText}`)
+    }
+  });
+}
 
 
 
@@ -356,22 +369,15 @@ function successFunction(data) {
     toast({
       title: 'Success',
       message: `${data.msg}`,
-      type: 'success'
+      type: 'Success',
     })
-    setTimeout(function () {
-      window.close()
-      window.open('/client/index.html')
-    }, 1500)
-    // setTimeout(function () {
-    //     location.reload()
-    // }, 2000)
   }
 }
 function errorFunction(message) {
   toast({
     title: 'Error',
     message: `${message}`,
-    type: 'error'
+    type: 'Error'
   })
 }
 

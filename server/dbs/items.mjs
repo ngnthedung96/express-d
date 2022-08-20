@@ -7,6 +7,14 @@ const Items = sequelize.define('Items', {
         type: DataTypes.STRING,
         allowNull: false
     },
+    category: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    imPrice: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     price: {
         type: DataTypes.STRING,
         allowNull: false
@@ -31,6 +39,23 @@ const findItems = async (value, field) => {
     }
     return res;
 }
+
+const findItemsByCategory = async (value, field) => {
+    let res = null;
+    try {
+        res = await Items.findAll({
+            where: {
+                "category": value
+            }
+        }
+        )
+    }
+    catch (err) {
+        logger.error(err)
+    }
+    return res;
+}
+
 const findItem = async (value, field) => {
     let res = null;
     try {
@@ -57,14 +82,18 @@ const findItemByName = async (value, field) => {
     return res;
 }
 
-const createItem = async (name, price, imgs) => {
+const createItem = async (name, category, imPrice, price, number, imgs) => {
     let res = null;
+    console.log(name, category, imPrice, price, number, imgs)
     try {
         res = await Items.create({
             name: `${name}`,
+            imPrice: `${imPrice}`,
+            category: `${category}`,
             price: `${price}`,
+            number: Number(number),
             img: `[${imgs}]`
-        }, { fields: ['name', 'price', 'img'] })
+        }, { fields: ['name', 'category', 'imPrice', 'price', 'number', 'img'] })
     } catch (err) {
         logger.error(err)
     }
@@ -91,5 +120,6 @@ export const itemsDb = {
     findItem,
     findItemByName,
     createItem,
-    deleteItem
+    deleteItem,
+    findItemsByCategory
 }

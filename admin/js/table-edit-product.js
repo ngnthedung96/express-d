@@ -25,6 +25,8 @@ function editProducts() {
     if (parentEl) {
       const name = parentEl.querySelector(".name").innerText
       const price = parentEl.querySelector(".price").innerText
+      const imPrice = parentEl.querySelector(".imPrice").innerText
+      const number = parentEl.querySelector(".number").innerText
       const imgs = parentEl.querySelectorAll(".image img")
       const id = parentEl.querySelector(".id").innerText
       var img = []
@@ -33,9 +35,13 @@ function editProducts() {
       }
       const newName = document.querySelector(".table-edit-products tbody #name")
       const newPrice = document.querySelector(".table-edit-products tbody #price")
+      const newImPrice = document.querySelector(".table-edit-products tbody #impPrice")
+      const newNumber = document.querySelector(".table-edit-products tbody #number")
       const newImage = document.querySelectorAll(".table-edit-products tbody input[type = 'img']")
       newName.value = name
       newPrice.value = price
+      newNumber.value = number
+      newImPrice.value = imPrice
       const newImageContainer = []
       for (var i = 0; i < newImage.length; i++) {
         for (var j = 0; j < img.length; j++) {
@@ -56,7 +62,9 @@ function editProducts() {
           data: {
             id: id,
             name: newName.value,
+            imPrice: imPrice.value,
             price: newPrice.value,
+            number: newNumber.value,
             img: newImageContainer
           },
           dataType: "json",
@@ -87,7 +95,9 @@ function renderProducts(data) {
       <td class = "name">${product.name}</td>
       <td class = "id">${product.id}
       </td>
+      <td class = "imPrice">${product.imPrice}</td>
       <td class = "price">${product.price}</td>
+      <td class = "number">${product.number}</td>
         `
     const imgCol = document.createElement('td')
     imgCol.classList.add('image')

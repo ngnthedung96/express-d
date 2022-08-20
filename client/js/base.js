@@ -92,7 +92,7 @@ function successFunction(data) {
     toast({
       title: 'Success',
       message: `${data.msg}`,
-      type: 'success'
+      type: 'Success'
     })
     setTimeout(function () {
       window.close()
@@ -107,7 +107,7 @@ function errorFunction(message) {
   toast({
     title: 'Error',
     message: `${message}`,
-    type: 'error'
+    type: 'Error'
   })
 }
 

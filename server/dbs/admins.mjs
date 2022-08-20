@@ -41,6 +41,18 @@ const findById = async (value, field) => {
   }
   return res;
 }
+const findAll = async (value, field) => {
+  let res = null;
+  try {
+    res = await Admins.findAll({
+
+    });
+  }
+  catch (err) {
+    logger.error(err)
+  }
+  return res;
+}
 const findByEmail = async (value, field) => {
   let res = null;
   try {
@@ -72,6 +84,6 @@ export const adminDb = {
   register,
   findByEmail,
   findByPassword,
-  findById
-
+  findById,
+  findAll
 }

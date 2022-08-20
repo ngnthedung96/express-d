@@ -56,7 +56,6 @@ const createOrder = async (req, res, next) => {
       }
       else {
         for (var orderBlock of ordersOfUser) {
-          console.log(1)
           if (orderBlock.checkCode === "checked") {
             break
           }
@@ -78,29 +77,22 @@ const createOrder = async (req, res, next) => {
 
     // add order
     const order = await payDb.createOrder(user_id, note, price, code, date, time, checkCode, details)
+    // fix tìm sp hết hàng
     for (var i of detail) {
       const item = await itemsDb.findItem(i.item_id)
-      if (item.dataValues.number - Number(i.number) <= 0) {
-        res.json({
-          status: "Error",
-          msg: "Sản phẩm đã hết hàng",
-        })
-      }
-      else {
-        await item.update({
-          number: item.dataValues.number - Number(i.number),
-        })
-        await item.save()
-        await saleDb.deleteSale(code)
-        // // delete cart
-        await cartDb.deleteAll()
-        res.json({
-          status: "Success",
-          msg: "Thanh toán thành công",
-          order
-        })
-      }
+      await item.update({
+        number: item.dataValues.number - Number(i.number),
+      })
+      await item.save()
+      await saleDb.deleteSale(code)
+      // // delete cart
+      await cartDb.deleteAll()
     }
+    res.json({
+      status: "Success",
+      msg: "Thanh toán thành công",
+      order
+    })
   } catch (e) {
     console.log(e.message)
     res.sendStatus(500) && next(e)

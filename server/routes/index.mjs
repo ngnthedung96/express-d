@@ -47,6 +47,7 @@ router.post('/users/updateinfor',
 
 //---------------------- Cart--------------------------------
 router.post('/cart/create',
+    tokenValidate.verifyToken,
     cartController.createProduct
 )
 router.post('/cart/save',
@@ -65,9 +66,14 @@ router.post('/cart/delete',
 router.get('/item/showitem/:id',
     itemsController.showItem
 )
+router.get('/item/show/:title',
+    itemsController.showItemsByCategory
+)
 router.get('/item/show',
     itemsController.showItems
 )
+
+
 
 
 
@@ -95,6 +101,11 @@ router.post('/admins/register',
 router.get('/admins/home',
     tokenValidate.verifyToken,
     adminController.getAdmin
+)
+
+router.get('/admins/showalladmins',
+    tokenValidate.verifyToken,
+    adminController.getAdmins
 )
 
 router.post('/admins/login',

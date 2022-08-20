@@ -1,27 +1,45 @@
 import { cartDb } from '../dbs/index.mjs'
+import { itemsDb } from '../dbs/index.mjs'
 import { validationResult } from 'express-validator';
 import jwt from "jsonwebtoken"
 import { resolve } from 'path';
 
 
 const createProduct = async (req, res, next) => {
-  const { user_id, item_id, name, price, img } = req.body;
+  const { item_id, name, price, img } = req.body;
   try {
-    const check = await cartDb.findProductById(item_id);
-    if (!check) {
-      const product = await cartDb.createProduct(user_id, item_id, name, price, img);
-      res.status(200).json({
-        status: true,
-        msg: 'Chọn sản phẩm thành công',
-        data: {
-          pid: product.id,
-          user_id: user_id,
-          product_id: item_id,
-          name: name,
-          price: price,
-        }
-      });
-      next()
+    if (req.user.id) {
+      const user_id = req.user.id
+      const check = await cartDb.findProductById(user_id, item_id);
+      const item = await itemsDb.findItem(item_id)
+      const checkNumber = item.dataValues.number
+      if (!check && checkNumber > 0) {
+        const product = await cartDb.createProduct(user_id, item_id, name, price, img);
+        res.status(200).json({
+          status: true,
+          msg: 'Chọn sản phẩm thành công',
+          data: {
+            pid: product.id,
+            user_id: user_id,
+            product_id: item_id,
+            name: name,
+            price: price,
+          }
+        });
+        next()
+      }
+      else if (checkNumber <= 10) {
+        res.status(500).json({
+          status: false,
+          msg: 'Sản phẩm đã hết hàng'
+        });
+      }
+      else {
+        res.status(200).json({
+          status: true,
+          msg: 'Sản phẩm đã có trong giỏ hàng'
+        });
+      }
     }
   } catch (e) {
     console.log(e.message)

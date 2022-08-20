@@ -140,6 +140,13 @@ input::-webkit-inner-spin-button {
   margin: 20px 0px;
 }
 
+.right .code {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  display: block;
+}
+
 .total-price {
   font-size: 150%;
   font-weight: 600;

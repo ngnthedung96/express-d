@@ -30,11 +30,15 @@ function renderProducts(data) {
       <p>${count} </p>
       </th>
       <td>${product.name}</td>
+      <td>${product.category}</td>
       <td>${product.id}
       </td>
+      <td>${product.imPrice}</td>
       <td>${product.price}</td>
+      <td>${product.number}</td>
         `
     const imgCol = document.createElement('td')
+
     for (var img of JSON.parse(product.img)) {
       const imgOfCol = document.createElement('img')
       imgOfCol.src = img
@@ -68,6 +72,9 @@ function postItemToDb() {
     e.preventDefault();
     const name = document.querySelector('#name').value
     const price = document.querySelector('#price').value
+    const imPrice = document.querySelector('#imPrice').value
+    const number = document.querySelector('#number').value
+    const category = document.querySelector('#category').value
     const imgs = document.querySelectorAll('#img')
     const imgContainer = []
     for (var img of imgs) {
@@ -81,8 +88,11 @@ function postItemToDb() {
         url: "http://localhost:3333/api/admins/createitem",
         data: {
           name: name,
+          category,
+          imPrice: imPrice,
           price: price,
-          img: imgContainer
+          img: imgContainer,
+          number: number
         },
         dataType: "json",
         headers: {

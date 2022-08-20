@@ -63,9 +63,6 @@ $(document).ready(function () {
   $.ajax({
     type: "GET",
     url: `http://localhost:3333/api/item/showitem/${id}`,
-    headers: {
-      token: 'Bearer ' + localStorage.getItem("accessToken"),
-    },
     success: function (data) {
       renderItem(data)
       postProductTocart(data, id)
@@ -96,6 +93,7 @@ function renderItem(data) {
   sliderEffect.start()
 }
 function postProductTocart(data, id) {
+  console.log(data)
   $(".addToCart").click(function (e) {
     e.preventDefault();
     var parentEl
@@ -113,8 +111,10 @@ function postProductTocart(data, id) {
     $.ajax({
       type: "POST",
       url: "http://localhost:3333/api/cart/create",
+      headers: {
+        token: 'Bearer ' + localStorage.getItem("accessToken"),
+      },
       data: {
-        "user_id": data.user_id,
         "item_id": Number(id),
         "name": `${nameItem}`,
         "price": `${priceItem}`,
@@ -142,7 +142,7 @@ function successFunction(data) {
     toast({
       title: 'Success',
       message: `${data.msg}`,
-      type: 'success'
+      type: 'Success'
     })
     setTimeout(function () {
       window.close()
@@ -157,6 +157,6 @@ function errorFunction(message) {
   toast({
     title: 'Error',
     message: `${message}`,
-    type: 'error'
+    type: 'Error'
   })
 }

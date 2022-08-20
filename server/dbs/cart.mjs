@@ -79,12 +79,15 @@ const findProduct = async (value, field) => {
     return res;
 }
 
-const findProductById = async (value, field) => {
+const findProductById = async (user_id, item_id, field) => {
     let res = null;
     try {
         res = await Cart.findOne(
             {
-                where: { "item_id": value },
+                where: {
+                    "item_id": item_id,
+                    "user_id": user_id
+                }
             }
         )
     }

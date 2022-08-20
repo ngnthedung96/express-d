@@ -11,6 +11,12 @@
     <!-- Custom Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="css/base.css">
+    <!-- use version 0.18.10 -->
+    <script src="./js/plugins-init/shim.min.js"></script>
+    <script src="./js/plugins-init/xlsx.core.min.js"></script>
+    <script src="./js/plugins-init/FileSaver.js"></script>
+    <script src="./js/plugins-init/FileSaver.min.js"></script>
+    
     <script src="https://kit.fontawesome.com/025c1ecb3f.js" crossorigin="anonymous"></script>
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -207,7 +213,7 @@
                     </ol>
                 </div>
             </div>
-
+            <a href="#" class="excel">Tải excel</a>
 
             <div class="container-fluid table-orders">
                 <div class="row">
@@ -223,6 +229,7 @@
                                             <th>Ngày đặt</th>
                                             <th>Sản phẩm</th>
                                             <th>Tổng tiền</th>
+                                            <th>Chi tiết</th>
                                             <th>Trạng thái</th>
                                             <th>Ngày nhận</th>
                                         </tr>
@@ -240,9 +247,43 @@
         <!--**********************************
             Content body end
         ***********************************-->
-
-
-
+        <div class="modal-detail-section">
+            <div class="modal-detail-content">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Sản phẩm</th>
+                            <th>Giá gốc</th>
+                            <th>Giá bán</th>
+                            <th>Số lượng</th>
+                            <th>Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       
+                    </tbody>
+                </table>
+                <div class="footer-modal">
+                    <div class="fee">
+                        <p>Phí nhân công</p>
+                        <p class="price"></p>
+                    </div>
+                    <div class="ship">
+                        <p>Phí Ship</p>
+                        <p class="price"></p>
+                    </div>
+                    <div class="total-price">
+                        <p>Tổng tiền</p>
+                        <p class="price"></p>
+                    </div>
+                    <div class="total-profit">
+                        <p>Tổng lợi nhuận</p>
+                        <p class="price"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <!--**********************************
         Main wrapper end
@@ -251,7 +292,7 @@
     <!--**********************************
         Scripts
     ***********************************-->
-    <script src="./js/table-orders.js"></script>
+    <script type="module" src="./js/table-orders.js"></script>
     <script src="plugins/common/common.min.js"></script>
     <script src="js/custom.min.js"></script>
     <script src="js/settings.js"></script>

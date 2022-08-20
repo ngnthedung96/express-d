@@ -567,11 +567,11 @@ footer {
 }
 
 .toast--Success .toast__icon {
-  color: #47d864;
+  color: #47d864 !important;
 }
 
 .toast--Success .toast__icon i {
-  color: #47d864;
+  color: #47d864 !important;
 }
 
 .toast--Info {
@@ -591,7 +591,7 @@ footer {
 }
 
 .toast--Error {
-  border-color: #ff623d;
+  border-color: #ff623d !important;
 }
 
 .toast--Error .toast__icon {

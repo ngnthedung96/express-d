@@ -64,7 +64,10 @@ const validate = (method) => {
               return Promise.reject('Name đã được sử dụng');
             }
           });
-        })
+        }),
+        body('img').exists(),
+        body('name').exists(),
+        body('price').exists()
       ]
     }
       break;

@@ -60,7 +60,7 @@ const deleteItem = async (req, res, next) => {
 }
 
 const createItem = async (req, res, next) => {
-  const { name, price, img } = req.body;
+  const { name, category, imPrice, price, number, img } = req.body;
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     res.status(422).json({ errors: errors.array() });
@@ -72,16 +72,14 @@ const createItem = async (req, res, next) => {
       imgs.push(JSON.stringify(i))
     }
     if (req.user) {
-      const product = await itemsDb.createItem(name, price, imgs);
+      console.log(name, imPrice, category, price, number, imgs)
+      const product = await itemsDb.createItem(name, category, imPrice, price, number, imgs);
       res.status(200).json({
         status: true,
         msg: 'Thêm sản phẩm thành công',
         data: {
-          pid: product.id,
-          name: name,
-          price: price,
+          product,
           adminId: req.user.id,
-          img
         }
       });
       next()
@@ -93,7 +91,7 @@ const createItem = async (req, res, next) => {
 }
 
 const updateItem = async (req, res, next) => {
-  const { id, name, price, img } = req.body;
+  const { id, name, price, number, imPrice, img } = req.body;
   var imgs = []
   for (var i of img) {
     imgs.push(JSON.stringify(i))
@@ -104,6 +102,8 @@ const updateItem = async (req, res, next) => {
       await item.update({
         name: name,
         price: price,
+        imPrice: imPrice,
+        number: number,
         img: `[${imgs}]`
       })
       await item.save()
@@ -119,11 +119,38 @@ const updateItem = async (req, res, next) => {
   }
 }
 
+
+const showItemsByCategory = async (req, res, next) => {
+  try {
+    if (req.params.title == 'home') {
+      const items = await itemsDb.findItems()
+      res.json({
+        status: true,
+        items: items,
+        category: "Tất cả sản phẩm"
+      })
+    }
+    else {
+      const items = await itemsDb.findItemsByCategory(req.params.title)
+      res.json({
+        status: true,
+        items: items,
+        category: req.params.title
+      })
+    }
+
+  }
+  catch (err) {
+    console.log(err)
+  }
+}
+
 export const itemsController = {
   showItems,
   showItem,
   showItemsToken,
   createItem,
   deleteItem,
-  updateItem
+  updateItem,
+  showItemsByCategory
 }

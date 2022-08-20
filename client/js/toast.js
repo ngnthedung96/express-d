@@ -7,10 +7,10 @@ function toast({
 
     const main = document.querySelector('#toast')
     const icons = {
-        success: "fa-solid fa-circle-check",
-        warning: "fa-solid fa-circle-exclamation",
-        infor: "fa-solid fa-circle-exclamation",
-        error: "fa-solid fa-circle-exclamation"
+        Success: "fa-solid fa-circle-check",
+        Warning: "fa-solid fa-circle-exclamation",
+        Infor: "fa-solid fa-circle-exclamation",
+        Error: "fa-solid fa-circle-exclamation"
     }
     const icon = icons[type]
     if (main) {

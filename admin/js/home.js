@@ -32,6 +32,16 @@ $(document).ready(function () {
                 renderNewCustomers(data)
             }
         });
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:3333/api/admins/showalladmins",
+            headers: {
+                token: 'Bearer ' + localStorage.getItem("accessAdminToken"),
+            },
+            success: function (data) {
+                renderAllAdmins(data)
+            }
+        });
     }
     else {
         window.open('/admin/page-error-400.html')
@@ -63,6 +73,7 @@ function renderNumberProduct(data) {
         const [checkYear, checkMonth] = time
         if (month === Number(checkMonth)) {
             for (product of JSON.parse(order.detail)) {
+                // console.log(product)
                 countNumber += Number(product.number)
             }
         }
@@ -222,4 +233,25 @@ function getMaxAndSum(list) {
         }
     }
     return max
+}
+
+function renderAllAdmins(data) {
+    const adminsContainer = document.querySelector(".admins")
+    console.log(adminsContainer)
+    for (admin of data.admins) {
+        const adminDiv = document.createElement('div')
+        adminDiv.classList.add('col-lg-4')
+        adminDiv.classList.add('col-sm-6')
+        adminDiv.innerHTML = `
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center">
+                        <img src="https://icon-library.com/images/facebook-icon-pictures/facebook-icon-pictures-28.jpg" class="rounded-circle" alt="">
+                        <h5 class="mt-3 mb-1">${admin.email}</h5>
+                        <p class="m-0">Senior Manager</p>
+                    </div>
+                </div>
+            </div>`
+        adminsContainer.appendChild(adminDiv)
+    }
 }

@@ -150,6 +150,21 @@ const getAdmin = async (req, res, next) => {
     }
 }
 
+const getAdmins = async (req, res, next) => {
+    try {
+        if (req.user) {
+            const admins = await adminDb.findAll()
+            res.json({
+                status: true,
+                admins
+            })
+        }
+    } catch (e) {
+        console.log(e.message)
+        res.sendStatus(500) && next(e)
+    }
+}
+
 const updateInfor = async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -184,5 +199,6 @@ export const adminController = {
     getInfor,
     updateInfor,
     logOut,
-    getAdmin
+    getAdmin,
+    getAdmins
 }
