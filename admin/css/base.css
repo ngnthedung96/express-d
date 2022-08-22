@@ -2,6 +2,11 @@
   display: block !important;
 }
 
+.err {
+  color: red !important
+}
+
+
 /* --------------------------------toast------------------------------ */
 #toast {
   position: fixed;
@@ -227,3 +232,40 @@ table .count p {
   background-color: white;
   width: 70%;
 }
+
+
+.modal-detail-content {
+  overflow: auto;
+  height: 60%;
+}
+
+.modal-detail-content .footer-modal {
+  display: flex;
+  justify-content: space-between;
+}
+
+.table-orders .detail {
+  cursor: pointer;
+  padding: 5px;
+  color: white;
+  font-size: 100%;
+}
+
+.table-orders .detail:hover,
+.table-orders .detail:active {
+  opacity: 0.9;
+
+}
+
+.excel {
+  color: #47d864;
+  margin-left: 20px;
+}
+
+/* .modal-detail-content .footer-modal .fee,
+.modal-detail-content .footer-modal .ship {
+  width: 50%;
+  display: inline
+} */
+
+/* total-price total-profit */

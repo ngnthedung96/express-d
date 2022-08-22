@@ -10,7 +10,9 @@ import { JSONB } from 'sequelize';
 
 
 const createOrder = async (req, res, next) => {
-  var { user_id, note, price, code, date, time, detail } = req.body;
+  var { user_id, note, shipFee, oldPrice, price, code, date, time, detail } = req.body;
+  var rate = " "
+  var staffFee = handlePriceToshow(Math.round(handlePriceToCal(oldPrice) * 10 / 100))
   var checkCode = "false"
   var details = []
 
@@ -76,8 +78,7 @@ const createOrder = async (req, res, next) => {
     }
 
     // add order
-    const order = await payDb.createOrder(user_id, note, price, code, date, time, checkCode, details)
-    // fix tìm sp hết hàng
+    const order = await payDb.createOrder(user_id, note, price, code, date, time, checkCode, shipFee, staffFee, rate, details)
     for (var i of detail) {
       const item = await itemsDb.findItem(i.item_id)
       await item.update({
@@ -129,6 +130,41 @@ const showAllOrders = async (req, res, next) => {
     console.log(err)
   }
 }
+
+function handlePriceToshow(price) {
+  var container = `${price}`.split('').reverse()
+  var b = []
+  var count = 0
+  for (var i of container) {
+    count++
+    if (count === 3) {
+      count = 0
+      b.push(i)
+      b.push(',')
+    }
+    else {
+      b.push(i)
+    }
+  }
+  if (b.reverse()[0] === ',') {
+    b = (b.slice(1, b.length)).join('') + 'đ'
+  }
+  else {
+    b = b.join('') + 'đ'
+  }
+  return b
+}
+
+function handlePriceToCal(price) {
+  var container = []
+  for (var j of price.split('')) {
+    if (j != "đ" && j != ",") {
+      container.push(j)
+    }
+  }
+  return Number(container.join(''))
+}
+
 
 
 

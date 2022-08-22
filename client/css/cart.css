@@ -157,13 +157,17 @@ input::-webkit-inner-spin-button {
   text-align: left;
 }
 
+.right p {
+  display: block;
+}
+
 .right .title-date-time {
   color: red;
 }
 
 .btn-buy {
-  margin-top: 55px;
-  transform: translateY(150%);
+  margin-top: 35px;
+  transform: translateY(100%);
   bottom: 0;
   left: 0;
   position: absolute;
@@ -189,4 +193,8 @@ input::-webkit-inner-spin-button {
 
 .table-order-delete {
   cursor: pointer;
+}
+
+.discount {
+  color: #b6d032;
 }

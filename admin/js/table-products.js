@@ -22,8 +22,10 @@ function renderProducts(data) {
   const bodyTable = document.querySelector('.table-products .table tbody')
   var count = 1
   for (var product of data.items) {
-    console.log(product)
     const rowDiv = document.createElement('tr')
+    if (product.number < 10) {
+      rowDiv.classList.add("err")
+    }
     rowDiv.innerHTML = `
       <th class = "count">
       <p>${count} </p>

@@ -52,8 +52,115 @@ td {
 
 .day {
   margin-top: 30px;
+  width: 100%;
 }
 
 .day-title {
   font-size: 250%
+}
+
+
+.content {
+  text-align: center;
+}
+
+.content h1 {
+  font-family: 'Sansita', sans-serif;
+  letter-spacing: 1px;
+  font-size: 50px;
+  color: #282828;
+  margin-bottom: 10px;
+}
+
+.content i {
+  color: #FFC107;
+}
+
+.content span {
+  position: relative;
+  display: inline-block;
+}
+
+.content span:before,
+.content span:after {
+  position: absolute;
+  content: "";
+  background-color: #282828;
+  width: 40px;
+  height: 2px;
+  top: 40%;
+}
+
+.content span:before {
+  left: -45px;
+}
+
+.content span:after {
+  right: -45px;
+}
+
+.content p {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+
+
+/* rate */
+
+
+/* - - - - - RATINGS */
+.day .rating {
+  font-size: 200%;
+  text-align: center;
+  transform: translate(-24%);
+  width: 300px;
+  height: 30px;
+  padding: 5px 10px;
+  margin: auto;
+  border-radius: 30px;
+  background: #FFF;
+  display: block;
+  overflow: hidden;
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+
+.day .rating:not(:checked)>input {
+  display: none;
+}
+
+/* - - - - - LIKE */
+.like {
+  bottom: -65px;
+}
+
+.like:not(:checked)>label {
+  cursor: pointer;
+  float: right;
+  width: 30px;
+  height: 30px;
+  display: block;
+
+  color: rgba(233, 54, 40, .4);
+  line-height: 33px;
+  text-align: center;
+}
+
+.like:not(:checked)>label:hover,
+.like:not(:checked)>label:hover~label {
+  color: rgba(233, 54, 40, .6);
+}
+
+.like>input:checked+label:hover,
+.like>input:checked+label:hover~label,
+.like>input:checked~label:hover,
+.like>input:checked~label:hover~label,
+.like>label:hover~input:checked~label {
+  color: rgba(233, 54, 40, .8);
+}
+
+.like>input:checked~label {
+  color: rgb(233, 54, 40);
 }

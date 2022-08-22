@@ -73,7 +73,6 @@ function renderNumberProduct(data) {
         const [checkYear, checkMonth] = time
         if (month === Number(checkMonth)) {
             for (product of JSON.parse(order.detail)) {
-                // console.log(product)
                 countNumber += Number(product.number)
             }
         }
@@ -96,20 +95,30 @@ function renderNetProfit(data) {
     ];
     const month = date.getMonth() + 1
     const year = date.getFullYear()
+    let imPrice = 0
     for (order of data.orders) {
         const time = order.createdAt.split('-')
         const [checkYear, checkMonth] = time
         if (month === Number(checkMonth)) {
-            var price = []
-            for (var i of order.price.split('')) {
-                if (i != "đ" && i != ",") {
-                    price.push(i)
-                }
+
+            for (detail of JSON.parse(order.detail)) {
+                $.ajax({
+                    async: false,
+                    type: "GET",
+                    url: `http://localhost:3333/api/item/showitem/${detail.item_id}`,
+                    dataType: "json",
+                    success: function (data) {
+                        const item = data.item
+                        if (item) {
+                            imPrice += handlePriceToCal(item.imPrice)
+                        }
+                    }
+                });
             }
-            countNumber += Number(price.join(''))
+            countNumber += (handlePriceToCal(order.price) - handlePriceToCal(order.staffFee))
         }
     }
-    countNumber = (Math.floor(countNumber / 23000))
+    countNumber = (Math.floor(countNumber / 23000 - imPrice / 23000))
     const totalEarningMonth = document.querySelector(".product-sales .total-earning-month")
     totalEarningMonth.innerText = `$ ${countNumber}`
     const netProfit = document.querySelector("#net-profit")
@@ -254,4 +263,18 @@ function renderAllAdmins(data) {
             </div>`
         adminsContainer.appendChild(adminDiv)
     }
+}
+
+function handlePriceToShow() {
+
+}
+
+function handlePriceToCal(price) {
+    var container = []
+    for (var i of price.split('')) {
+        if (i != "đ" && i != ",") {
+            container.push(i)
+        }
+    }
+    return Number(container.join(''))
 }

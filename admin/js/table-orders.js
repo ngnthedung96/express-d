@@ -1,4 +1,3 @@
-import * as XLSX from './node_modules/xlsx/xlsx.mjs'
 $(document).ready(function () {
     $.ajax({
         type: "GET",
@@ -25,6 +24,7 @@ function renderOrders(data) {
         const dateReceive = (i.date.split('-').reverse().join('-'))
         const userId = i.user_id
         const totalPrice = i.price
+        const code = i.code
         var userEmail
         $.ajax({
             async: false,
@@ -46,20 +46,15 @@ function renderOrders(data) {
             
         </td>
         <td class = "total-price">${totalPrice}</td>
+        <td class = "code hide">${code}</td>
         <td><span class="label gradient-1 rounded">Paid</span>
         </td>
-        <td> <p class = "detail">Chi tiết</p> 
+        <td> <p class = "badge badge-success px-2 detail">Chi tiết</p> 
         </td>
         <td class="dateReceive">${dateReceive}</td>
         `
         const product = tableRow.querySelector('.products-col')
         for (var j of JSON.parse(detail)) {
-            var priceOfProduct = []
-            for (var i of j.price.split('')) {
-                if (i != "đ" && i != ",") {
-                    priceOfProduct.push(i)
-                }
-            }
             $.ajax({
                 async: false,
                 type: "GET",
@@ -74,9 +69,11 @@ function renderOrders(data) {
                     <img class = "img" src=${JSON.parse(item.img)[0]}
                         alt="">
                     <p class = "name">${item.name}</p>
-                    <p class = "price" hidden >${item.price}</p>
-                    <p class = "imPrice" hidden >${item.imPrice}</p>
-                    <p class = "number" hidden >${j.number}</p>
+                    <p class = "price hide"  >${item.price}</p>
+                    <p class = "imPrice hide"  >${item.imPrice}</p>
+                    <p class = "number hide"  >${j.number}</p>
+                    <p class = "staffFee hide"  >${i.staffFee}</p>
+                    <p class = "shipFee hide"  >${i.shipFee}</p>
                 `
                         product.appendChild(productDiv)
                     }
@@ -214,19 +211,23 @@ function showDetail(data) {
 
 function renderDetail(element) {
     if (element) {
-        const fee = 10
         const tbodyModalDiv = document.querySelector(".modal-detail-content tbody")
         tbodyModalDiv.innerHTML = ''
         const price = element.querySelectorAll(".price")
         const number = element.querySelectorAll(".number")
-
         const imPrice = element.querySelectorAll(".imPrice")
+        const code = element.querySelector(".code")
         const totalPrice = element.querySelector(".total-price")
+        const shipFee = element.querySelector(".shipFee")
+        const staffFee = element.querySelector(".staffFee")
         const name = element.querySelectorAll(".name")
         var count = 0
+        var countImPrice = 0
         for (var i = 0; i < name.length; i++) {
+            countImPrice += Number(handlePrice(imPrice[i].innerText))
             var priceOfProduct = handlePrice(price[i].innerText)
             let priceOfOder = priceOfProduct * Number(number[i].innerText)
+            priceOfOder = handleTotalPrice(priceOfOder)
             count++
             const trOfModal = document.createElement('tr')
             trOfModal.innerHTML = `
@@ -241,12 +242,14 @@ function renderDetail(element) {
         }
         const feeDiv = document.querySelector(".footer-modal .fee .price")
         const shipDiv = document.querySelector(".footer-modal .ship .price")
+        const codeDiv = document.querySelector(".footer-modal .code .price")
         const totalPriceDiv = document.querySelector(".footer-modal .total-price .price")
         const totalProfitDiv = document.querySelector(".footer-modal .total-profit .price")
-        feeDiv.innerText = handleTotalPrice(Math.round(handlePrice(totalPrice.innerText) * fee / 100))
-        shipDiv.innerText = '30,000đ'
+        feeDiv.innerText = staffFee.innerText
+        shipDiv.innerText = shipFee.innerText
+        codeDiv.innerText = code.innerText
         totalPriceDiv.innerText = totalPrice.innerText
-        totalProfitDiv.innerText = handleTotalPrice(handlePrice(totalPrice.innerText) - handlePrice(feeDiv.innerText) - handlePrice(shipDiv.innerText))
+        totalProfitDiv.innerText = handleTotalPrice(handlePrice(totalPrice.innerText) - handlePrice(staffFee.innerText) - countImPrice)
     }
 }
 

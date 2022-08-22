@@ -136,6 +136,7 @@ function handleTotalPrice(data) {
           totalPrice.innerText = b.join('') + 'đ'
         }
       }
+      totalPrice()
     })
     totalPrice()
   });
@@ -158,11 +159,33 @@ function totalPrice(code) {
   for (var i of price) {
     total += Number(i)
   }
+
+  //tính tổng tiền hàng trước khi giảm giá và + phí ship
+  const oldTotalProPriceDiv = document.querySelector('.cart-footer .right .total-products-price')
+  oldTotalProPriceDiv.innerText = handlePriceToCal(total)
+
+
+
+  // tính tiền phí ship
+  total += handleshipFee(total)
+  var discountDiv = document.querySelector(".discount")
+  var discountContentDiv = document.querySelector(".discount-content")
+
+  //tính tiền trước khi giảm giá
+  var oldTotalPrice = document.querySelector('.old-total-price')
+  var oldTotal = total
+  oldTotalPrice.innerText = handlePriceToCal(oldTotal)
+  //giảm giá
   if (code) {
+    discountDiv.innerText = `-${code}`
+    discountDiv.classList.remove("hide")
+    discountContentDiv.classList.remove("hide")
     const discount = total * parseInt(code) / 100
     total -= Math.round(discount)
   }
+
   var totalPriceDiv = document.querySelector(".total-price")
+
   var container = `${total}`.split('').reverse()
   var b = []
   var count = 0
@@ -183,6 +206,15 @@ function totalPrice(code) {
   else {
     totalPriceDiv.innerText = b.join('') + 'đ'
   }
+}
+
+
+function handleshipFee(totalPrice) {
+  const shipFee = document.querySelector(".cart-footer .right .ship-fee")
+  var shipfee = 30000
+  shipFee.innerText = handlePriceToCal(shipfee)
+  totalPrice += shipfee
+  return shipfee
 }
 
 function handleInputCode(data) {
@@ -267,11 +299,13 @@ function pay() {
         container.push(block)
       }
       const price = document.querySelector(".total-price").innerText
+      const oldPrice = document.querySelector('.old-total-price').innerText
       const user_id = document.querySelector(".table-order-user-id").innerText
       const note = document.querySelector(".cart-footer #note").value
       const date = document.querySelector(".cart-footer #date").value
       const time = document.querySelector(".cart-footer #time").value
       const code = document.querySelector(".cart-footer #code").value
+      const shipFee = document.querySelector(".cart-footer .right .ship-fee").innerText
       if (date && time) {
         $.ajax({
           type: "POST",
@@ -283,6 +317,8 @@ function pay() {
             code,
             date,
             time,
+            shipFee,
+            oldPrice,
             detail: container
           }
           ,
@@ -308,6 +344,30 @@ function pay() {
 
 }
 
+
+function handlePriceToCal(price) {
+  var container = `${price}`.split('').reverse()
+  var b = []
+  var count = 0
+  for (var i of container) {
+    count++
+    if (count === 3) {
+      count = 0
+      b.push(i)
+      b.push(',')
+    }
+    else {
+      b.push(i)
+    }
+  }
+  if (b.reverse()[0] === ',') {
+    b = (b.slice(1, b.length)).join('') + 'đ'
+  }
+  else {
+    b = b.join('') + 'đ'
+  }
+  return b
+}
 
 
 
