@@ -11,7 +11,7 @@ import { JSONB } from 'sequelize';
 
 const createOrder = async (req, res, next) => {
   var { user_id, note, shipFee, oldPrice, price, code, date, time, detail } = req.body;
-  var rate = " "
+  var rate = ""
   var staffFee = handlePriceToshow(Math.round(handlePriceToCal(oldPrice) * 10 / 100))
   var checkCode = "false"
   var details = []
@@ -21,13 +21,21 @@ const createOrder = async (req, res, next) => {
   }
   try {
     if (!note) {
-      note = " "
+      note = ""
     }
     else if (!code) {
-      code = " "
+      code = ""
     }
 
     // add code
+
+    //------------------price---------------
+    if ((handlePriceToCal(oldPrice) - handlePriceToCal(shipFee)) > 100000) {
+      await saleDb.createSale("GIAM10", user_id)
+    }
+
+
+    //---------------member----------------
     var ordersOfUser = await payDb.findOrders(user_id)
     var ordersContainer = null
     for (var i = 0; i < ordersOfUser.length; i++) {
@@ -101,6 +109,7 @@ const createOrder = async (req, res, next) => {
 }
 
 
+
 const showOrders = async (req, res, next) => {
   try {
     if (req.user) {
@@ -130,6 +139,104 @@ const showAllOrders = async (req, res, next) => {
     console.log(err)
   }
 }
+
+const showOrdersByPage = async (req, res, next) => {
+  try {
+    if (req.user) {
+      let page = Number(req.params.page) - 1
+      let numberOrder = 5
+      const orders = await payDb.findAllOrders()
+      let numberArr = Math.ceil(orders.length / numberOrder)
+      const containerProPage = []
+      var i = 0
+      while (i < numberArr) {
+        containerProPage.push([])
+        i++
+      }
+      var index = 0
+      var count = 0
+      for (var i = 0; i < orders.length; i++) {
+        if (count <= numberOrder - 1) {
+          containerProPage[index].push(orders[i])
+        }
+        else {
+          count = 0
+          index++
+          containerProPage[index].push(orders[i])
+        }
+        count++
+      }
+      res.json({
+        status: true,
+        orders: containerProPage[page],
+        id: req.user.id,
+        numberPage: numberArr
+      })
+    }
+  }
+  catch (err) {
+    console.log(err)
+  }
+}
+
+const updateRate = async (req, res, next) => {
+  var { id, rate } = req.body;
+  try {
+    if (req.user) {
+      var rates = []
+      for (var i of rate) {
+        const rateNumber = Number(i.rate)
+        const rateId = Number(i.id)
+        const item = await itemsDb.findItem(Number(rateId))
+        var starNumber = item.dataValues.rate
+        if (starNumber) {
+          if (rateNumber === 0) {
+            var newStarNumber = ((Number(starNumber)) / 2).toFixed(1)
+            await item.update({
+              rate: `${newStarNumber}`
+            })
+          }
+          else {
+            var newStarNumber = ((Number(starNumber) + rateNumber) / 2).toFixed(1)
+            await item.update({
+              rate: `${newStarNumber}`
+            })
+          }
+        }
+        else {
+          if (rateNumber === 0) {
+            var newStarNumber = ((rateNumber) / 2).toFixed(1)
+            await item.update({
+              rate: `${newStarNumber}`
+            })
+          }
+          else {
+            var newStarNumber = (rateNumber)
+            await item.update({
+              rate: `${newStarNumber}`
+            })
+          }
+        }
+
+        rates.push(JSON.stringify(i))
+      }
+      const order = await payDb.findOrderById(id)
+      await order.update({
+        rate: `[${rates}]`
+      })
+      await order.save()
+      res.json({
+        status: true,
+        msg: 'Đánh giá sản phẩm thành công',
+        order
+      })
+    }
+  } catch (e) {
+    console.log(e.message)
+    res.sendStatus(500) && next(e)
+  }
+}
+
 
 function handlePriceToshow(price) {
   var container = `${price}`.split('').reverse()
@@ -172,5 +279,7 @@ function handlePriceToCal(price) {
 export const payController = {
   createOrder,
   showOrders,
-  showAllOrders
+  showAllOrders,
+  updateRate,
+  showOrdersByPage
 }

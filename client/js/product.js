@@ -66,6 +66,7 @@ $(document).ready(function () {
     success: function (data) {
       renderItem(data)
       postProductTocart(data, id)
+      renderRate(data)
     }
   });
 });
@@ -93,7 +94,6 @@ function renderItem(data) {
   sliderEffect.start()
 }
 function postProductTocart(data, id) {
-  console.log(data)
   $(".addToCart").click(function (e) {
     e.preventDefault();
     var parentEl
@@ -135,6 +135,15 @@ function postProductTocart(data, id) {
   });
 }
 
+function renderRate(data) {
+  const rateSection = document.querySelector(".rate-section")
+  if (data.item.rate) {
+    rateSection.classList.add("open")
+    const star = rateSection.querySelector(".rateNumber")
+    star.innerText = `${data.item.rate}/5`
+  }
+
+}
 // ------toast---------------
 import toast from "./toast.js"
 function successFunction(data) {

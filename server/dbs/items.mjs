@@ -26,7 +26,11 @@ const Items = sequelize.define('Items', {
     number: {
         type: DataTypes.INTEGER,
         allowNull: false
-    }
+    },
+    rate: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
 }, {});
 
 const findItems = async (value, field) => {
@@ -84,6 +88,7 @@ const findItemByName = async (value, field) => {
 
 const createItem = async (name, category, imPrice, price, number, imgs) => {
     let res = null;
+    var rate = ''
     console.log(name, category, imPrice, price, number, imgs)
     try {
         res = await Items.create({
@@ -91,9 +96,10 @@ const createItem = async (name, category, imPrice, price, number, imgs) => {
             imPrice: `${imPrice}`,
             category: `${category}`,
             price: `${price}`,
+            rate: rate,
             number: Number(number),
             img: `[${imgs}]`
-        }, { fields: ['name', 'category', 'imPrice', 'price', 'number', 'img'] })
+        }, { fields: ['name', 'category', 'imPrice', 'price', 'number', 'img', 'rate'] })
     } catch (err) {
         logger.error(err)
     }

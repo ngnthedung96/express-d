@@ -16,10 +16,11 @@
     <script src="./js/plugins-init/xlsx.core.min.js"></script>
     <script src="./js/plugins-init/FileSaver.js"></script>
     <script src="./js/plugins-init/FileSaver.min.js"></script>
-    
     <script src="https://kit.fontawesome.com/025c1ecb3f.js" crossorigin="anonymous"></script>
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+
+
 
 </head>
 
@@ -221,16 +222,17 @@
                         <div class="card-body">
                             <h4 class="card-title">Đơn hàng</h4>
                             <div class="table-responsive">
-                                <table class="table header-border">
+                                <table class="table header-border" id="table_id" class="display">
                                     <thead>
                                         <tr>
                                             <th></th>
+                                            <th class="hide"></th>
                                             <th>Khách hàng</th>
                                             <th>Ngày đặt</th>
                                             <th>Sản phẩm</th>
                                             <th>Tổng tiền</th>
+                                            <th class = "hide"></th>
                                             <th>Chi tiết</th>
-                                            <th>Trạng thái</th>
                                             <th>Ngày nhận</th>
                                         </tr>
                                     </thead>
@@ -296,12 +298,14 @@
     <!--**********************************
         Scripts
     ***********************************-->
-    <script type="module" src="./js/table-orders.js"></script>
+    
     <script src="plugins/common/common.min.js"></script>
     <script src="js/custom.min.js"></script>
     <script src="js/settings.js"></script>
     <script src="js/gleek.js"></script>
     <script src="js/styleSwitcher.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+<script type="module" src="./js/table-orders.js"></script>
 
 </body>
 

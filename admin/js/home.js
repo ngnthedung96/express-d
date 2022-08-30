@@ -20,6 +20,7 @@ $(document).ready(function () {
                 renderNumberProduct(data)
                 renderNetProfit(data)
                 getNumberProductMax(data)
+                renderRatePer(data)
             }
         });
         $.ajax({
@@ -222,6 +223,40 @@ function getNumberProductMax(data) {
     });
 }
 
+function renderRatePer(data) {
+    var countNumber = 0
+    var countRate = []
+    const date = new Date()
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+    const month = date.getMonth() + 1
+    const year = date.getFullYear()
+    for (var order of data.orders) {
+        const time = order.createdAt.split('-')
+        const [checkYear, checkMonth] = time
+        if (month === Number(checkMonth)) {
+            if (order.rate) {
+                for (var orderRate of JSON.parse(order.rate)) {
+                    var numberStar = Number(orderRate.rate)
+                    countNumber += numberStar
+                    countRate.push(numberStar)
+
+                }
+            }
+        }
+    }
+    const ratePer = Math.round((countNumber / (countRate.length * 5)) * 100)
+    const productSold = document.querySelector("#custiomer-sastifaction")
+    productSold.innerHTML =
+        `
+        <h3 class="card-title text-white">Customer Satisfaction</h3>
+                                <div class="d-inline-block">
+                                    <h2 class="text-white">${ratePer}%</h2>
+                                    <p class="text-white mb-0">${monthNames[month - 1]}- ${year}</p>
+                                </div>
+                                <span class="float-right display-5 opacity-5"><i class="fa fa-heart"></i></span>`
+}
 function getMaxAndSum(list) {
     var max = 0
     for (var i = 0; i < list.length; i++) {
@@ -246,7 +281,6 @@ function getMaxAndSum(list) {
 
 function renderAllAdmins(data) {
     const adminsContainer = document.querySelector(".admins")
-    console.log(adminsContainer)
     for (admin of data.admins) {
         const adminDiv = document.createElement('div')
         adminDiv.classList.add('col-lg-4')

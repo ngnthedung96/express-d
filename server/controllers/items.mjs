@@ -145,6 +145,9 @@ const showItemsByCategory = async (req, res, next) => {
   }
 }
 
+
+
+
 export const itemsController = {
   showItems,
   showItem,

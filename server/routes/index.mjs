@@ -77,7 +77,6 @@ router.get('/item/show',
 
 
 
-
 //------------------------Pay--------------------------
 router.post('/pay/create',
     payController.createOrder
@@ -90,6 +89,11 @@ router.get('/pay/show',
 router.get('/pay/showall',
     tokenValidate.verifyToken,
     payController.showAllOrders
+)
+
+router.put('/pay/updateRate',
+    tokenValidate.verifyToken,
+    payController.updateRate
 )
 
 //----------------------------------Admin------------------------------------------------
@@ -145,6 +149,10 @@ router.put('/admins/updateitem',
 router.post('/admins/logout',
     adminController.logOut
 )
+router.get('/admins/showorder/:page',
+    tokenValidate.verifyToken,
+    payController.showOrdersByPage
+)
 router.get('/admins/showorder',
     tokenValidate.verifyToken,
     payController.showAllOrders
@@ -153,6 +161,8 @@ router.get('/admins/showorder',
 router.get('/admins/getuser/:id',
     userController.getUser
 )
+
+
 
 //-----------------sale----------------------
 router.get('/sale/show/:id',

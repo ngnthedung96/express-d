@@ -107,60 +107,41 @@ td {
 
 
 
-/* rate */
-
-
-/* - - - - - RATINGS */
-.day .rating {
-  font-size: 200%;
-  text-align: center;
-  transform: translate(-24%);
-  width: 300px;
-  height: 30px;
-  padding: 5px 10px;
-  margin: auto;
-  border-radius: 30px;
-  background: #FFF;
-  display: block;
-  overflow: hidden;
-  unicode-bidi: bidi-override;
-  direction: rtl;
+.rating-stars {
+  z-index: 2;
 }
 
-.day .rating:not(:checked)>input {
+.table-order tr .caption {
   display: none;
 }
 
-/* - - - - - LIKE */
-.like {
-  bottom: -65px;
-}
-
-.like:not(:checked)>label {
-  cursor: pointer;
-  float: right;
-  width: 30px;
-  height: 30px;
-  display: block;
-
-  color: rgba(233, 54, 40, .4);
-  line-height: 33px;
+.rate-btn {
+  position: absolute;
+  bottom: -5%;
+  left: 50%;
+  transform: translateX(-50%);
   text-align: center;
+  font-size: 150%;
+  padding: 10px;
+  text-decoration: none;
+  color: white;
+  background-color: #b6d032;
+  border-radius: 5px;
+  cursor: pointer;
+
 }
 
-.like:not(:checked)>label:hover,
-.like:not(:checked)>label:hover~label {
-  color: rgba(233, 54, 40, .6);
+.rate-btn:hover {
+  opacity: 0.8;
+  color: white;
 }
 
-.like>input:checked+label:hover,
-.like>input:checked+label:hover~label,
-.like>input:checked~label:hover,
-.like>input:checked~label:hover~label,
-.like>label:hover~input:checked~label {
-  color: rgba(233, 54, 40, .8);
+.table__content.table-order-rate {
+  width: 20%;
+  z-index: 4;
 }
 
-.like>input:checked~label {
-  color: rgb(233, 54, 40);
+.history-content .day {
+  position: relative;
+  margin-bottom: 50px;
 }

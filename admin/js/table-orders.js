@@ -1,23 +1,28 @@
 $(document).ready(function () {
     $.ajax({
+        async: false,
         type: "GET",
-        url: "http://localhost:3333/api/admins/showorder",
+        url: `http://localhost:3333/api/admins/showorder`,
         dataType: "json",
         headers: {
             token: 'Bearer ' + localStorage.getItem("accessAdminToken"),
         },
         success: function (data) {
-            renderOrders(data)
+            // renderOrders(data)
             haveAdminLogin(data)
             showDetail(data)
+            // renderPagNav(data)
+            renderOrder(data)
         }
     });
+    // renderPage()
 });
 
 function renderOrders(data) {
     let myData = [];
     var countTable = 1
     const tableBody = document.querySelector('.table-orders tbody')
+    tableBody.innerHTML = ''
     for (var i of data.orders) {
         const tableRow = document.createElement('tr')
         const dateCreate = i.createdAt
@@ -91,6 +96,218 @@ function renderOrders(data) {
         countTable++
     }
     exportToExcel("Orders", "Orders", "Orders", myData)
+}
+
+function renderOrder(dataOrders) {
+    let myData = []
+    var countTable = 1
+    for (var i of dataOrders.orders) {
+        const orderId = i.id
+        const dateCreate = i.createdAt
+        const dateReceive = (i.date.split('-').reverse().join('-'))
+        const userId = i.user_id
+        const totalPrice = i.price
+        const code = i.code
+        var userEmail
+        $.ajax({
+            async: false,
+            type: "GET",
+            url: `http://localhost:3333/api/admins/getuser/${userId}`,
+            dataType: "json",
+            success: function (data) {
+                userEmail = data.user.email
+            }
+        });
+        const detail = i.detail
+        var arr = [countTable, orderId, userEmail, dateCreate, '', totalPrice, code, "Chi tiết", dateReceive]
+        // const product = tableRow.querySelector('.products-col')
+
+        // tableBody.appendChild(tableRow)
+        countTable++
+        myData.push(arr)
+    }
+    $("#table_id").DataTable({
+        data: myData,
+        createdRow: function (row, data, dataIndex) {
+            $.each($('td', row), function (colIndex) {
+                // For example, adding data-* attributes to the cell
+                if (colIndex == 0) {
+                    // $(this).attr('data-title', "1");
+                    $(this).addClass("count")
+                }
+                else if (colIndex == 1) {
+                    // $(this).attr('data-title', "1");
+                    $(this).addClass("id")
+                    $(this).addClass("hide")
+                }
+                else if (colIndex == 2) {
+                    // $(this).attr('data-title', "1");
+                    $(this).addClass("email")
+                }
+                else if (colIndex == 3) {
+                    // $(this).attr('data-title', "1");
+                    $(this).addClass("dateCreate")
+                }
+                else if (colIndex == 4) {
+                    // $(this).attr('data-title', "1");
+                    $(this).addClass("products-col")
+                    const order_id = ($(this).parent().find(".id").text())
+                    var productDiv = $(this)
+                    for (var i of dataOrders.orders) {
+                        if (i.id === Number(order_id)) {
+                            const detail = i.detail
+                            for (var j of JSON.parse(detail)) {
+                                $.ajax({
+                                    async: false,
+                                    type: "GET",
+                                    url: `http://localhost:3333/api/item/showitem/${j.item_id}`,
+                                    dataType: "json",
+                                    success: function (data) {
+                                        const item = data.item
+                                        if (item) {
+                                            var html = ` 
+                                            <div class="product">
+                                            <img class = "img" src=${JSON.parse(item.img)[0]}
+                                                alt="">
+                                            <p class = "name">${item.name}</p>
+                                            <p class = "price hide"  >${item.price}</p>
+                                            <p class = "imPrice hide"  >${item.imPrice}</p>
+                                            <p class = "number hide"  >${j.number}</p>
+                                            <p class = "staffFee hide"  >${i.staffFee}</p>
+                                            <p class = "shipFee hide"  >${i.shipFee}</p>
+                                            </div>
+                                    `
+                                            productDiv.append(html)
+                                        }
+                                    }
+                                });
+                            }
+                        }
+                    }
+
+
+                }
+                else if (colIndex == 5) {
+                    // $(this).attr('data-title', "1");
+                    $(this).addClass("total-price")
+                }
+                else if (colIndex == 6) {
+                    // $(this).attr('data-title', "1");
+                    $(this).addClass("code")
+                    $(this).addClass("hide")
+                }
+                else if (colIndex == 7) {
+                    // $(this).attr('data-title', "1");
+                    $(this).addClass("detail")
+                    $(this).append(`<p class = "badge badge-success px-2 detail">Chi tiết</p> `)
+                }
+                else if (colIndex == 8) {
+                    // $(this).attr('data-title', "1");
+                    $(this).addClass("dateReceive")
+                }
+
+            });
+        }
+    });
+}
+function renderPagNav(data) {
+    const tableOrderDiv = document.querySelector(".table-orders .row")
+    var pagNav = document.createElement("div")
+    pagNav.classList.add("pagination")
+    var html = `<a href="#" class = "prev">&laquo;</a>`
+    var count = 1
+    for (var i = 0; i < data.numberPage; i++) {
+        if (count === 1) {
+            html += `<a class="pageNumber active" href="#">${count}</a>`
+            count++
+        }
+        else {
+            html += `<a class="pageNumber" href="#">${count}</a>`
+            count++
+        }
+
+    }
+    html += `<a class = "next" href="#">&raquo;</a>`
+    pagNav.innerHTML = html
+    tableOrderDiv.appendChild(pagNav)
+}
+
+function renderPage() {
+    $(".pageNumber").click(function (e) {
+        const parent = e.target.parentElement
+        const activeBtn = parent.querySelector(".active")
+        if (activeBtn) {
+            activeBtn.classList.remove("active")
+        }
+        e.target.classList.add("active")
+        e.preventDefault();
+        $.ajax({
+            type: "GET",
+            url: `http://localhost:3333/api/admins/showorder/${e.target.innerText}`,
+            dataType: "json",
+            headers: {
+                token: 'Bearer ' + localStorage.getItem("accessAdminToken"),
+            },
+            success: function (data) {
+                renderOrders(data)
+                haveAdminLogin(data)
+                showDetail(data)
+            }
+        });
+    });
+    $(".prev").click(function (e) {
+        e.preventDefault();
+        const parent = e.target.parentElement
+        const activeBtn = parent.querySelector(".active")
+        let number = null
+        if (activeBtn) {
+            number = Number(activeBtn.innerText) - 1
+            activeBtn.classList.remove("active")
+
+        }
+        console.log(number)
+        e.preventDefault();
+        $.ajax({
+            type: "GET",
+            url: `http://localhost:3333/api/admins/showorder/${number}`,
+            dataType: "json",
+            headers: {
+                token: 'Bearer ' + localStorage.getItem("accessAdminToken"),
+            },
+            success: function (data) {
+                renderOrders(data)
+                haveAdminLogin(data)
+                showDetail(data)
+            }
+        });
+
+    });
+    $(".next").click(function (e) {
+        e.preventDefault();
+        const parent = e.target.parentElement
+        const activeBtn = parent.querySelector(".active")
+        let number = null
+        if (activeBtn) {
+            number = Number(activeBtn.innerText) + 1
+            activeBtn.classList.remove("active")
+
+        }
+        console.log(number)
+        e.preventDefault();
+        $.ajax({
+            type: "GET",
+            url: `http://localhost:3333/api/admins/showorder/${number}`,
+            dataType: "json",
+            headers: {
+                token: 'Bearer ' + localStorage.getItem("accessAdminToken"),
+            },
+            success: function (data) {
+                renderOrders(data)
+                haveAdminLogin(data)
+                showDetail(data)
+            }
+        });
+    });
 }
 
 

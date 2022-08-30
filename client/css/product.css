@@ -19,6 +19,7 @@
 .products .right {
   padding: 10% 0px 0px 50px;
   font-size: 120%;
+  position: relative;
 }
 
 .right h3 {
@@ -116,7 +117,7 @@
 
 .guide-header a {
 
-  font-size: 120%;
+  /* font-size: 120%; */
   text-decoration: none;
   color: black;
   font-weight: 700;
@@ -126,4 +127,24 @@
   display: none;
   margin-top: 15px;
   width: 100%;
+}
+
+
+/* rate */
+.rate-section {
+  display: none;
+  position: relative;
+  margin: 10px 0px 0px 0px;
+}
+
+.rateNumber {
+  display: inline;
+  font-size: 150%;
+}
+
+.rate {
+  font-size: 190%;
+  display: inline;
+  color: #deb217;
+
 }

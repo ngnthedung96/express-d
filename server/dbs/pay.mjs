@@ -37,8 +37,7 @@ const Pay = sequelize.define('Pay', {
     staffFee: {
         type: DataTypes.STRING,
         allowNull: false
-    },
-    rate: {
+    }, rate: {
         type: DataTypes.STRING,
         allowNull: false
     },
@@ -49,6 +48,7 @@ const Pay = sequelize.define('Pay', {
 }, {});
 const createOrder = async (user_id, note, price, code, date, time, checkCode, shipFee, staffFee, rate, details) => {
     let res = null;
+    console.log(typeof (rate))
     try {
         res = await Pay.create({
             user_id: user_id,
@@ -66,6 +66,7 @@ const createOrder = async (user_id, note, price, code, date, time, checkCode, sh
             fields: ['user_id', 'note', 'price', 'code', 'date', 'time', 'checkCode', "shipFee",
                 "staffFee", "rate", "detail"]
         })
+
     } catch (err) {
         logger.error(err)
     }
@@ -78,6 +79,42 @@ const findOrders = async (value, field) => {
         res = await Pay.findAll(
             {
                 where: { "user_id": value },
+            }
+        )
+    }
+    catch (err) {
+        logger.error(err)
+    }
+    return res;
+}
+
+const findOrder = async (value, order_id, field) => {
+    let res = null;
+
+    try {
+        res = await Pay.findOne(
+            {
+                where: {
+                    "user_id": value,
+                    "id": order_id
+                },
+            }
+        )
+    }
+    catch (err) {
+        logger.error(err)
+    }
+    return res;
+}
+const findOrderById = async (order_id, field) => {
+    let res = null;
+
+    try {
+        res = await Pay.findOne(
+            {
+                where: {
+                    "id": order_id
+                },
             }
         )
     }
@@ -103,6 +140,8 @@ const findAllOrders = async (value, field) => {
 export const payDb = {
     createOrder,
     findOrders,
-    findAllOrders
+    findAllOrders,
+    findOrder,
+    findOrderById
 }
 
