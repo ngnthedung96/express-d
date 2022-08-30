@@ -147,6 +147,37 @@
                     <h3>Ghi chú đơn hàng</h3>
                     <textarea placeholder="Thông tin người được tặng (nếu có); thông tin chữ viết trên bánh..." name=""
                         id="note" cols="30" rows="10"></textarea>
+                    <div class="select-setion">
+                        <div class="select-header">
+                            <p>Địa chỉ giao hàng</p>
+                            <input type="text" class="address" placeholder="Địa chỉ">
+
+                        </div>
+                        <div class="custom-select" id="cities" style="width:200px;">
+                            <select>
+
+                            </select>
+                            <div class="select-selected">
+
+                            </div>
+                        </div>
+                        <div class="custom-select" id="districts" style="width:200px;">
+                            <select>
+                                <option value="0">Quận huyện</option>
+                            </select>
+                            <div class="select-selected">
+
+                            </div>
+                        </div>
+                        <div class="custom-select" id="communes" style="width:200px;">
+                            <select>
+                                <option value="0">Quận huyện</option>
+                            </select>
+                            <div class="select-selected">
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col span-1-of-3 right">
                     <h3>Thông tin đơn hàng</h3>
@@ -157,7 +188,8 @@
                     <p class="discount-content hide">Voucher giảm giá:</p>
                     <p class="discount hide"></p>
                     <p>Tổng thanh toán:</p>
-                    <p class= "old-total-price price hide"></p>
+
+                    <p class="old-total-price price hide"></p>
                     <p class="total-price price"></p>
                     <input placeholder="Nhập mã giảm giá" class="code" type="text" id="code" />
                     <h3 class="title-date-time">Thời gian giao hàng</h3>

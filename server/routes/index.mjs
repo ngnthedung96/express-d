@@ -1,5 +1,5 @@
 import express from 'express'
-import { userController } from '../controllers/index.mjs'
+import { districtsController, userController } from '../controllers/index.mjs'
 import { adminController } from '../controllers/index.mjs'
 import { cartController } from '../controllers/index.mjs'
 import { itemsController } from '../controllers/index.mjs'
@@ -7,8 +7,10 @@ import { payController } from '../controllers/index.mjs'
 import userValidate from '../validates/users.mjs'
 import adminValidate from '../validates/admins.mjs'
 import tokenValidate from '../validates/tokenValidate.mjs'
-import { codesController } from '../controllers/code.mjs'
-import { saleController } from '../controllers/sale.mjs'
+import { codesController } from '../controllers/index.mjs'
+import { saleController } from '../controllers/index.mjs'
+import { citiesController } from '../controllers/index.mjs'
+import { communesController } from '../controllers/index.mjs'
 const router = express.Router() // create new router
 
 //--------------------user------------------------------------
@@ -191,6 +193,19 @@ router.post('/sale/create',
 //     tokenValidate.verifyToken,
 //     saleController.showCode
 // )
+
+
+// address 
+
+router.get('/cities/show',
+    citiesController.showCities
+)
+router.get('/districts/show/:cityid',
+    districtsController.showDistricts
+)
+router.get('/communes/show/:districtid',
+    communesController.showCommunes
+)
 
 
 export default router;

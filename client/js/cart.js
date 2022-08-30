@@ -1,5 +1,90 @@
+// ----------------select---------------------
+function handleSelect(el) {
+  var x, i, j, l, ll, selElmnt, a, b, c;
+  /* Look for any elements with the class "custom-select": */
+  x = document.querySelector(`${el}`)
+  selElmnt = x.getElementsByTagName("select")[0];
+  ll = selElmnt.length;
+  /* For each element, create a new DIV that will act as the selected item: */
+  a = x.querySelector(`.select-selected`);
+  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+  x.appendChild(a);
+  /* For each element, create a new DIV that will contain the option list: */
+  b = document.createElement("DIV");
+  b.setAttribute("class", "select-items select-hide");
+  for (j = 1; j < ll; j++) {
+    /* For each option in the original select element,
+    create a new DIV that will act as an option item: */
+    c = document.createElement("DIV");
+    c.setAttribute("data-set", `${selElmnt[j].getAttribute("data-set")}`)
+    c.innerHTML = selElmnt.options[j].innerHTML;
+    console.log(c)
+    c.addEventListener("click", function (e) {
+      /* When an item is clicked, update the original select box,
+      and the selected item: */
+      var y, i, k, s, h, sl, yl;
+      s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+      sl = s.length;
+      h = this.parentNode.previousSibling;
+      for (i = 0; i < sl; i++) {
+        if (s.options[i].innerHTML == this.innerHTML) {
+          s.selectedIndex = i;
+          h.innerHTML = this.innerHTML;
+          y = this.parentNode.getElementsByClassName("same-as-selected");
+          yl = y.length;
+          for (k = 0; k < yl; k++) {
+            y[k].removeAttribute("class");
+          }
+          this.setAttribute("class", "same-as-selected");
+          break;
+        }
+      }
+      h.click();
+    });
+    b.appendChild(c);
+  }
+  x.appendChild(b);
+  a.addEventListener("click", function (e) {
+    /* When the select box is clicked, close any other select boxes,
+    and open/close the current select box: */
+    e.stopPropagation();
+    closeAllSelect(this);
+    this.nextSibling.classList.toggle("select-hide");
+    this.classList.toggle("select-arrow-active");
+  });
+
+}
+function closeAllSelect(elmnt) {
+  /* A function that will close all select boxes in the document,
+  except the current select box: */
+  var x, y, i, xl, yl, arrNo = [];
+  x = document.getElementsByClassName("select-items");
+  y = document.getElementsByClassName("select-selected");
+  xl = x.length;
+  yl = y.length;
+  for (i = 0; i < yl; i++) {
+    if (elmnt == y[i]) {
+      arrNo.push(i)
+    } else {
+      y[i].classList.remove("select-arrow-active");
+    }
+  }
+  for (i = 0; i < xl; i++) {
+    if (arrNo.indexOf(i)) {
+      x[i].classList.add("select-hide");
+    }
+  }
+}
+
+/* If the user clicks anywhere outside the select box,
+then close all select boxes: */
+document.addEventListener("click", closeAllSelect);
+
+
 //------------------------API--------------------------
 $(document).ready(function () {
+
+  // cart produt
   $.ajax({
     type: "GET",
     url: "http://localhost:3333/api/cart/show",
@@ -17,8 +102,100 @@ $(document).ready(function () {
       }
     }
   });
+  // select
+  $.ajax({
+    async: false,
+    type: "GET",
+    url: "http://localhost:3333/api/cities/show",
+    dataType: "json",
+    success: function (data) {
+      renderCitySelection(data)
+      renderDistrictSelection(data)
+      renderCommuneSelection(data)
+    }
+  });
+
+
 });
 
+function renderCitySelection(data) {
+
+  const selectDiv = document.querySelector(".select-setion #cities select")
+
+  var htmls = ''
+  htmls += `<option value="0">Thành phố</option>`
+  var count = 1
+  for (var city of data.cities) {
+    htmls += `
+      <option data-set = "${city.code}" value="${count}">${city.name}</option>
+      `
+    count++
+
+  }
+  selectDiv.innerHTML = htmls
+  handleSelect("#cities")
+}
+function renderDistrictSelection(data) {
+  handleSelect("#districts")
+  $("#cities").click(function (e) {
+    e.preventDefault();
+    const city = this.querySelector('.same-as-selected')
+    const cityId = city.getAttribute("data-set")
+    $.ajax({
+      type: "GET",
+      url: `http://localhost:3333/api/districts/show/${cityId}`,
+      dataType: "json",
+      success: function (data) {
+        const selectDiv = document.querySelector(".select-setion #districts select")
+
+        var htmls = ''
+        var count = 1
+        htmls += ` <option value="0">Quận huyện</option>`
+
+        for (var district of data.districts) {
+          htmls += `
+        <option data-set = "${district.code}" value="${count}">${district.name}</option>
+        `
+          count++
+        }
+        selectDiv.innerHTML = htmls
+        handleSelect("#districts")
+      }
+    });
+
+  });
+
+}
+function renderCommuneSelection(data) {
+  handleSelect("#communes")
+  $("#districts").click(function (e) {
+    e.preventDefault();
+    const district = this.querySelector('.same-as-selected')
+    const districtId = district.getAttribute("data-set")
+    $.ajax({
+      type: "GET",
+      url: `http://localhost:3333/api/communes/show/${districtId}`,
+      dataType: "json",
+      success: function (data) {
+        console.log(data)
+        const selectDiv = document.querySelector(".select-setion #communes select")
+        var htmls = ''
+        var count = 1
+        htmls += ` <option value="0">Quận huyện</option>`
+
+        for (var communes of data.communes) {
+          htmls += `
+        <option data-set = "${communes.code}" value="${count}">${communes.name}</option>
+        `
+          count++
+        }
+        selectDiv.innerHTML = htmls
+        handleSelect("#communes")
+      }
+    });
+
+  });
+}
 
 
 function handleTotalPrice(data) {
