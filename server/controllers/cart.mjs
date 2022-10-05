@@ -61,6 +61,20 @@ const showProducts = async (req, res, next) => {
     console.log(err)
   }
 }
+const showAllProducts = async (req, res, next) => {
+  try {
+    if (req.user) {
+      const products = await cartDb.findAllProducts()
+      res.json({
+        status: true,
+        products: products
+      })
+    }
+  }
+  catch (err) {
+    console.log(err)
+  }
+}
 
 const deleteProduct = async (req, res, next) => {
   const { id } = req.body;
@@ -82,5 +96,6 @@ const deleteProduct = async (req, res, next) => {
 export const cartController = {
   createProduct,
   showProducts,
-  deleteProduct
+  deleteProduct,
+  showAllProducts
 }

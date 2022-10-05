@@ -59,7 +59,10 @@ router.get('/cart/show',
     tokenValidate.verifyToken,
     cartController.showProducts
 )
-
+router.get('/cart/showAll',
+    tokenValidate.verifyToken,
+    cartController.showAllProducts
+)
 
 router.post('/cart/delete',
     cartController.deleteProduct

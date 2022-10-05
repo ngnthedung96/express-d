@@ -108,30 +108,35 @@ function postProductTocart(data, id) {
     const nameItem = parentEl.querySelector(".name").innerText
     var priceItem = parentEl.querySelector(".price").innerText
     const imgOfItem = parentEl.querySelector(".main-img img").getAttribute("src")
-    $.ajax({
-      type: "POST",
-      url: "http://localhost:3333/api/cart/create",
-      headers: {
-        token: 'Bearer ' + localStorage.getItem("accessToken"),
-      },
-      data: {
-        "item_id": Number(id),
-        "name": `${nameItem}`,
-        "price": `${priceItem}`,
-        "img": `${imgOfItem}`,
-      },
-      dataType: "json",
-      success: function (data) {
-        console.log(data)
-        successFunction(data)
-        setTimeout(function () {
-          window.open('/client/page/cart.html')
-        }, 1000)
-      }
-    });
-    setTimeout(function () {
-      window.open('/client/page/cart.html')
-    }, 1500)
+    if (localStorage.getItem("accessToken")) {
+      $.ajax({
+        type: "POST",
+        url: "http://localhost:3333/api/cart/create",
+        headers: {
+          token: 'Bearer ' + localStorage.getItem("accessToken"),
+        },
+        data: {
+          "item_id": Number(id),
+          "name": `${nameItem}`,
+          "price": `${priceItem}`,
+          "img": `${imgOfItem}`,
+        },
+        dataType: "json",
+        success: function (data) {
+          console.log(data)
+          successFunction(data)
+          setTimeout(function () {
+            window.open('/client/page/cart.html')
+          }, 1000)
+        },
+        error: function (data) {
+          errorFunction(data.responseJSON.msg)
+        }
+      });
+    }
+    else {
+      errorFunction("Bạn cần đăng nhập")
+    }
   });
 }
 

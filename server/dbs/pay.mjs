@@ -74,6 +74,7 @@ const createOrder = async (user_id, note, price, code, date, time, checkCode, sh
 }
 
 const findOrders = async (value, field) => {
+    console.log(Pay.findAll())
     let res = null;
     try {
         res = await Pay.findAll(

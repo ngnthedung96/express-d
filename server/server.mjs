@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
         }
     }
 
-    res.sendFile('./index.html', options, function(err) {
+    res.sendFile('./index.html', options, function (err) {
         if (err) {
             next(err)
         }
@@ -45,7 +45,7 @@ app.use('/api', routes)
 app.listen(port, () => {
     console.log('Server listening on port: ', port)
     sequelize.authenticate()
-        .then(async() => {
+        .then(async () => {
             console.log('database connect successfully!');
             logger.info('Connection has been established successfully.');
             // await sequelize.sync({ alter: true });

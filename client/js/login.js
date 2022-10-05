@@ -38,7 +38,7 @@ function successFunction(data) {
             type: 'Success'
         })
         setTimeout(function () {
-            window.close()
+            // window.close()
             window.open('/client/page/index.html')
         }, 1500)
         // setTimeout(function () {

@@ -15,9 +15,11 @@ $(document).ready(function () {
 });
 
 function renderOrder(data) {
+    console.log(data)
+
     const historyContentDiv = document.querySelector('.history-content')
     for (var order of data.orders) {
-        const dateOrder = (order.createdAt.split('-').reverse().join('-'))
+        const dateOrder = moment(order.createdAt).format("DD-MM-YYYY")
         const dayDiv = document.createElement('div')
         dayDiv.classList.add('day')
         dayDiv.innerHTML = `

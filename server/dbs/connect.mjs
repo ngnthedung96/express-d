@@ -3,7 +3,8 @@ import Config from '../config.mjs'
 import logger from '../logger.mjs'
 
 // connect db mariadb
-export const sequelize = new Sequelize(Config.dbName, Config.user, Config.password, {
+export const sequelize = new Sequelize(Config.database, Config.user, Config.password, {
+
     host: Config.host,
     dialect: Config.dialect,
     logging: (msg) => logger.info(msg),
